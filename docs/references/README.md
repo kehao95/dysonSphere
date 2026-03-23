@@ -1,0 +1,84 @@
+# References and Literature Review
+
+本目录存放参考文献和文献综述材料。
+
+---
+
+## Core References
+
+### Solar Sailing Theory
+
+1. **McInnes, C. R. (1999)**. *Solar Sailing: Technology, Dynamics and Mission Applications*. Springer-Praxis.
+   - Chapter 3: Orbital Dynamics — displaced orbit theory
+   - Chapter 5: Mission Applications
+
+2. **McInnes, C. R. & Simmons, J. F. L. (1992)**. "Solar sail halo orbits I: Heliocentric case." *Journal of Spacecraft and Rockets*, 29(4), 466-471.
+
+3. **McInnes, C. R. (2002)**. "Non-Keplerian Orbits for Mars and Beyond." *Acta Astronautica*.
+
+### Dyson Structures
+
+4. **Dyson, F. J. (1960)**. "Search for Artificial Stellar Sources of Infrared Radiation." *Science*, 131(3414), 1667-1668.
+   - Original Dyson sphere proposal
+
+5. **Wright, J. T. et al. (2014)**. "The Search for Extraterrestrial Civilizations with Large Energy Supplies." *The Astrophysical Journal*.
+
+### Solar Sail Materials
+
+6. **JAXA IKAROS Mission Data**
+   - First successful solar sail demonstration (2010)
+   - Sail material specifications
+
+7. **NASA In-Space Propulsion Technology Reports**
+   - Advanced sail materials (CP1, etc.)
+   - Mass budgets for solar sail missions
+
+### Thin-Film Photovoltaics
+
+8. **Alta Devices** — Flexible GaAs solar cell specifications
+9. **MiaSolé** — CIGS thin-film specifications
+
+---
+
+## Literature Review Notes
+
+### Displaced Orbits (McInnes)
+
+Key equations from McInnes (1999):
+
+For a circular displaced orbit at angle φ above the ecliptic:
+
+1. **Force balance** requires the sail to provide both radial and out-of-plane components
+2. **Lightness number** β = σ*/σ determines achievable displacement
+3. **Small angle approximation**: β_required ≈ sin(φ)
+
+Critical insight: The orbit is not "levitating" (no orbital velocity), but rather following a non-Keplerian trajectory where orbital motion still provides centripetal acceleration.
+
+### Dyson Sphere Variants
+
+| Type | Description | β required | Practical? |
+|------|-------------|------------|------------|
+| Shell | Solid sphere | N/A (structural) | No |
+| Swarm | Keplerian orbits | 0 | Yes, but collision risk |
+| Bubble | Full levitation | ≥1 | No (material limits) |
+| **MDDS (ours)** | Displaced orbits | 0.01-0.05 | **Yes** |
+
+---
+
+## PDF Storage
+
+Place PDF files in this directory with naming convention:
+`AuthorYear_ShortTitle.pdf`
+
+Examples:
+- `McInnes1999_SolarSailing.pdf`
+- `Dyson1960_InfraredSources.pdf`
+
+---
+
+## To Read / Acquire
+
+- [ ] McInnes (1999) full text — Chapter 3 especially
+- [ ] IKAROS mission technical reports
+- [ ] Recent solar sail material advances (2020+)
+- [ ] Thin-film PV space qualification data
