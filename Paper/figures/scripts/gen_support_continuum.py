@@ -81,7 +81,7 @@ def generate_svg():
 
     # Title
     elements.append(
-        f'<text x="{MARGIN}" y="40" fill="{TEXT_PRIMARY}" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 6. Support Continuum: From Keplerian to Radiation-Dominated</text>'
+        f'<text x="{MARGIN}" y="40" fill="{TEXT_PRIMARY}" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">Support Continuum: From Keplerian to Radiation-Dominated</text>'
     )
     elements.append(
         f'<text x="{MARGIN}" y="68" fill="{TEXT_SECONDARY}" font-size="15" font-family="Arial, Helvetica, sans-serif">The full spectrum from pure orbital support (φ=0) to branch terminus (φ≈35.3°)</text>'
@@ -127,7 +127,8 @@ def generate_svg():
     )
 
     # Axis ranges
-    phi_min, phi_max = 0, 40  # degrees
+    # Extend to 38° for visual clarity, but curves terminate at branch endpoint (φ≈35.26°)
+    phi_min, phi_max = 0, 38  # degrees
     y_min, y_max = 0, 1.6  # for both β and ν (same scale)
 
     # Grid lines - horizontal
@@ -156,7 +157,7 @@ def generate_svg():
     )
 
     # Grid lines - vertical
-    x_ticks_phi = [0, 5, 10, 15, 20, 25, 30, 35, 40]
+    x_ticks_phi = [0, 5, 10, 15, 20, 25, 30, 35]
     for phi in x_ticks_phi:
         x_pos = linear_scale(phi, phi_min, phi_max, chart_x, chart_x + chart_w)
         elements.append(
@@ -180,10 +181,10 @@ def generate_svg():
         f'<text x="{chart_x + chart_w + 50}" y="{chart_y + chart_h / 2}" fill="{NU_COLOR}" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" transform="rotate(90, {chart_x + chart_w + 50}, {chart_y + chart_h / 2})">ν (orbital rate ratio)</text>'
     )
 
-    # Draw β_min curve
+    # Draw β_min curve (only up to phi_nu0 where the branch terminates)
     beta_points = []
     for i in range(401):
-        phi = phi_max * (i / 400)
+        phi = phi_nu0 * (i / 400)  # Stop at branch terminus, not phi_max
         if phi < 0.01:
             phi = 0.01  # avoid division issues
         x = linear_scale(phi, phi_min, phi_max, chart_x, chart_x + chart_w)

@@ -1,43 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1020" height="620" viewBox="0 0 1020 620" fill="none">
 <rect x="0" y="0" width="1020" height="620" fill="#08111f"/>
-<text x="40" y="48" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 4. Low-latitude window: supportable mass</text>
-<text x="40" y="78" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Representative points at 0.1°, 0.5°, and 1° for the low-β framework.</text>
+<text x="40" y="48" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Low-Latitude Window: Supportable Mass</text>
+<text x="40" y="78" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Representative points from θ⊕ to 1° (log scale)</text>
 <rect x="70" y="120" width="480" height="420" rx="16" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
-<text x="94" y="146" fill="#eaf2fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">Supportable areal density σ_max [g/m²]</text>
-<rect x="140" y="170" width="370" height="300" rx="8" fill="#0a1320" stroke="#173049" stroke-width="1"/>
-<line x1="140" y1="470.0" x2="510" y2="470.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
-<text x="130" y="475.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0</text>
-<line x1="140" y1="395.0" x2="510" y2="395.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
-<text x="130" y="400.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">100</text>
-<line x1="140" y1="320.0" x2="510" y2="320.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
-<text x="130" y="325.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">200</text>
-<line x1="140" y1="245.0" x2="510" y2="245.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
-<text x="130" y="250.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">300</text>
-<line x1="140" y1="170.0" x2="510" y2="170.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
-<text x="130" y="175.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">400</text>
-<rect x="187.5" y="216.9" width="60" height="253.1" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
-<text x="217.5" y="206.9" fill="#eaf2fb" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">337.4</text>
-<text x="217.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0.1°</text>
-<rect x="295.0" y="419.4" width="60" height="50.6" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
-<text x="325.0" y="409.4" fill="#eaf2fb" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">67.5</text>
-<text x="325.0" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0.5°</text>
-<rect x="402.5" y="444.7" width="60" height="25.3" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
-<text x="432.5" y="434.7" fill="#eaf2fb" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">33.7</text>
-<text x="432.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">1.0°</text>
-<text x="325.0" y="520" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Latitude φ</text>
+<text x="94" y="146" fill="#eaf2fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">Supportable areal density σ_max (log scale)</text>
+<rect x="150" y="170" width="360" height="300" rx="8" fill="#0a1320" stroke="#173049" stroke-width="1"/>
+<line x1="150" y1="470.0" x2="510" y2="470.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="140" y="475.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">10</text>
+<line x1="150" y1="379.1" x2="510" y2="379.1" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="140" y="384.1" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">100</text>
+<line x1="150" y1="288.2" x2="510" y2="288.2" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="140" y="293.2" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">1k</text>
+<line x1="150" y1="197.4" x2="510" y2="197.4" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="140" y="202.4" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">10k</text>
+<text x="95" y="320.0" fill="#b8c7d6" font-size="12" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" transform="rotate(-90, 95, 320.0)">[g/m²]</text>
+<rect x="178.0" y="184.6" width="55" height="285.4" rx="8" fill="#f4a259" stroke="#f7c08a" stroke-width="1"/>
+<text x="205.5" y="174.6" fill="#eaf2fb" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">13.83 kg/m²</text>
+<text x="205.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">θ⊕</text>
+<rect x="261.0" y="331.1" width="55" height="138.9" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
+<text x="288.5" y="321.1" fill="#eaf2fb" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">337.4 g/m²</text>
+<text x="288.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0.1°</text>
+<rect x="344.0" y="394.6" width="55" height="75.4" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
+<text x="371.5" y="384.6" fill="#eaf2fb" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">67.5 g/m²</text>
+<text x="371.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0.5°</text>
+<rect x="427.0" y="422.0" width="55" height="48.0" rx="8" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1"/>
+<text x="454.5" y="412.0" fill="#eaf2fb" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">33.7 g/m²</text>
+<text x="454.5" y="495" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">1°</text>
+<text x="330.0" y="520" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Latitude φ</text>
 <rect x="600" y="120" width="360" height="420" rx="18" fill="#0e1b2c" stroke="#223a53" stroke-width="1.5"/>
 <text x="624" y="158" fill="#f3f6fb" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700">Interpretation</text>
-<text x="624" y="200" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700">0.1°</text>
-<text x="684" y="200" fill="#aebfd1" font-size="15" font-family="Arial, Helvetica, sans-serif">Entry-level low-latitude regime</text>
-<text x="624" y="248" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700">0.5°</text>
-<text x="684" y="248" fill="#aebfd1" font-size="15" font-family="Arial, Helvetica, sans-serif">Still highly permissive</text>
-<text x="624" y="296" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700">1.0°</text>
-<text x="684" y="296" fill="#aebfd1" font-size="15" font-family="Arial, Helvetica, sans-serif">Meaningful but tighter benchmark</text>
-<text x="624" y="364" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700">Trend</text>
-<text x="684" y="364" fill="#aebfd1" font-size="15" font-family="Arial, Helvetica, sans-serif">σ_max ∝ 1/sin(φ) ≈ 1/φ for small φ</text>
-<text x="624" y="414" fill="#f3f6fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">Representative ideal values</text>
-<text x="624" y="446" fill="#ffd36f" font-size="15" font-family="Arial, Helvetica, sans-serif">0.1°: 337.4 g/m²</text>
-<text x="624" y="474" fill="#ffd36f" font-size="15" font-family="Arial, Helvetica, sans-serif">0.5°: 67.5 g/m²</text>
-<text x="624" y="502" fill="#ffd36f" font-size="15" font-family="Arial, Helvetica, sans-serif">1.0°: 33.7 g/m²</text>
-<text x="624" y="550" fill="#9fe4d6" font-size="14" font-family="Arial, Helvetica, sans-serif">0.1° offset ≈ 0.26 million km ≈ 41 Earth radii</text>
+<text x="624" y="195" fill="#f4a259" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">θ⊕</text>
+<text x="674" y="195" fill="#aebfd1" font-size="14" font-family="Arial, Helvetica, sans-serif">Earth angular radius (~0.00244°)</text>
+<text x="624" y="237" fill="#74d4c1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">0.1°</text>
+<text x="674" y="237" fill="#aebfd1" font-size="14" font-family="Arial, Helvetica, sans-serif">Entry-level low-latitude regime</text>
+<text x="624" y="279" fill="#74d4c1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">0.5°</text>
+<text x="674" y="279" fill="#aebfd1" font-size="14" font-family="Arial, Helvetica, sans-serif">Still highly permissive</text>
+<text x="624" y="321" fill="#74d4c1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">1.0°</text>
+<text x="674" y="321" fill="#aebfd1" font-size="14" font-family="Arial, Helvetica, sans-serif">Meaningful but tighter benchmark</text>
+<text x="624" y="378" fill="#74d4c1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">Trend</text>
+<text x="674" y="378" fill="#aebfd1" font-size="14" font-family="Arial, Helvetica, sans-serif">σ_max ∝ 1/sin(φ) ≈ 1/φ for small φ</text>
+<text x="624" y="423" fill="#f3f6fb" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700">Representative ideal values</text>
+<text x="624" y="451" fill="#f4a259" font-size="14" font-family="Arial, Helvetica, sans-serif">θ⊕: 13.83 kg/m²</text>
+<text x="624" y="475" fill="#ffd36f" font-size="14" font-family="Arial, Helvetica, sans-serif">0.1°: 337.4 g/m²</text>
+<text x="624" y="499" fill="#ffd36f" font-size="14" font-family="Arial, Helvetica, sans-serif">0.5°: 67.5 g/m²</text>
+<text x="624" y="523" fill="#ffd36f" font-size="14" font-family="Arial, Helvetica, sans-serif">1°: 33.7 g/m²</text>
+<text x="624" y="562" fill="#9fe4d6" font-size="13" font-family="Arial, Helvetica, sans-serif">θ⊕ offset ≈ 1 Earth radius at 1 AU</text>
 </svg>

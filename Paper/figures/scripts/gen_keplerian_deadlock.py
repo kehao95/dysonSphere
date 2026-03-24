@@ -7,7 +7,7 @@ def generate_svg():
     cx, cy = 320, 300
     r = 180  # orbital radius (same for all orbits, on a sphere)
 
-    orbit_colors = ["#6fd0c1", "#74b3ce", "#9fa8da", "#ce93d8"]
+    orbit_colors = ["#6fd0c1", "#74b3ce", "#9fa8da", "#ce93d8", "#f0a875"]
 
     # Each orbit defined by (inclination, ascending_node) in degrees
     orbits = [
@@ -15,6 +15,7 @@ def generate_svg():
         (60, 0),  # inclined 60°, ascending node at 0°
         (60, 90),  # inclined 60°, ascending node at 90°
         (60, 45),  # inclined 60°, ascending node at 45°
+        (45, 135),  # inclined 45°, ascending node at 135°
     ]
 
     # 3D to 2D projection (oblique view)
@@ -122,7 +123,7 @@ def generate_svg():
   <rect x="0" y="0" width="{width}" height="{height}" fill="#08111f"/>
   
   <!-- Title -->
-  <text x="40" y="54" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 1. Orbital shell at fixed radius</text>
+  <text x="40" y="54" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Keplerian Deadlock</text>
   <text x="40" y="84" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Every pair of orbital planes intersects at exactly 2 points on the sphere.</text>
   
   <!-- Shell outline -->

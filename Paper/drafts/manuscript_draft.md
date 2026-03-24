@@ -27,11 +27,12 @@ We do not claim a complete Dyson-engineering realization, nor a new foundation f
 ## Figure Roadmap
 
 - **Figure 1.** Keplerian deadlock and nodal-intersection geometry for conventional swarm configurations.
-- **Figure 2.** MDDS concept: low-latitude stratified rings above and below the ecliptic.
-- **Figure 3.** Support continuum: the full $\beta_{\min}(\phi)$ and $\nu(\phi)$ spectrum from Keplerian limit to branch terminus, marking the $\beta=1$ architecture threshold and the $\nu=0$ branch endpoint.
-- **Figure 4.** Latitude support curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$ in the low-latitude regime.
-- **Figure 5.** Low-latitude illustrative window at $0.1^\circ$, $0.5^\circ$, and $1^\circ$.
-- **Figure 6.** Earth-synchronous radius correction along the payload-optimized branch.
+- **Figure 2.** Local force balance for a displaced HoverDisk element: sail thrust, stellar gravity, and the orbital centrifugal term, with the equivalent centripetal demand toward the offset-disk center.
+- **Figure 3.** MDDS concept: low-latitude stratified rings above and below the ecliptic.
+- **Figure 4.** Support continuum: the full $\beta_{\min}(\phi)$ and $\nu(\phi)$ spectrum from Keplerian limit to branch terminus, marking the $\beta=1$ architecture threshold and the $\nu=0$ branch endpoint.
+- **Figure 5.** Latitude support curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$ in the low-latitude regime.
+- **Figure 6.** Low-latitude illustrative window at $0.1^\circ$, $0.5^\circ$, and $1^\circ$.
+- **Figure 7.** Earth-synchronous radius correction along the payload-optimized branch.
 
 ## 1. Introduction
 
@@ -81,7 +82,7 @@ The relevant prior-art landscape has two mature branches. The first is the solar
 
 The present paper sits between those two literatures. Its main novelty is not the introduction of a fundamentally new solar-sail orbit family. Nor does it claim that the burdens of Keplerian swarm management, the limitations of phase-separated megaconstellation logic, Earth-synchronous displaced orbits, period-constrained DNKOs, or statite-like support conditions are first identified here. Instead, the contribution is threefold: to propose a continuous Dyson support spectrum as a more useful architecture language than a purely discrete taxonomy; to identify MDDS as a low-$\beta$ segment of that spectrum; and to reorganize known low-latitude displaced-orbit dynamics into a compact analytic criterion for layered Dyson-swarm design. In that sense, the paper is best read as an analytic architecture/framework paper: it imports mature astrodynamical ingredients, translates them into a Dyson-swarm design language, and shows that the resulting low-angle regime is non-empty in the idealized model and architecturally suggestive.
 
-Figure 1 should be read as the motivating geometric picture for the paper, while Figures 2-6 are intended to track the transition from architecture concept to support continuum, quantitative support curves, and then to low-latitude examples.
+Figure 1 should be read as the motivating geometric picture for the paper, while Figures 2-7 then track the local force balance, the architectural translation into stratified rings, the support continuum, the quantitative support curves, and finally the low-latitude examples and synchronization variant.
 
 ![Figure 1: Keplerian deadlock geometry](../figures/concept/keplerian_deadlock.svg)
 *Figure 1. Keplerian deadlock and nodal-intersection geometry for conventional swarm configurations. All orbital planes passing through the central mass must intersect at nodal points, creating unavoidable collision corridors as swarm density increases.*
@@ -114,10 +115,13 @@ $$
 
 The first equation represents radial unloading of the effective gravitational demand; the second represents the out-of-plane support needed to maintain the displaced orbit.
 
-Figure 2 is intended to visualize this displaced geometry at the architectural level, while Figures 3 and 4 capture the resulting support continuum and low-latitude support curves in compact form.
+![Figure 2: Force balance for a displaced HoverDisk element](../figures/concept/force_balance.svg)
+*Figure 2. Local force balance for a displaced HoverDisk element in meridional section. In the co-rotating view, sail thrust, stellar gravity, and the orbital centrifugal term close as a three-vector balance; equivalently, in the inertial view, sail thrust plus gravity produce the centripetal demand toward the offset-disk center.*
 
-![Figure 2: MDDS stratified rings](../figures/concept/mdds_stratified_rings.svg)
-*Figure 2. MDDS concept: low-latitude stratified rings above and below the ecliptic. Collectors use modest radiation pressure to maintain small out-of-plane displacements, creating non-intersecting latitude bands.*
+Figure 3 is intended to visualize this displaced geometry at the architectural level, while Figures 4 and 5 capture the resulting support continuum and low-latitude support curves in compact form.
+
+![Figure 3: MDDS stratified rings](../figures/concept/mdds_stratified_rings.svg)
+*Figure 3. MDDS concept: low-latitude stratified rings above and below the ecliptic. Collectors use modest radiation pressure to maintain small out-of-plane displacements, creating non-intersecting latitude bands.*
 
 ### 2.2 The payload-optimized branch
 
@@ -202,11 +206,11 @@ For clarity, these three markers can be summarized as follows:
 | Bubble/statite access threshold | $\beta = 1$ along the payload-optimized branch | $\phi \approx 22.638^\circ,\ \nu \approx 0.640$ | Pure radiative-support architectures become available as an alternative design choice, but the present branch still retains orbital support |
 | Payload-optimized branch endpoint | $\nu = 0$ | $\phi_c \approx 35.264^\circ,\ \beta = 1.5$ | The present displaced-orbit branch itself reaches a purely radiative-support endpoint; this is not the endpoint of the full Dyson support continuum |
 
-![Figure 3: Support continuum](../figures/results/support_continuum.svg)
-*Figure 3. Support continuum: the full spectrum from pure orbital support ($\phi=0$, $\nu=1$) to the payload-optimized branch terminus ($\phi \approx 35.3°$, $\nu=0$). The $\beta=1$ threshold at $\phi \approx 22.6°$ marks where bubble/statite architectures become viable alternatives, while the $\nu=0$ endpoint at $\phi \approx 35.3°$, $\beta=1.5$ marks where the present low-$\beta$ branch itself transitions to pure radiative support.*
+![Figure 4: Support continuum](../figures/results/support_continuum.svg)
+*Figure 4. Support continuum: the full spectrum from pure orbital support ($\phi=0$, $\nu=1$) to the payload-optimized branch terminus ($\phi \approx 35.3°$, $\nu=0$). The $\beta=1$ threshold at $\phi \approx 22.6°$ marks where bubble/statite architectures become viable alternatives, while the $\nu=0$ endpoint at $\phi \approx 35.3°$, $\beta=1.5$ marks where the present low-$\beta$ branch itself transitions to pure radiative support.*
 
-![Figure 4: Support curves](../figures/results/support_curves.svg)
-*Figure 4. Latitude support curves in the low-latitude regime. Left: $\beta_{\min}(\phi)$ showing the required lightness number. Right: $\sigma_{\max}(\phi)$ showing the maximum allowable system areal density. Reference values at 0.1°, 0.5°, and 1° illustrate the rapid tightening of the feasibility window with increasing latitude.*
+![Figure 5: Support curves](../figures/results/support_curves.svg)
+*Figure 5. Latitude support curves in the low-latitude regime. Left: $\beta_{\min}(\phi)$ showing the required lightness number. Right: $\sigma_{\max}(\phi)$ showing the maximum allowable system areal density. Reference values at 0.1°, 0.5°, and 1° illustrate the rapid tightening of the feasibility window with increasing latitude.*
 
 ### 2.4 The synchronization-constrained branch
 
@@ -260,36 +264,16 @@ $$
 
 These values are sufficient for the limited purpose of the section: to show that the low-latitude window is real, but tightens rapidly, approximately as $1/\phi$ in the small-angle limit. In particular, the $\theta_\oplus$ point shows that the continuum already has a near-entry regime at the scale of one Earth radius of normal displacement at 1 AU.
 
-Figure 5 should be read as the main-text illustrative window for the low-angle regime, anchored by the explicit representative points listed above.
+Figure 6 should be read as the main-text illustrative window for the low-angle regime, anchored by the explicit representative points listed above.
 
-![Figure 5: Low-latitude feasibility window](../figures/results/low_latitude_window.svg)
-*Figure 5. Low-latitude feasibility window showing maximum supportable areal density $\sigma_{\max}$ at representative latitudes. Even the entry-level $0.1^\circ$ case already produces substantial geometric separation while remaining far more permissive in areal-density terms than the better-known high-latitude or bubble limits.*
+![Figure 6: Low-latitude feasibility window](../figures/results/low_latitude_window.svg)
+*Figure 6. Low-latitude feasibility window showing maximum supportable areal density $\sigma_{\max}$ at representative latitudes. Even the entry-level $0.1^\circ$ case already produces substantial geometric separation while remaining far more permissive in areal-density terms than the better-known high-latitude or bubble limits.*
 
 ### 3.2 Entry-level interpretation
 
-Even very small latitudes correspond to very large geometric separations at 1 AU. At $\phi = 0.1^\circ$, the out-of-plane displacement is already about $2.61\times 10^5$ km. This can be made more intuitive by comparing it to the angular radius of Earth as seen from the Sun:
+Even very small latitudes correspond to very large geometric separations at 1 AU. At $\phi = 0.1^\circ$, the out-of-plane displacement is already about $2.61\times 10^5$ km. Comparing to $\theta_\oplus$, a $0.1^\circ$ MDDS displacement corresponds to about $41$ Earth radii of off-plane separation, while $0.5^\circ$ and $1^\circ$ correspond to about $205$ and $410$ Earth radii respectively. The point of MDDS is not to achieve dramatic angular offsets; it is to obtain enormous spatial stratification from modest angular displacements while staying well below the full radiative-support threshold.
 
-$$
-\theta_\oplus = \arctan\left(\frac{R_\oplus}{\mathrm{AU}}\right)\approx 0.00244^\circ.
-$$
-
-Thus a $0.1^\circ$ MDDS displacement corresponds to about $41$ Earth radii of off-plane separation, while $0.5^\circ$ and $1^\circ$ correspond to about $205$ and $410$ Earth radii respectively. The point of MDDS is not to achieve dramatic angular offsets; it is to obtain enormous spatial stratification from modest angular displacements while staying well below the full radiative-support threshold.
-
-This Earth-angle comparison also suggests a natural entry-level characteristic angle for the framework itself. If one sets
-
-$$
-\phi = \theta_\oplus \approx 0.00244^\circ,
-$$
-
-then the support curve gives
-
-$$
-\beta_{\min}(\theta_\oplus)\approx 1.11\times 10^{-4},
-\qquad
-\sigma_{\max}(\theta_\oplus)\approx 13.83\ \mathrm{kg\,m^{-2}}.
-$$
-
-In pure areal-density terms, this threshold is already well within the broad range of present human spacecraft materials and systems. Geometrically, it corresponds to an out-of-plane separation of approximately one Earth radius, $z \approx 6{,}371\ \mathrm{km}$. If one additionally imposes Earth-synchronous motion on the payload-optimized branch, the corresponding inward radius correction is only about $3.0\times 10^3\ \mathrm{km}$. The significance of this point is not that it solves the full MDDS engineering problem, but that it shows the continuum has a genuinely near-entry regime rather than only a distant futuristic one.
+This Earth-angle comparison also suggests a natural entry-level characteristic angle for the framework itself. At $\phi = \theta_\oplus$, the support threshold $\sigma_{\max}(\theta_\oplus)\approx 13.83\ \mathrm{kg\,m^{-2}}$ is already well within the broad range of present human spacecraft materials and systems. Geometrically, it corresponds to an out-of-plane separation of approximately one Earth radius, $z \approx 6{,}371\ \mathrm{km}$. If one additionally imposes Earth-synchronous motion on the payload-optimized branch, the corresponding inward radius correction is only about $3.0\times 10^3\ \mathrm{km}$. The significance of this point is not that it solves the full MDDS engineering problem, but that it shows the continuum has a genuinely near-entry regime rather than only a distant futuristic one.
 
 This is the sense in which MDDS differs from both comparison endpoints. Relative to a Keplerian swarm, it sacrifices some mass and energy margin in exchange for non-intersecting stratification. Relative to a statite or bubble concept, it remains far from the $\beta \geq 1$ regime and therefore preserves a much larger payload budget.
 
@@ -309,7 +293,7 @@ with all second-order structural and control terms deliberately left outside the
 
 These values should not be read as a final engineering design. Their purpose is narrower: they show how the support curve translates directly into a shrinking payload fraction as latitude rises, even before one introduces heavier structural realism. In particular, the $0.1^\circ$ point is useful because $\sigma_{\max} \approx 337\ \mathrm{g\,m^{-2}}$ is no longer an obviously exotic areal-density threshold. In pure mass-per-area terms, this entry-level low-latitude regime approaches a domain that contemporary lightweight spacecraft can plausibly inhabit. That observation should not, however, be extrapolated indiscriminately across the full $0.1^\circ$--$1^\circ$ interval: $0.5^\circ$ and especially $1^\circ$ already demand materially lighter systems than those demonstrated by current flown sailcraft, so the present manuscript treats them as screening slices rather than near-term engineering claims (Macdonald and McInnes, 2011; Mansell et al., 2023).
 
-That interpretation becomes sharper if one compares directly against flown or near-flight sailcraft. LightSail 2 combined a roughly $5\ \mathrm{kg}$ CubeSat-class spacecraft with a deployed sail area of $32\ \mathrm{m^2}$, corresponding to a mission-level loading of about $156\ \mathrm{g\,m^{-2}}$ (Mansell et al., 2023). NEA Scout, at less than $14\ \mathrm{kg}$ and about $86\ \mathrm{m^2}$ of sail area, falls in a similar range, roughly $160\ \mathrm{g\,m^{-2}}$ (Johnson et al., 2017). These benchmarks sit far below the $\theta_\oplus$ support threshold of about $13.83\ \mathrm{kg\,m^{-2}}$ and below the $0.1^\circ$ threshold of about $337\ \mathrm{g\,m^{-2}}$, but well above the corresponding $1^\circ$ threshold of about $33.8\ \mathrm{g\,m^{-2}}$. This is precisely why the current paper frames the low-angle window as non-empty yet rapidly narrowing: the extreme entry regime already overlaps current lightweight sailcraft capability in mass-per-area terms, while the more ambitious low-degree regime remains significantly ahead of present integrated system practice.
+That interpretation becomes sharper if one compares directly against flown or near-flight sailcraft. LightSail 2 combined a roughly $5\ \mathrm{kg}$ CubeSat-class spacecraft with a deployed sail area of $32\ \mathrm{m^2}$, corresponding to a mission-level loading of about $156\ \mathrm{g\,m^{-2}}$ (Mansell et al., 2023). NEA Scout, at less than $14\ \mathrm{kg}$ and about $86\ \mathrm{m^2}$ of sail area, falls in a similar range, roughly $160\ \mathrm{g\,m^{-2}}$ (Johnson et al., 2017). These benchmarks sit far below the $\theta_\oplus$ and $0.1^\circ$ support thresholds, but well above $\sigma_{\max}(1^\circ)$. This is precisely why the current paper frames the low-angle window as non-empty yet rapidly narrowing: the extreme entry regime already overlaps current lightweight sailcraft capability in mass-per-area terms, while the more ambitious low-degree regime remains significantly ahead of present integrated system practice.
 
 ### 3.4 Synchronization slice
 
@@ -321,10 +305,10 @@ The synchronization-constrained branch is also easy to interpret numerically in 
 
 This is useful for interpretation because it reinforces the distinction between the two design branches. The support requirement is still controlled by $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$; synchronization mainly alters where the ring sits, not whether the latitude is supportable in the first place.
 
-Figure 6 should therefore be read not as a second feasibility boundary, but as an operational-geometry correction layered on top of the same support framework.
+Figure 7 should therefore be read not as a second feasibility boundary, but as an operational-geometry correction layered on top of the same support framework.
 
-![Figure 6: Earth-synchronous radius correction](../figures/results/sync_radius.svg)
-*Figure 6. Earth-synchronous radius correction along the payload-optimized branch. The inward shift from 1 AU grows with latitude but does not alter the fundamental support curve—synchronization is an operational geometry constraint, not an additional support penalty.*
+![Figure 7: Earth-synchronous radius correction](../figures/results/sync_radius.svg)
+*Figure 7. Earth-synchronous radius correction along the payload-optimized branch. The inward shift from 1 AU grows with latitude but does not alter the fundamental support curve—synchronization is an operational geometry constraint, not an additional support penalty.*
 
 ### 3.5 What the low-latitude slices show
 

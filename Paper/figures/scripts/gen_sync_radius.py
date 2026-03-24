@@ -72,7 +72,7 @@ def generate_svg():
 
     # Title
     elements.append(
-        f'<text x="{MARGIN}" y="48" fill="{TEXT_PRIMARY}" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 5. Earth-synchronous orbit radius</text>'
+        f'<text x="{MARGIN}" y="48" fill="{TEXT_PRIMARY}" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Earth-Synchronous Orbit Radius</text>'
     )
     elements.append(
         f'<text x="{MARGIN}" y="78" fill="{TEXT_SECONDARY}" font-size="16" font-family="Arial, Helvetica, sans-serif">Orbit radius to achieve 1-year period with light pressure assist.</text>'

@@ -81,7 +81,7 @@ def generate_svg():
 
     # Title
     elements.append(
-        f'<text x="40" y="48" fill="{TEXT_PRIMARY}" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 3. Latitude support curves</text>'
+        f'<text x="40" y="48" fill="{TEXT_PRIMARY}" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Latitude Support Curves</text>'
     )
     elements.append(
         f'<text x="40" y="78" fill="{TEXT_SECONDARY}" font-size="16" font-family="Arial, Helvetica, sans-serif">Left: β_min(φ). Right: σ_max(φ).</text>'

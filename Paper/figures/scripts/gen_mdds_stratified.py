@@ -136,7 +136,7 @@ def generate_svg():
   <rect x="0" y="0" width="{width}" height="{height}" fill="#08111f"/>
   
   <!-- Title -->
-  <text x="40" y="54" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 2. MDDS low-latitude stratification</text>
+  <text x="40" y="54" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">MDDS Low-Latitude Stratification</text>
   <text x="40" y="84" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Off-plane displacement creates separated latitude bands; light pressure supplies only the vertical component.</text>
   
 '''

@@ -240,11 +240,12 @@ Paper/
 | Figure | Description | Status |
 |--------|-------------|--------|
 | Fig 1 | Keplerian deadlock illustration | 🟢 Generated |
-| Fig 2 | Micro-displaced parallel rings concept | 🟢 Generated |
-| Fig 3 | Decoupled architecture schematic | 🔴 Not started |
-| Fig 4 | $\beta$-$\phi$ / $\sigma_{\max}(\phi)$ support curves | 🟢 Generated |
-| Fig 5 | Low-latitude illustrative window (`0.1°`, `0.5°`, `1°`) | 🟢 Generated |
-| Fig 6 | Earth-synchronous radius shift schematic | 🟢 Generated |
+| Fig 2 | HoverDisk local force-balance schematic | 🟢 Generated |
+| Fig 3 | Micro-displaced parallel rings concept | 🟢 Generated |
+| Fig 4 | Support continuum (`\beta_{\min}(\phi)` and `\nu(\phi)`) | 🟢 Generated |
+| Fig 5 | $\beta$-$\phi$ / $\sigma_{\max}(\phi)$ support curves | 🟢 Generated |
+| Fig 6 | Low-latitude illustrative window (`0.1°`, `0.5°`, `1°`) | 🟢 Generated |
+| Fig 7 | Earth-synchronous radius shift schematic | 🟢 Generated |
 
 ---
 
