@@ -1,16 +1,54 @@
 # models/orbital package
-from .displaced_orbit import DisplacedOrbit, DisplacedOrbitParams, parameter_sweep
-from .displaced_orbit import SIGMA_STAR, C, G, L_SUN, M_SUN, AU, P0_1AU
+from .displaced_orbit import (
+    AU,
+    C,
+    G,
+    L_SUN,
+    LOW_BETA_FACTOR,
+    M_SUN,
+    MU_SUN,
+    OPTIMAL_CONE_ANGLE_DEG,
+    P0_1AU,
+    SIGMA_STAR,
+    DisplacedOrbit,
+    DisplacedOrbitParams,
+    ForceBalance,
+    parameter_sweep,
+)
+from .stability import (
+    LinearizedPerturbationResponse,
+    PerturbationState,
+    beta_tolerance_for_fraction,
+    cone_angle_tolerance_for_fraction,
+    drift_time_for_offset,
+    equivalent_beta_fraction_from_pressure,
+    linearized_optimal_response,
+    optimal_cone_angle_rad,
+    perturbed_force_balance,
+)
 
 __all__ = [
     "DisplacedOrbit",
     "DisplacedOrbitParams",
+    "ForceBalance",
     "parameter_sweep",
     "SIGMA_STAR",
+    "MU_SUN",
     "C",
     "G",
     "L_SUN",
     "M_SUN",
     "AU",
     "P0_1AU",
+    "OPTIMAL_CONE_ANGLE_DEG",
+    "LOW_BETA_FACTOR",
+    "LinearizedPerturbationResponse",
+    "PerturbationState",
+    "perturbed_force_balance",
+    "optimal_cone_angle_rad",
+    "linearized_optimal_response",
+    "cone_angle_tolerance_for_fraction",
+    "beta_tolerance_for_fraction",
+    "equivalent_beta_fraction_from_pressure",
+    "drift_time_for_offset",
 ]

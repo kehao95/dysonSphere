@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" fill="none">
+<rect x="0.00" y="0.00" width="980.00" height="560.00" rx="0.00" fill="#08111f" stroke="none" stroke-width="0.00"/>
+<text x="40.00" y="54.00" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Figure 2. MDDS low-latitude stratification concept</text>
+<text x="40.00" y="84.00" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Small off-plane displacements create separated latitude bands without requiring full radiative support.</text>
+<circle cx="300.00" cy="290.00" r="26.00" fill="#ffb65c" stroke="none" stroke-width="0.00"/>
+<text x="300.00" y="344.00" fill="#ffd49a" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Star</text>
+<ellipse cx="300" cy="222" rx="185" ry="46" fill="none" stroke="#ffd36f" stroke-width="2.2"/>
+<circle cx="485.00" cy="222.00" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="249.04" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="265.75" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="265.75" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="249.04" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="115.00" cy="222.00" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="194.96" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="178.25" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="178.25" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="194.96" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<text x="510.00" y="226.00" fill="#ffd36f" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">+phi band</text>
+<ellipse cx="300" cy="290" rx="185" ry="46" fill="none" stroke="#6fd0c1" stroke-width="2.2"/>
+<circle cx="485.00" cy="290.00" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="317.04" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="333.75" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="333.75" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="317.04" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="115.00" cy="290.00" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="262.96" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="246.25" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="246.25" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="262.96" r="4.60" fill="#6fd0c1" stroke="none" stroke-width="0.00"/>
+<text x="510.00" y="294.00" fill="#6fd0c1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Ecliptic seed</text>
+<ellipse cx="300" cy="358" rx="185" ry="46" fill="none" stroke="#ffd36f" stroke-width="2.2"/>
+<circle cx="485.00" cy="358.00" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="385.04" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="401.75" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="401.75" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="385.04" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="115.00" cy="358.00" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="150.33" cy="330.96" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="242.83" cy="314.25" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="357.17" cy="314.25" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<circle cx="449.67" cy="330.96" r="4.60" fill="#ffd36f" stroke="none" stroke-width="0.00"/>
+<text x="510.00" y="362.00" fill="#ffd36f" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">-phi band</text>
+<line x1="510.00" y1="222.00" x2="510.00" y2="358.00" stroke="#95abc0" stroke-width="1.50" stroke-dasharray="6 6"/>
+<text x="532.00" y="286.00" fill="#c7d5e2" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Off-plane separation</text>
+<rect x="580.00" y="120.00" width="330.00" height="300.00" rx="18.00" fill="#0e1b2c" stroke="#223a53" stroke-width="1.50"/>
+<text x="604.00" y="165.00" fill="#f0f5fb" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Architecture intuition</text>
+<circle cx="610.00" cy="201.00" r="4.50" fill="#74d4c1" stroke="none" stroke-width="0.00"/>
+<text x="628.00" y="206.00" fill="#c7d5e2" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Nodes remain primarily orbital</text>
+<circle cx="610.00" cy="243.00" r="4.50" fill="#74d4c1" stroke="none" stroke-width="0.00"/>
+<text x="628.00" y="248.00" fill="#c7d5e2" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">SRP supplies only the off-plane component</text>
+<circle cx="610.00" cy="285.00" r="4.50" fill="#74d4c1" stroke="none" stroke-width="0.00"/>
+<text x="628.00" y="290.00" fill="#c7d5e2" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Bands share a common stellar axis</text>
+<circle cx="610.00" cy="327.00" r="4.50" fill="#74d4c1" stroke="none" stroke-width="0.00"/>
+<text x="628.00" y="332.00" fill="#c7d5e2" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Geometric layering replaces nodal crossing</text>
+<circle cx="610.00" cy="369.00" r="4.50" fill="#74d4c1" stroke="none" stroke-width="0.00"/>
+<text x="628.00" y="374.00" fill="#c7d5e2" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Low latitude is the natural first deployment region</text>
+</svg>

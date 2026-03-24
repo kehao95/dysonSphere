@@ -4,43 +4,47 @@
 
 ---
 
-## Phase 0: Foundation (Current)
+## Phase 0: Foundation
 
 **目标**: 建立研究基础设施和理论框架
 
-- [ ] 项目结构搭建
-- [ ] 核心概念文档化
+- [x] 项目结构搭建
+- [x] 核心概念文档化
 - [ ] 文献综述（McInnes displaced orbits, Dyson sphere concepts）
-- [ ] 定义关键参数和符号系统
+- [x] 定义关键参数和符号系统
 
 **产出**: 完整的项目框架，清晰的研究问题定义
 
 ---
 
-## Phase 1: Mathematical Modeling
+## Phase 1: Mathematical Modeling (Current)
 
 **目标**: 建立完整的数学模型
 
 ### 1.1 轨道动力学 (Orbital Dynamics)
 
-- [ ] Displaced orbit 基础方程推导
-- [ ] $\beta$-$\phi$ 关系的精确表达式
+- [x] Displaced orbit 基础方程推导
+- [x] $\beta$-$\phi$ 关系的精确表达式
+- [x] 一阶扰动灵敏度切片（锥角误差 / $\beta$ 误差 / 小外压扰动）
+- [x] 最优锥角附近的解析局部响应
 - [ ] 轨道稳定性分析（线性化扰动）
 - [ ] 多环系统的相互作用
 
 ### 1.2 质量预算 (Mass Budget)
 
-- [ ] 材料参数数据库
+- [x] 材料参数数据库
   - 反射膜：Kapton, CP1, 铝化聚酰亚胺
   - 太阳能板：薄膜 PV, 柔性砷化镓
   - 结构支撑：碳纤维桁架
-- [ ] 系统 $\beta$ 计算模型
-- [ ] 优化：镜面积/板面积比例
+- [x] 系统 $\beta$ 计算模型
+- [x] 优化：镜面积/板面积比例
+- [x] 结构闭合尺度律初版（boom/tether/fixed-mass scaling）
+- [ ] 结构线密度与固定质量项替换为 source-backed engineering values
 
 ### 1.3 热力学分析 (Thermal Analysis)
 
-- [ ] 反射膜热平衡（低吸收率情况）
-- [ ] 载荷舱热平衡（吸收-辐射平衡）
+- [x] 反射膜热平衡（低吸收率情况）
+- [x] 载荷舱热平衡（吸收-辐射平衡）
 - [ ] 解耦架构的热学优势量化
 
 **产出**: 完整的数学模型代码库，参数灵敏度分析
@@ -51,10 +55,12 @@
 
 **目标**: 验证工程可行性
 
-- [ ] 设计空间探索（Design Space Exploration）
-- [ ] 与现有材料技术的对标
-- [ ] 识别技术瓶颈和研究缺口
-- [ ] 与传统方案的定量比较
+- [x] 设计空间探索（Design Space Exploration）
+- [x] 与现有材料技术的对标
+- [x] 识别技术瓶颈和研究缺口
+- [x] 与传统方案的定量比较
+- [x] Flight-heritage 系统差距 benchmark（ACS3 / NEA Scout）
+- [x] 固定 bus 质量阈值 benchmark（ACS3 heritage lines）
 
 **产出**: 可行性报告，关键参数范围
 
@@ -76,7 +82,7 @@
    - Lightness number and critical density
 
 3. **Micro-Displacement Strategy**
-   - Why small $\beta$ is sufficient
+   - Why moderate but sub-unity $\beta$ is sufficient
    - Decoupled architecture design
 
 4. **Mathematical Model**

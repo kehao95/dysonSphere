@@ -9,10 +9,18 @@ from .materials import (
     STRUCTURE_MATERIALS,
 )
 from .calculator import (
-    SystemBudget,
-    MassBreakdown,
+    AngleFeasibility,
+    FixedMassAllowance,
+    FillFactorPowerThreshold,
+    PowerAngleDesign,
+    design_for_angle_power_with_structure,
     find_optimal_ratio,
     design_space_sweep,
+    MassBreakdown,
+    max_fixed_mass_for_angle_power_fill_factor,
+    minimum_power_for_fill_factor_with_structure,
+    SystemBudget,
+    max_fill_factor_for_angle,
 )
 
 __all__ = [
@@ -25,6 +33,14 @@ __all__ = [
     "STRUCTURE_MATERIALS",
     "SystemBudget",
     "MassBreakdown",
+    "AngleFeasibility",
+    "FixedMassAllowance",
+    "FillFactorPowerThreshold",
+    "PowerAngleDesign",
     "find_optimal_ratio",
     "design_space_sweep",
+    "max_fill_factor_for_angle",
+    "design_for_angle_power_with_structure",
+    "minimum_power_for_fill_factor_with_structure",
+    "max_fixed_mass_for_angle_power_fill_factor",
 ]

@@ -1,0 +1,18 @@
+{
+  "assumptions": {
+    "reference_solar_wind_dynamic_pressure_n_m2": 2.6e-09,
+    "offset_distance_for_drift_time_m": 1000000.0,
+    "note": "Solar wind comparison is an order-of-magnitude external-disturbance check, not a full plasma interaction model."
+  },
+  "cone_angle_tolerance_deg": {
+    "phi_1deg_for_1pct_axial_residual": 3.334916962145183,
+    "phi_1deg_for_5pct_axial_residual": 7.561642474125866,
+    "phi_1deg_for_10pct_axial_residual": 10.840826449715143
+  },
+  "solar_wind_reference_case_at_1deg": {
+    "equivalent_beta_fraction": 0.0005726721965396249,
+    "axial_residual_fraction": 0.0005726721965394066,
+    "drift_time_to_1000km_s": 5808384.933141403,
+    "drift_time_to_1000km_days": 67.22667746691438
+  }
+}

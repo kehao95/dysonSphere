@@ -1,0 +1,15 @@
+{
+  "experiment_type": "ideal_architecture_benchmark",
+  "date": "2026-03-23",
+  "parameters": {
+    "phi_grid_deg": [0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 5.0],
+    "extra_areal_densities_g_m2": [0.0, 5.0, 10.0],
+    "cases": [
+      "CP1 + ultralight tandem",
+      "CP1 + projected space CIGS",
+      "CP1 + commercial CIGS"
+    ]
+  },
+  "model_version": "v0.3",
+  "notes": "Controlled-variable comparison to ideal Dyson Swarm and ideal Dyson Ring upper bounds."
+}

@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\title{From Keplerian Swarms to Radiatively Supported Bubbles: A Low-Beta Continuum Framework for Dyson Architectures}
+\author{Draft in progress}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Dyson Swarm concept is often treated as the most plausible route toward stellar-scale
+energy collection, yet its conventional Keplerian formulation contains a geometric
+difficulty: large numbers of collectors placed at comparable radii inevitably occupy orbital
+planes that intersect at nodal points. Building on established displaced non-Keplerian orbit
+(DNKO) theory rather than proposing a fundamentally new family of solar-sail dynamics, this
+paper argues that Dyson architectures are more usefully understood as a continuous
+support-and-stratification spectrum bridging the Keplerian swarm limit and the fully
+radiatively supported bubble/statite limit. Within that spectrum, the low-latitude
+heliocentric displaced-orbit regime is reinterpreted as an analytic architecture framework
+for layered Dyson-swarm design. For an ideal specular sail, the framework yields the support
+curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$, which convert the architecture
+question into a direct areal-density criterion. The resulting paper is positioned as a
+theory-grounded architecture/framework study with illustrative low-latitude feasibility
+slices at $0.1^\circ$, $0.5^\circ$, and $1.0^\circ$, rather than as a full engineering
+realization or a claim of new orbit-family discovery.
+\end{abstract}
+
+\section{Introduction}
+
+Dyson structures remain a standard thought experiment for stellar-scale energy harvesting,
+dating back to Dyson's original argument that advanced civilizations may reprocess a large
+fraction of stellar luminosity into distributed artificial collectors \cite{dyson1960infrared}.
+Among the usual shell/swarm/bubble taxonomy, the swarm is often treated as the least
+structurally extreme option. However, a conventional Keplerian swarm leaves a major
+organizational problem unresolved: non-coplanar orbital planes at comparable radii must
+intersect at nodes, creating an increasingly severe topological and collision-management
+burden as swarm density rises.
+
+Modern Dyson-swarm literature has usually left this issue at a qualitative level, often by
+appealing to broad collector distributions or radial nesting without providing a compact
+criterion for topological separation at fixed stellar distance
+\cite{wright2015gies,mcinnes2025ringworlds,mcinnes2026bubbles}.
+
+This is the Dyson-scale problem that motivates the present paper. The aim is not merely to
+identify another solar-sail operating point, but to ask whether the usual Dyson taxonomy is
+too coarse. If collector populations can transition continuously from purely orbital support
+to partially radiative support and eventually to fully radiatively supported configurations,
+then shell/swarm/bubble categories are better understood as regions within a larger support
+space rather than as wholly disconnected end states.
+
+That is the specifically Dyson-theoretic claim of the paper. The relevant object is no longer
+a single favored megastructure label, but a traversable design space in which support,
+stratification, payload margin, and deployment logic vary continuously.
+
+At the opposite extreme, radiatively supported concepts such as statites and Dyson bubbles
+replace ordinary orbital support with continuous radiation-pressure support
+\cite{forward1991statite,mcinnes1999solarsailing}. The broader solar-sail literature already
+contains the relevant astrodynamical ingredients: halo orbits, displaced two-body orbits,
+displaced non-Keplerian orbit stability and control, and later synchronous heliocentric
+variants \cite{mcinnes1992haloorbits1,mcinnes1992haloorbits2,mcinnes1997displaced,mcinnes1998dnko,quarta2020earthsync,bassetto2024marssync}.
+
+The present paper therefore takes a deliberately conservative novelty posture. Its main
+novelty is not a fundamentally new orbit family, but the reorganization of known
+low-latitude displaced-orbit dynamics into an analytic architecture criterion for layered
+Dyson-swarm design. More broadly, it proposes that Dyson architectures are better understood
+as a continuous support spectrum than as a purely discrete shell/swarm/bubble taxonomy. In
+that sense, it should be read as an analytic architecture/framework paper rather than as a
+new solar-sail dynamics paper.
+
+\section{Theoretical Framework}
+
+For a collector at fixed heliocentric distance $r$ and latitude $\phi$, moving in a circular
+path about the stellar rotation axis with angular velocity $\omega$, define the orbital-rate
+ratio
+\begin{equation}
+\nu \equiv \frac{\omega}{\sqrt{\mu/r^3}}.
+\end{equation}
+
+Under the ideal-specular-sail assumption, the payload-optimized branch yields the closed-form
+support relation
+\begin{equation}
+\beta_{\min}(\phi)=\frac{3\sqrt{3}}{2}\sin\phi
+\end{equation}
+\noindent and the equivalent areal-density limit
+\begin{equation}
+\sigma_{\max}(\phi)=\frac{2\sigma^*}{3\sqrt{3}\sin\phi}
+\end{equation}
+
+so that the architecture question becomes a direct screening criterion:
+\begin{equation}
+\sigma_{\mathrm{sys}} < \sigma_{\max}(\phi).
+\end{equation}
+
+Within the broader DNKO literature, the role of this result in the present paper is not to
+claim a new equilibrium family, but to make the Dyson-swarm architecture question analyzable
+in closed form. The optimal-angle ingredient behind this result is itself standard prior art
+in displaced-orbit analysis, and is used here as an architecture-screening tool rather than
+presented as a new derivation. In this way, the support curve acts not only as a local orbit
+criterion, but as a parameterization of one tractable low-$\beta$ segment within a larger
+Dyson support continuum.
+
+That broader continuum view is essential to the paper's intended contribution. In the present
+framing, the key coordinates are not merely orbit labels, but support variables: $\beta$,
+$\phi$, $\nu$, and $\sigma_{\max}(\phi)$. These quantities allow one to interpret familiar
+Dyson categories as regions within a common support space, rather than as entirely separate
+conceptual islands.
+
+One boundary clarification is especially important: the familiar angle
+$\phi_c = \arctan(1/\sqrt{2}) \approx 35.264^\circ$ marks the endpoint of the present
+payload-optimized displaced-orbit branch, where $\nu \to 0$ and $\beta \to 1.5$. It should
+not be read as the terminal latitude of the full Dyson support continuum.
+
+\section{Low-Latitude Illustrative Analysis}
+
+The main-text examples are intentionally subordinate to the continuum claim above. Their role
+is not to dominate the paper, but to demonstrate that the low-$\beta$ segment of that support
+spectrum is non-empty and physically meaningful. The representative slices currently focus on:
+\begin{itemize}[leftmargin=1.5em]
+  \item $\phi = \theta_\oplus \approx 0.00244^\circ$
+  \item $\phi = 0.1^\circ$
+  \item $\phi = 0.5^\circ$
+  \item $\phi = 1.0^\circ$
+\end{itemize}
+
+A useful entry-level characteristic angle is the angular radius of Earth as seen from the Sun,
+\[
+\theta_\oplus \approx 0.00244^\circ,
+\]
+for which the present framework gives $\beta_{\min}(\theta_\oplus)\approx 1.11\times10^{-4}$ and
+$\sigma_{\max}(\theta_\oplus)\approx 13.83\ \mathrm{kg\,m^{-2}}$, indicating that the pure areal-density
+threshold has already entered a regime broadly compatible with present lightweight spacecraft systems.
+Geometrically this corresponds to an off-plane separation of about one Earth radius,
+$z \approx 6{,}371\ \mathrm{km}$; under the Earth-synchronous slice, the associated inward
+radius correction is only about $3.0\times10^3\ \mathrm{km}$.
+
+At the same time, this entry-level observation should not be overextended: the window tightens
+rapidly with latitude, and cases such as $0.5^\circ$ and $1.0^\circ$ are better interpreted
+as screening-level examples than as near-term engineering claims \cite{macdonald2011applications,mansell2023lightsail2}.
+
+This reading is reinforced by comparison with flown and near-flight sailcraft. LightSail 2
+corresponds to a mission-level loading of roughly $156\ \mathrm{g\,m^{-2}}$, while NEA Scout is
+of similar order, near $160\ \mathrm{g\,m^{-2}}$ \cite{mansell2023lightsail2,johnson2017neascout}.
+These values sit far below the $\theta_\oplus$ threshold and below the $0.1^\circ$ threshold,
+but well above the $1^\circ$ threshold, which is exactly why the present paper treats the
+former as entry regimes and the latter as a more demanding extrapolation.
+
+\section{Discussion}
+
+The intended paper claim is framework-level rather than full-engineering closure, and
+architectural rather than dynamical in its novelty posture. The core claim is not merely that
+a low-$\beta$ displaced-orbit regime exists, but that Dyson architectures can be usefully
+organized as a continuous support spectrum ranging from purely orbital to purely
+radiatively-supported configurations. The synchronization-constrained branch should likewise
+be read as a useful recasting of known synchronous DNKO design space
+\cite{heiligers2015earthfollowing,quarta2020earthsync,bassetto2024marssync}, not as an
+independent orbit-family discovery. Likewise, the paper motivates a reduced orbital-topology
+burden for layered swarms, but does not yet claim a fully quantified collision or conjunction
+metric. Finally, the broader displaced-orbit literature already establishes that stability and
+station-keeping are nontrivial questions for such trajectories; existing control results make
+the architecture direction plausible, but the present paper does not yet close that layer of
+analysis \cite{mcinnes1998dnko,bookless2006thesis,dachwald2005degradation}.
+
+This is also why the Dyson framing is substantive rather than decorative. The present paper
+does not claim that shell, swarm, and bubble architectures are engineeringly interchangeable.
+It claims that they can be parameterized within a common support logic, while still occupying
+very different regions of cost, control, and payload consequence. The specific role of MDDS is
+to make one previously under-articulated low-$\beta$ region of that space explicit.
+
+For Dyson theory, this replaces a discourse organized around static end states with one
+organized around reachable regions of design space. That is the level at which the paper
+claims conceptual novelty; the low-latitude examples remain supporting slices rather than the
+paper's principal intellectual center.
+
+The topology benefit can nevertheless be stated in a precise geometric sense. A same-radius
+Keplerian swarm generates repeated nodal crossings between non-coplanar planes, whereas the
+MDDS construction replaces those crossings with layered latitude bands that are explicitly
+separated in the normal direction while remaining near the same collection radius. A fuller
+future traffic analysis can therefore be posed in terms of node-intersection count, minimum
+normal separation, and conjunction-corridor density, but the present manuscript intentionally
+stops at the architecture-defining geometry rather than claiming a closed operations metric.
+
+\section{Figures}
+
+Current generated figure assets:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{Paper/figures/concept/fig1\_keplerian\_deadlock.svg}
+  \item \texttt{Paper/figures/concept/fig2\_mdds\_stratified\_rings.svg}
+  \item \texttt{Paper/figures/results/fig3\_support\_curves.svg}
+  \item \texttt{Paper/figures/results/fig4\_low\_latitude\_window.svg}
+  \item \texttt{Paper/figures/results/fig5\_sync\_radius\_shift.svg}
+\end{itemize}
+
+\bibliographystyle{unsrt}
+\bibliography{references/bibliography}
+
+\end{document}

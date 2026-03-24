@@ -38,6 +38,13 @@
 8. **Alta Devices** — Flexible GaAs solar cell specifications
 9. **MiaSolé** — CIGS thin-film specifications
 
+### Repository Benchmark Notes
+
+- `material_benchmark_notes.md` — source notes for the material benchmarks used
+  in the first-pass MDDS and ideal-architecture comparison studies
+- `structural_benchmark_notes.md` — source notes for boom, tether, and flight-
+  heritage structural benchmarks
+
 ---
 
 ## Literature Review Notes
@@ -50,7 +57,7 @@ For a circular displaced orbit at angle φ above the ecliptic:
 
 1. **Force balance** requires the sail to provide both radial and out-of-plane components
 2. **Lightness number** β = σ*/σ determines achievable displacement
-3. **Small angle approximation**: β_required ≈ sin(φ)
+3. **Exact ideal-sail minimum-beta branch**: $\beta_{\min} = (3\sqrt{3}/2)\sin\phi$ for practical low-$\beta$ displaced circular orbits
 
 Critical insight: The orbit is not "levitating" (no orbital velocity), but rather following a non-Keplerian trajectory where orbital motion still provides centripetal acceleration.
 
@@ -61,7 +68,7 @@ Critical insight: The orbit is not "levitating" (no orbital velocity), but rathe
 | Shell | Solid sphere | N/A (structural) | No |
 | Swarm | Keplerian orbits | 0 | Yes, but collision risk |
 | Bubble | Full levitation | ≥1 | No (material limits) |
-| **MDDS (ours)** | Displaced orbits | 0.01-0.05 | **Yes** |
+| **MDDS (ours)** | Displaced orbits | ~0.045 at 1° | **Potentially**, if PV areal density stays below the tightened mass budget |
 
 ---
 

@@ -1,0 +1,37 @@
+{
+  "experiment": "20260323_mdds_feasibility",
+  "assumptions": {
+    "orbit_model": "ideal specular sail, exact displaced circular orbit, SRP-only",
+    "comparison_metric": "relative Dyson utilization = PV fill factor versus an all-collector Dyson Swarm using the same PV technology",
+    "angle_limit_definition": "maximum sustainable displacement angle for the given material pair and fill factor"
+  },
+  "reference_ring_phi_1_deg": {
+    "beta_required": 0.04534268199557577,
+    "cone_angle_deg": 35.264389682754654,
+    "omega_ratio": 0.9875802805070643,
+    "period_days": 369.8116716807521,
+    "vertical_displacement_km": 2610880.003017613,
+    "sigma_limit_g_m2": 33.76231690150845,
+    "gravity_accel_m_s2": 0.00593140799708313,
+    "sail_radial_accel_m_s2": 0.0001463956305676254,
+    "sail_axial_accel_m_s2": 0.00010351734311044852,
+    "centripetal_accel_m_s2": 0.0057841089843481295,
+    "photon_pressure_n_m2": 6.0534921856063905e-06,
+    "sail_force_radial_n_m2": 4.942655672220326e-06,
+    "sail_force_axial_n_m2": 3.4949853428971455e-06
+  },
+  "best_case_current_materials_at_1_deg": {
+    "case": "CP1 + ultralight tandem",
+    "pv_fill_factor_max": 0.5248597974727819,
+    "relative_dyson_utilization_max": 0.5248597974727819,
+    "absolute_utilization_max": 0.14381158450754225
+  },
+  "reflector_only_angle_limits_deg": {
+    "cp1_subsystem_nasa_2009": 6.7678477963634105,
+    "kapton_76um_nasa_2001": 3.0706153734559405
+  },
+  "thermal_snapshot_1au": {
+    "reflector_k": 224.20116515391737,
+    "payload_k_ultralight_tandem": 368.56052483314295
+  }
+}

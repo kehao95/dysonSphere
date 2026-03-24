@@ -1,0 +1,16 @@
+{
+  "experiment_type": "structural_closure",
+  "date": "2026-03-23",
+  "parameters": {
+    "phi_levels_deg": [0.5, 1.0, 1.5],
+    "power_levels_w": [100.0, 1000.0, 10000.0],
+    "scenarios": [
+      "cross_light",
+      "cross_nominal",
+      "perimeter_nominal",
+      "perimeter_heavy"
+    ]
+  },
+  "model_version": "v0.4",
+  "notes": "Geometry-explicit structural model using placeholder boom/tether line densities."
+}

@@ -1,0 +1,13 @@
+scenario,phi_deg,target_fill_factor,acs3_bus_mass_kg,minimum_power_w_for_acs3_bus,feasible
+acs3_lines_dyneema_1p25mm,1.0,0.05,8.3,6902.065871631128,True
+acs3_lines_dyneema_1p25mm,1.0,0.1,8.3,15560.405159574966,True
+acs3_lines_dyneema_1p25mm,1.0,0.25,8.3,62470.9327424539,True
+acs3_lines_dyneema_1p25mm,2.0,0.05,8.3,21749.187482969155,True
+acs3_lines_dyneema_1p25mm,2.0,0.1,8.3,65200.27464359981,True
+acs3_lines_dyneema_1p25mm,2.0,0.25,8.3,,False
+acs3_lines_dyneema_2mm,1.0,0.05,8.3,6946.634730670688,True
+acs3_lines_dyneema_2mm,1.0,0.1,8.3,15666.615180798428,True
+acs3_lines_dyneema_2mm,1.0,0.25,8.3,63000.57764894593,True
+acs3_lines_dyneema_2mm,2.0,0.05,8.3,21985.37539761998,True
+acs3_lines_dyneema_2mm,2.0,0.1,8.3,66044.29873718864,True
+acs3_lines_dyneema_2mm,2.0,0.25,8.3,,False

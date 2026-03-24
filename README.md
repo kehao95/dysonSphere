@@ -10,7 +10,7 @@
 
 Traditional Dyson Swarm concepts are constrained by Keplerian orbital mechanics: all orbital planes must pass through the stellar center of mass (great circle trajectories). This creates unavoidable nodal intersections at the equatorial plane when deploying numerous nodes at similar orbital radii, risking irreversible gravitational chaos and Kessler-syndrome catastrophes.
 
-We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that leverages solar radiation pressure (SRP) to maintain small out-of-plane displacements. Unlike full-levitation schemes (Dyson Bubble) requiring exotic materials, our approach only needs $\beta \approx 0.01$–$0.05$ to achieve millions of kilometers of physical separation—completely eliminating orbital intersections.
+We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that leverages solar radiation pressure (SRP) to maintain small out-of-plane displacements. Unlike full-levitation schemes (Dyson Bubble) requiring exotic materials, our exact ideal-sail model shows that a 1° ring needs only $\beta \approx 0.045$ while already achieving millions of kilometers of physical separation and eliminating orbital intersections.
 
 The key innovation is a **Decoupled Architecture**: separating the reflective thrust module (large-area thin film mirror) from the absorptive payload module (high-efficiency solar cells). This resolves the fundamental "reflect vs. absorb" thermal paradox while enabling practical mass budgets.
 
@@ -58,11 +58,25 @@ The key innovation is a **Decoupled Architecture**: separating the reflective th
 
 ### Core Insight
 
-We don't need full levitation. A tiny angular displacement $\phi \approx 1°$ requires only:
+We do not need full levitation. For the exact minimum-beta branch of an ideal displaced circular orbit,
 
-$$\beta \approx \sin(\phi) \approx 0.017$$
+$$\beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi \qquad (\phi \lesssim 35.26^\circ)$$
 
-At 1 AU, this translates to $\sim 2.6 \times 10^6$ km vertical separation—far exceeding any collision risk threshold.
+At 1 AU and $\phi = 1^\circ$, this gives:
+
+$$\beta_{\min} \approx 0.0453,\qquad \sigma_{\max} \approx 33.8\ \text{g/m}^2,\qquad d \approx 2.61 \times 10^6\ \text{km}$$
+
+This is still far easier than full levitation ($\beta \ge 1$), but materially stricter than the naive $\beta \approx \sin\phi$ heuristic.
+
+### Progressive Deployment Path
+
+MDDS is appealing not only as a final configuration, but also as a **growth path**:
+
+1. Start near the ecliptic, where the required $\beta$ is minimal and the mass budget is most forgiving.
+2. Deploy nodes that are already useful individually, rather than waiting for a full shell-equivalent buildout.
+3. Expand gradually toward higher latitudes as materials, structures, control, and in-space manufacturing improve.
+
+This makes MDDS more than a static Dyson concept. It becomes a **Dyson-progressive architecture** in which intermediate stages remain operationally meaningful.
 
 ### Decoupled Architecture
 
@@ -102,7 +116,8 @@ dysonSphere/
 │   └── runs/           # Individual experiment runs
 │
 └── docs/               # Additional documentation
-    └── references/     # Literature review and prior art
+    ├── references/     # Literature review and prior art
+    └── visualization/  # Browser-based concept demos
 ```
 
 ---
@@ -112,7 +127,7 @@ dysonSphere/
 | Symbol | Name | Value | Notes |
 |--------|------|-------|-------|
 | $\sigma^*$ | Critical areal density | 1.53 g/m² | For Sun; $\beta = 1$ threshold |
-| $\beta$ | Lightness number | 0.01–0.05 | Target range for MDDS |
+| $\beta$ | Lightness number | 0.04–0.25 | Practical MDDS range for ~1°–5° rings |
 | $\phi$ | Displacement angle | 1°–5° | Latitude of displaced ring |
 | $r$ | Orbital radius | 1 AU | Reference distance |
 
@@ -126,9 +141,15 @@ The lightness number $\beta$ relates radiation pressure to gravitational force:
 
 $$\beta = \frac{F_{\text{rad}}}{F_{\text{grav}}} = \frac{\sigma^*}{\sigma}$$
 
-For a displaced circular orbit at angle $\phi$ from the equatorial plane:
+For a displaced circular orbit at angle $\phi$ from the equatorial plane, with sail cone angle $\alpha$ and orbital-rate ratio $\nu = \omega/\sqrt{\mu/r^3}$:
 
-$$\beta_{\text{required}} = \frac{\sin\phi}{\cos^2\phi} \approx \sin\phi \quad (\text{for small } \phi)$$
+$$\beta \cos^3\alpha = \cos\phi(1-\nu^2)$$
+$$\beta \cos^2\alpha \sin\alpha = \sin\phi$$
+
+Minimizing over sail attitude gives the low-$\beta$ branch used in this project:
+
+$$\alpha_{\text{opt}} = \arctan\left(\frac{1}{\sqrt{2}}\right) \approx 35.26^\circ,\qquad
+\beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi$$
 
 ---
 

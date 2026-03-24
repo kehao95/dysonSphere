@@ -1,0 +1,29 @@
+{
+  "controlled_assumptions": {
+    "same_orbital_radius": true,
+    "same_ideal_collector_physics": true,
+    "aging_ignored": true,
+    "thermal_degradation_ignored": true,
+    "maintenance_losses_ignored": true
+  },
+  "headline_1deg": {
+    "sigma_max_total_g_m2": 33.76231690150845,
+    "cp1_pv_threshold_same_efficiency_g_m2_no_margin": 28.76231690150845,
+    "cp1_pv_threshold_same_efficiency_g_m2_plus5_margin": 23.76231690150845,
+    "best_current_case_relative_to_ideal_swarm_same_eta": 0.5248597974727819,
+    "best_current_case_relative_to_ideal_swarm_vs_15pct_baseline": 0.9587438967169484,
+    "best_current_case_equivalent_ring_half_angle_deg": 31.658805368429217,
+    "efficiency_ratio_needed_for_parity_same_shell": 1.9052707119406642,
+    "best_current_case_relative_same_eta_plus5_margin": 0.4336189215603732
+  },
+  "critical_phi_same_efficiency_parity_deg": {
+    "cp1_plus_ultralight_extra0": 0.5645677116019573,
+    "cp1_plus_ultralight_extra5": 0.5210041372549493,
+    "cp1_plus_ultralight_extra10": 0.48368200318957394
+  },
+  "material_gap": {
+    "ultralight_tandem_sigma_g_m2": 54.8,
+    "space_cigs_sigma_g_m2": 175.99923685967755,
+    "commercial_cigs_sigma_g_m2": 1700.0
+  }
+}

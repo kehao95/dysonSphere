@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDDS Deployment Simulator</title>
+    <style>
+      :root {
+        --bg: #07111f;
+        --bg-2: #0d2038;
+        --panel: rgba(8, 20, 38, 0.82);
+        --panel-border: rgba(151, 194, 217, 0.18);
+        --text: #e9f3fb;
+        --muted: #9bb4c7;
+        --accent: #74d4c1;
+        --accent-2: #ffb454;
+        --danger: #ff8b7b;
+        --track: rgba(255, 255, 255, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        color: var(--text);
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(255, 180, 84, 0.08), transparent 28%),
+          radial-gradient(circle at 80% 15%, rgba(116, 212, 193, 0.12), transparent 24%),
+          linear-gradient(180deg, var(--bg-2), var(--bg));
+      }
+
+      #app {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      canvas {
+        display: block;
+      }
+
+      .hud {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .panel,
+      .topbar {
+        pointer-events: auto;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: var(--panel);
+        border: 1px solid var(--panel-border);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .topbar {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 18px;
+        border-radius: 22px;
+      }
+
+      .title {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .title h1 {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: 0.03em;
+        font-weight: 700;
+      }
+
+      .title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .badge {
+        padding: 8px 10px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .badge strong {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .panel {
+        position: absolute;
+        width: min(360px, calc(100vw - 40px));
+        right: 20px;
+        bottom: 20px;
+        padding: 18px;
+        border-radius: 26px;
+      }
+
+      .panel h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .panel p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+
+      .controls {
+        display: grid;
+        gap: 14px;
+      }
+
+      .button-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field label,
+      .toggle label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      .field label span.value,
+      .toggle label span.value {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      select,
+      button,
+      input[type="range"] {
+        width: 100%;
+      }
+
+      select,
+      button {
+        appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        font: inherit;
+      }
+
+      select {
+        padding: 11px 12px;
+      }
+
+      button {
+        cursor: pointer;
+        padding: 12px 14px;
+        background:
+          linear-gradient(135deg, rgba(116, 212, 193, 0.22), rgba(255, 180, 84, 0.18)),
+          rgba(255, 255, 255, 0.04);
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        border-color: rgba(116, 212, 193, 0.45);
+      }
+
+      input[type="range"] {
+        accent-color: var(--accent);
+      }
+
+      .toggle {
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .toggle input {
+        margin-right: 10px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .stat {
+        padding: 12px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat small {
+        display: block;
+        color: var(--muted);
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+      }
+
+      .stat strong {
+        font-size: 0.98rem;
+        color: var(--text);
+      }
+
+      .legend {
+        margin-top: 14px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .legend-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+      }
+
+      .footnote {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.76rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 900px) {
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .badges {
+          justify-content: flex-start;
+        }
+
+        .panel {
+          left: 20px;
+          right: 20px;
+          width: auto;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="hud">
+        <div class="topbar">
+          <div class="title">
+            <h1>MDDS Progressive Deployment Simulator</h1>
+            <p>Sun-centered growth from near-ecliptic seed rings to layered latitude bands.</p>
+          </div>
+          <div class="badges">
+            <div class="badge">Model: <strong>1 AU neighborhood</strong></div>
+            <div class="badge">Orbit mode: <strong id="orbit-mode-badge">Earth-synchronous</strong></div>
+            <div class="badge">Stage: <strong id="stage-badge">Near-Ecliptic Seed</strong></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Deployment Controls</h2>
+          <p id="stage-description">
+            Start with a small, Earth-synchronous seed arc near the ecliptic where the required beta is minimal.
+          </p>
+
+          <div class="controls">
+            <div class="field">
+              <label for="stage">
+                <span>Deployment Stage</span>
+              </label>
+              <select id="stage">
+                <option value="seed">1. Near-Ecliptic Seed</option>
+                <option value="belt">2. Full Low-Latitude Belt</option>
+                <option value="expansion">3. Layered Expansion</option>
+                <option value="full">4. Full Concept View</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="latitude">
+                <span>Max Latitude</span>
+                <span class="value" id="latitude-value">1.0°</span>
+              </label>
+              <input id="latitude" type="range" min="0.2" max="5.0" step="0.1" value="1.0" />
+            </div>
+
+            <div class="field">
+              <label for="density">
+                <span>Node Density</span>
+                <span class="value" id="density-value">18</span>
+              </label>
+              <input id="density" type="range" min="6" max="48" step="1" value="18" />
+            </div>
+
+            <div class="field">
+              <label for="vertical">
+                <span>Vertical Emphasis</span>
+                <span class="value" id="vertical-value">2.0×</span>
+              </label>
+              <input id="vertical" type="range" min="1.0" max="8.0" step="0.5" value="2.0" />
+            </div>
+
+            <div class="toggle">
+              <label>
+                <span>
+                  <input id="sync" type="checkbox" checked />
+                  Earth-synchronous heliocentric rings
+                </span>
+                <span class="value" id="sync-value">On</span>
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button id="play-toggle">Pause Simulation</button>
+              <button id="reset-view">Reset View</button>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <small>Current Phi Max</small>
+              <strong id="phi-stat">1.0°</strong>
+            </div>
+            <div class="stat">
+              <small>Beta Min</small>
+              <strong id="beta-stat">0.0453</strong>
+            </div>
+            <div class="stat">
+              <small>Sigma Max</small>
+              <strong id="sigma-stat">33.7 g/m²</strong>
+            </div>
+            <div class="stat">
+              <small>Sync Radius Shift</small>
+              <strong id="shift-stat">1.24 million km inward</strong>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="legend-item"><span class="legend-dot" style="background:#ffb454"></span> Sun</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#7fc5ff"></span> Earth</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#74d4c1"></span> Near-ecliptic MDDS nodes</div>
+            <div class="legend-item"><span class="legend-dot" style="background:#ffd36f"></span> High-latitude expansion nodes</div>
+          </div>
+
+          <div class="footnote">
+            Visual scale is compressed and vertical displacement is optionally exaggerated for clarity. The
+            theoretical quantities shown use the ideal-sail low-beta branch.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+
+      const AU_UNITS = 100;
+      const EARTH_RADIUS = 3.8;
+      const SUN_RADIUS = 12;
+      const SIGMA_STAR = 1.53;
+      const ROOT = document.getElementById("app");
+
+      const stageDescriptions = {
+        seed:
+          "Start with a small, Earth-synchronous seed arc near the ecliptic where the required beta is minimal.",
+        belt:
+          "Fill a low-latitude operational belt around the Sun so every added node is immediately useful.",
+        expansion:
+          "Use better materials and lighter bus mass to expand into layered latitude bands above and below the ecliptic.",
+        full:
+          "View a stylized multi-band MDDS buildout with both low-latitude density and higher-latitude expansion.",
+      };
+
+      const stageLabels = {
+        seed: "Near-Ecliptic Seed",
+        belt: "Operational Belt",
+        expansion: "Layered Expansion",
+        full: "Full Concept View",
+      };
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x07111f, 210, 520);
+
+      const camera = new THREE.PerspectiveCamera(
+        52,
+        ROOT.clientWidth / ROOT.clientHeight,
+        0.1,
+        2000,
+      );
+      camera.position.set(86, 62, 138);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(ROOT.clientWidth, ROOT.clientHeight);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      ROOT.appendChild(renderer.domElement);
+
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.minDistance = 42;
+      controls.maxDistance = 360;
+      controls.target.set(0, 0, 0);
+
+      const ambient = new THREE.AmbientLight(0xc8e2ff, 0.8);
+      scene.add(ambient);
+
+      const sunLight = new THREE.PointLight(0xffdfa2, 3.2, 0, 2);
+      sunLight.position.set(0, 0, 0);
+      scene.add(sunLight);
+
+      const hemi = new THREE.HemisphereLight(0x89bfff, 0x04101d, 0.5);
+      scene.add(hemi);
+
+      function createTextSprite(text, color, fontSize = 42) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        const paddingX = 28;
+        const paddingY = 18;
+        context.font = `600 ${fontSize}px "Avenir Next", "Segoe UI", sans-serif`;
+        const metrics = context.measureText(text);
+        canvas.width = Math.ceil(metrics.width + paddingX * 2);
+        canvas.height = Math.ceil(fontSize + paddingY * 2);
+
+        const draw = canvas.getContext("2d");
+        draw.font = `600 ${fontSize}px "Avenir Next", "Segoe UI", sans-serif`;
+        draw.textBaseline = "middle";
+        draw.fillStyle = "rgba(7, 17, 31, 0.7)";
+        draw.strokeStyle = "rgba(255, 255, 255, 0.18)";
+        draw.lineWidth = 4;
+        draw.beginPath();
+        draw.roundRect(2, 2, canvas.width - 4, canvas.height - 4, 20);
+        draw.fill();
+        draw.stroke();
+        draw.fillStyle = color;
+        draw.fillText(text, paddingX, canvas.height / 2 + 1);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.needsUpdate = true;
+
+        const material = new THREE.SpriteMaterial({
+          map: texture,
+          transparent: true,
+          depthWrite: false,
+        });
+        const sprite = new THREE.Sprite(material);
+        sprite.scale.set((canvas.width / canvas.height) * 15, 15, 1);
+        return sprite;
+      }
+
+      function resetView() {
+        camera.position.set(86, 62, 138);
+        controls.target.set(0, 0, 0);
+        controls.update();
+      }
+
+      const stars = new THREE.Group();
+      scene.add(stars);
+      {
+        const starGeometry = new THREE.BufferGeometry();
+        const positions = [];
+        for (let i = 0; i < 1400; i += 1) {
+          const radius = 550 + Math.random() * 650;
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+          positions.push(
+            radius * Math.sin(phi) * Math.cos(theta),
+            radius * Math.cos(phi),
+            radius * Math.sin(phi) * Math.sin(theta),
+          );
+        }
+        starGeometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+        const starMaterial = new THREE.PointsMaterial({
+          color: 0xbfdfff,
+          size: 1.2,
+          transparent: true,
+          opacity: 0.75,
+          depthWrite: false,
+        });
+        stars.add(new THREE.Points(starGeometry, starMaterial));
+      }
+
+      const sun = new THREE.Mesh(
+        new THREE.SphereGeometry(SUN_RADIUS, 48, 48),
+        new THREE.MeshStandardMaterial({
+          color: 0xffbf63,
+          emissive: 0xff9b3d,
+          emissiveIntensity: 2.4,
+          roughness: 0.35,
+          metalness: 0.0,
+        }),
+      );
+      scene.add(sun);
+
+      const sunGlow = new THREE.Mesh(
+        new THREE.SphereGeometry(SUN_RADIUS * 1.85, 36, 36),
+        new THREE.MeshBasicMaterial({
+          color: 0xffb45e,
+          transparent: true,
+          opacity: 0.16,
+          depthWrite: false,
+        }),
+      );
+      scene.add(sunGlow);
+
+      const sunCorona = new THREE.Mesh(
+        new THREE.SphereGeometry(SUN_RADIUS * 2.4, 32, 32),
+        new THREE.MeshBasicMaterial({
+          color: 0xffd18a,
+          transparent: true,
+          opacity: 0.06,
+          depthWrite: false,
+        }),
+      );
+      scene.add(sunCorona);
+
+      const sunLabel = createTextSprite("Sun", "#ffd188", 44);
+      sunLabel.position.set(0, SUN_RADIUS * 1.9, 0);
+      sun.add(sunLabel);
+
+      const earthOrbit = createCircle(AU_UNITS, 0x295b85, 0.55);
+      scene.add(earthOrbit);
+
+      const earth = new THREE.Mesh(
+        new THREE.SphereGeometry(EARTH_RADIUS, 24, 24),
+        new THREE.MeshStandardMaterial({
+          color: 0x6db8ff,
+          roughness: 0.85,
+          metalness: 0.05,
+          emissive: 0x0f2f5d,
+          emissiveIntensity: 0.34,
+        }),
+      );
+      scene.add(earth);
+
+      const earthGlow = new THREE.Mesh(
+        new THREE.SphereGeometry(EARTH_RADIUS * 1.45, 20, 20),
+        new THREE.MeshBasicMaterial({
+          color: 0x9bd8ff,
+          transparent: true,
+          opacity: 0.17,
+          depthWrite: false,
+        }),
+      );
+      earth.add(earthGlow);
+
+      const earthLabel = createTextSprite("Earth", "#a7dfff", 38);
+      earthLabel.position.set(0, EARTH_RADIUS * 2.35, 0);
+      earth.add(earthLabel);
+
+      const earthTrail = new THREE.Mesh(
+        new THREE.RingGeometry(EARTH_RADIUS * 1.9, EARTH_RADIUS * 2.7, 48),
+        new THREE.MeshBasicMaterial({
+          color: 0x85c9ff,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.18,
+          depthWrite: false,
+        }),
+      );
+      earthTrail.rotation.x = Math.PI / 2;
+      earth.add(earthTrail);
+
+      const deploymentGroup = new THREE.Group();
+      scene.add(deploymentGroup);
+
+      const nodeGeometry = new THREE.SphereGeometry(0.5, 14, 14);
+
+      const ui = {
+        stage: document.getElementById("stage"),
+        latitude: document.getElementById("latitude"),
+        density: document.getElementById("density"),
+        vertical: document.getElementById("vertical"),
+        sync: document.getElementById("sync"),
+        playToggle: document.getElementById("play-toggle"),
+        resetView: document.getElementById("reset-view"),
+        stageDescription: document.getElementById("stage-description"),
+        stageBadge: document.getElementById("stage-badge"),
+        orbitModeBadge: document.getElementById("orbit-mode-badge"),
+        latitudeValue: document.getElementById("latitude-value"),
+        densityValue: document.getElementById("density-value"),
+        verticalValue: document.getElementById("vertical-value"),
+        syncValue: document.getElementById("sync-value"),
+        phiStat: document.getElementById("phi-stat"),
+        betaStat: document.getElementById("beta-stat"),
+        sigmaStat: document.getElementById("sigma-stat"),
+        shiftStat: document.getElementById("shift-stat"),
+      };
+
+      const state = {
+        stage: "seed",
+        maxLatitudeDeg: 1.0,
+        density: 18,
+        verticalScale: 2.0,
+        syncMode: true,
+        playing: true,
+        time: 0,
+        lastRebuildKey: "",
+      };
+
+      function createCircle(radius, color, opacity) {
+        const points = [];
+        for (let i = 0; i <= 256; i += 1) {
+          const angle = (i / 256) * Math.PI * 2;
+          points.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
+        }
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        return new THREE.LineLoop(
+          geometry,
+          new THREE.LineBasicMaterial({ color, transparent: true, opacity }),
+        );
+      }
+
+      function betaMin(phiDeg) {
+        return (3 * Math.sqrt(3) / 2) * Math.sin(THREE.MathUtils.degToRad(phiDeg));
+      }
+
+      function sigmaMax(phiDeg) {
+        return SIGMA_STAR / betaMin(phiDeg);
+      }
+
+      function syncRadiusRatio(phiDeg) {
+        const phi = THREE.MathUtils.degToRad(phiDeg);
+        const factor = 1 - Math.sqrt(2) * Math.tan(phi);
+        return factor > 0 ? Math.pow(factor, 1 / 3) : 0;
+      }
+
+      function formatShift(phiDeg, syncMode) {
+        if (!syncMode) {
+          return "0 km (fixed 1 AU)";
+        }
+        const deltaKm = (1 - syncRadiusRatio(phiDeg)) * 149_597_870.7;
+        if (deltaKm < 1000) {
+          return `${deltaKm.toFixed(0)} km inward`;
+        }
+        return `${(deltaKm / 1_000_000).toFixed(2)} million km inward`;
+      }
+
+      function getLatitudeBands(stage, maxLat) {
+        if (stage === "seed") {
+          return [0.08 * maxLat];
+        }
+        if (stage === "belt") {
+          return [0, 0.22 * maxLat, -0.22 * maxLat];
+        }
+        if (stage === "expansion") {
+          return [0, 0.32 * maxLat, -0.32 * maxLat, 0.66 * maxLat, -0.66 * maxLat, maxLat, -maxLat];
+        }
+        return [
+          0,
+          0.24 * maxLat,
+          -0.24 * maxLat,
+          0.48 * maxLat,
+          -0.48 * maxLat,
+          0.72 * maxLat,
+          -0.72 * maxLat,
+          maxLat,
+          -maxLat,
+        ];
+      }
+
+      function buildDeploymentScene() {
+        while (deploymentGroup.children.length) {
+          const child = deploymentGroup.children.pop();
+          if (child.geometry) child.geometry.dispose?.();
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach((material) => material.dispose?.());
+            } else {
+              child.material.dispose?.();
+            }
+          }
+        }
+
+        const ringBands = getLatitudeBands(state.stage, state.maxLatitudeDeg);
+        const arcFraction = state.stage === "seed" ? 0.18 : 1.0;
+        const densityMultiplier =
+          state.stage === "seed" ? 0.38 : state.stage === "belt" ? 0.72 : state.stage === "expansion" ? 0.92 : 1.2;
+
+        ringBands.forEach((phiDeg, index) => {
+          const absPhi = Math.abs(phiDeg);
+          const ratio = state.syncMode ? syncRadiusRatio(absPhi) : 1.0;
+          const r = AU_UNITS * ratio;
+          const rho = r * Math.cos(THREE.MathUtils.degToRad(absPhi));
+          const y = Math.sign(phiDeg) * r * Math.sin(THREE.MathUtils.degToRad(absPhi)) * state.verticalScale;
+
+          const ringColor = absPhi < state.maxLatitudeDeg * 0.55 ? 0x74d4c1 : 0xffd36f;
+          const ringLine = createCircle(rho, ringColor, state.stage === "seed" ? 0.08 : 0.22);
+          ringLine.position.y = y;
+          deploymentGroup.add(ringLine);
+
+          const nodesInBand = Math.max(
+            6,
+            Math.round(state.density * densityMultiplier * (1 - 0.25 * absPhi / Math.max(state.maxLatitudeDeg, 0.01))),
+          );
+
+          for (let i = 0; i < nodesInBand; i += 1) {
+            const t = nodesInBand === 1 ? 0.5 : i / nodesInBand;
+            const angleOffset =
+              state.stage === "seed"
+                ? (t - 0.5) * Math.PI * 2 * arcFraction
+                : t * Math.PI * 2;
+
+            const nodeMaterial = new THREE.MeshStandardMaterial({
+              color: ringColor,
+              emissive: absPhi < state.maxLatitudeDeg * 0.55 ? 0x1d7b78 : 0x8f6920,
+              emissiveIntensity: 0.38,
+              roughness: 0.45,
+              metalness: 0.1,
+            });
+
+            const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+            node.userData = {
+              rho,
+              y,
+              angleOffset,
+              isSeedArc: state.stage === "seed",
+            };
+            deploymentGroup.add(node);
+          }
+
+          if (index === 0 && state.stage === "seed") {
+            const guide = new THREE.Mesh(
+              new THREE.TorusGeometry(rho, 0.18, 12, 128, Math.PI * 2 * arcFraction),
+              new THREE.MeshBasicMaterial({
+                color: 0x74d4c1,
+                transparent: true,
+                opacity: 0.16,
+              }),
+            );
+            guide.rotation.x = Math.PI / 2;
+            guide.rotation.z = Math.PI;
+            guide.position.y = y;
+            deploymentGroup.add(guide);
+          }
+        });
+      }
+
+      function updateHud() {
+        ui.stageDescription.textContent = stageDescriptions[state.stage];
+        ui.stageBadge.textContent = stageLabels[state.stage];
+        ui.orbitModeBadge.textContent = state.syncMode ? "Earth-synchronous" : "Fixed 1 AU";
+        ui.latitudeValue.textContent = `${state.maxLatitudeDeg.toFixed(1)}°`;
+        ui.densityValue.textContent = `${state.density}`;
+        ui.verticalValue.textContent = `${state.verticalScale.toFixed(1)}×`;
+        ui.syncValue.textContent = state.syncMode ? "On" : "Off";
+        ui.phiStat.textContent = `${state.maxLatitudeDeg.toFixed(1)}°`;
+        ui.betaStat.textContent = betaMin(state.maxLatitudeDeg).toFixed(4);
+        ui.sigmaStat.textContent = `${sigmaMax(state.maxLatitudeDeg).toFixed(1)} g/m²`;
+        ui.shiftStat.textContent = formatShift(state.maxLatitudeDeg, state.syncMode);
+        ui.playToggle.textContent = state.playing ? "Pause Simulation" : "Resume Simulation";
+      }
+
+      function rebuildIfNeeded() {
+        const key = [
+          state.stage,
+          state.maxLatitudeDeg.toFixed(2),
+          state.density,
+          state.verticalScale.toFixed(2),
+          state.syncMode ? "1" : "0",
+        ].join("|");
+
+        if (key === state.lastRebuildKey) return;
+        state.lastRebuildKey = key;
+        buildDeploymentScene();
+        updateHud();
+      }
+
+      function bindUi() {
+        ui.stage.addEventListener("change", () => {
+          state.stage = ui.stage.value;
+          rebuildIfNeeded();
+        });
+        ui.latitude.addEventListener("input", () => {
+          state.maxLatitudeDeg = Number(ui.latitude.value);
+          rebuildIfNeeded();
+        });
+        ui.density.addEventListener("input", () => {
+          state.density = Number(ui.density.value);
+          rebuildIfNeeded();
+        });
+        ui.vertical.addEventListener("input", () => {
+          state.verticalScale = Number(ui.vertical.value);
+          rebuildIfNeeded();
+        });
+        ui.sync.addEventListener("change", () => {
+          state.syncMode = ui.sync.checked;
+          rebuildIfNeeded();
+        });
+        ui.playToggle.addEventListener("click", () => {
+          state.playing = !state.playing;
+          updateHud();
+        });
+        ui.resetView.addEventListener("click", () => {
+          resetView();
+        });
+      }
+
+      function positionEarth(angle) {
+        earth.position.set(Math.cos(angle) * AU_UNITS, 0, Math.sin(angle) * AU_UNITS);
+      }
+
+      function positionNodes(angle) {
+        deploymentGroup.children.forEach((child) => {
+          if (!(child instanceof THREE.Mesh) || !("rho" in child.userData)) {
+            return;
+          }
+          const a = angle + child.userData.angleOffset;
+          child.position.set(
+            Math.cos(a) * child.userData.rho,
+            child.userData.y,
+            Math.sin(a) * child.userData.rho,
+          );
+        });
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (state.playing) {
+          state.time += 0.0026;
+        }
+
+        rebuildIfNeeded();
+
+        sun.rotation.y += 0.002;
+        sunGlow.rotation.y -= 0.001;
+        sunCorona.rotation.y += 0.0006;
+        stars.rotation.y += 0.00008;
+        positionEarth(state.time);
+        positionNodes(state.time);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      window.addEventListener("resize", () => {
+        camera.aspect = ROOT.clientWidth / ROOT.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(ROOT.clientWidth, ROOT.clientHeight);
+      });
+
+      resetView();
+      bindUi();
+      rebuildIfNeeded();
+      positionEarth(0);
+      positionNodes(0);
+      animate();
+    </script>
+  </body>
+</html>

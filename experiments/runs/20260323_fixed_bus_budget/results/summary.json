@@ -1,0 +1,115 @@
+{
+  "assumptions": {
+    "acs3_bus_mass_kg": 8.3,
+    "phi_levels_deg": [
+      1.0,
+      2.0
+    ],
+    "power_levels_w": [
+      10000.0,
+      30000.0,
+      100000.0
+    ],
+    "target_fill_factors": [
+      0.05,
+      0.1,
+      0.25
+    ]
+  },
+  "headline": {
+    "one_deg_10kw": {
+      "allowance_for_10pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 1.0,
+        "power_w": 10000.0,
+        "target_fill_factor": 0.1,
+        "reflector_area_m2": 268.1583421378655,
+        "pv_area_m2": 26.81583421378655,
+        "variable_structure_mass_kg": 1.1342683343541147,
+        "total_mass_budget_kg": 9.05364692704174,
+        "fixed_mass_max_kg": 5.109079167082795,
+        "acs3_bus_mass_kg": 8.3,
+        "acs3_bus_margin_kg": -3.1909208329172056,
+        "acs3_bus_ratio_to_allowance": 1.624558893797524,
+        "feasible_for_acs3_bus": false,
+        "feasible_even_before_fixed_mass": true
+      },
+      "allowance_for_25pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 1.0,
+        "power_w": 10000.0,
+        "target_fill_factor": 0.25,
+        "reflector_area_m2": 107.2633368551462,
+        "pv_area_m2": 26.81583421378655,
+        "variable_structure_mass_kg": 0.7173742828728837,
+        "total_mass_budget_kg": 3.6214587708166968,
+        "fixed_mass_max_kg": 0.8982600887525791,
+        "acs3_bus_mass_kg": 8.3,
+        "acs3_bus_margin_kg": -7.401739911247422,
+        "acs3_bus_ratio_to_allowance": 9.24008547627478,
+        "feasible_for_acs3_bus": false,
+        "feasible_even_before_fixed_mass": true
+      }
+    },
+    "two_deg_10kw": {
+      "allowance_for_10pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 2.0,
+        "power_w": 10000.0,
+        "target_fill_factor": 0.1,
+        "reflector_area_m2": 268.1583421378655,
+        "pv_area_m2": 26.81583421378655,
+        "variable_structure_mass_kg": 1.1342683343541147,
+        "total_mass_budget_kg": 4.527513025684184,
+        "fixed_mass_max_kg": 0.5829452657252387,
+        "acs3_bus_mass_kg": 8.3,
+        "acs3_bus_margin_kg": -7.717054734274762,
+        "acs3_bus_ratio_to_allowance": 14.23804341162977,
+        "feasible_for_acs3_bus": false,
+        "feasible_even_before_fixed_mass": true
+      },
+      "allowance_for_25pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 2.0,
+        "power_w": 10000.0,
+        "target_fill_factor": 0.25,
+        "reflector_area_m2": 107.2633368551462,
+        "pv_area_m2": 26.81583421378655,
+        "variable_structure_mass_kg": 0.7173742828728837,
+        "total_mass_budget_kg": 1.8110052102736738,
+        "fixed_mass_max_kg": -0.9121934717904439,
+        "acs3_bus_mass_kg": 8.3,
+        "acs3_bus_margin_kg": -9.212193471790444,
+        "acs3_bus_ratio_to_allowance": null,
+        "feasible_for_acs3_bus": false,
+        "feasible_even_before_fixed_mass": false
+      }
+    },
+    "power_required_for_acs3_bus": {
+      "one_deg_10pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 1.0,
+        "target_fill_factor": 0.1,
+        "acs3_bus_mass_kg": 8.3,
+        "minimum_power_w_for_acs3_bus": 15560.405159574966,
+        "feasible": true
+      },
+      "one_deg_25pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 1.0,
+        "target_fill_factor": 0.25,
+        "acs3_bus_mass_kg": 8.3,
+        "minimum_power_w_for_acs3_bus": 62470.9327424539,
+        "feasible": true
+      },
+      "two_deg_10pct": {
+        "scenario": "acs3_lines_dyneema_1p25mm",
+        "phi_deg": 2.0,
+        "target_fill_factor": 0.1,
+        "acs3_bus_mass_kg": 8.3,
+        "minimum_power_w_for_acs3_bus": 65200.27464359981,
+        "feasible": true
+      }
+    }
+  }
+}

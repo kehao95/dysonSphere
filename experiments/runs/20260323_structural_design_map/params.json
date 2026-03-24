@@ -1,0 +1,27 @@
+{
+  "reflector_material": "cp1_subsystem_nasa_2009",
+  "pv_material": "ultralight_tandem_2021",
+  "phi_levels_deg": [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0],
+  "power_levels_w": [100.0, 300.0, 1000.0, 3000.0, 10000.0, 30000.0, 100000.0],
+  "target_fill_factors": [0.01, 0.05, 0.1, 0.25, 0.5],
+  "scenarios": [
+    {
+      "label": "cross_light",
+      "topology": "cross",
+      "fixed_mass_kg": 0.5,
+      "line_mass_margin_factor": 1.1
+    },
+    {
+      "label": "cross_nominal",
+      "topology": "cross",
+      "fixed_mass_kg": 1.0,
+      "line_mass_margin_factor": 1.2
+    },
+    {
+      "label": "perimeter_nominal",
+      "topology": "perimeter",
+      "fixed_mass_kg": 1.0,
+      "line_mass_margin_factor": 1.2
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "phi_levels_deg": [0.5, 1.0, 2.0],
+  "ultralight_tandem_sigma_g_m2": 54.8,
+  "cases": [
+    {
+      "label": "acs3_total_system",
+      "deployed_area_m2": 80.0,
+      "mass_kg": 16.0
+    },
+    {
+      "label": "acs3_sail_boom_subsystem",
+      "deployed_area_m2": 80.0,
+      "mass_kg": 7.7
+    },
+    {
+      "label": "acs3_bus_only",
+      "deployed_area_m2": 80.0,
+      "mass_kg": 8.3
+    },
+    {
+      "label": "acs3_membrane_plus_booms",
+      "deployed_area_m2": 80.0,
+      "mass_kg": 0.996
+    },
+    {
+      "label": "nea_scout_total_system",
+      "deployed_area_m2": 86.0,
+      "mass_kg": 14.0
+    }
+  ]
+}

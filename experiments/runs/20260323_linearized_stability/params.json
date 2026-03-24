@@ -1,0 +1,5 @@
+{
+  "phi_deg": 1.0,
+  "delta_alpha_deg": [0.1, 0.25, 0.5, 1.0, 2.0],
+  "beta_fraction_error": 0.0
+}

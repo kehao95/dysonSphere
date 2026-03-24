@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="620" viewBox="0 0 1020 620" fill="none">
+<rect x="0.00" y="0.00" width="1020.00" height="620.00" rx="0.00" fill="#08111f" stroke="none" stroke-width="0.00"/>
+<text x="40.00" y="48.00" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Figure 4. Low-latitude illustrative window</text>
+<text x="40.00" y="78.00" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Representative points at 0.1 deg, 0.5 deg, and 1 deg for the low-beta framework.</text>
+<rect x="70.00" y="120.00" width="500.00" height="420.00" rx="16.00" fill="#0d1828" stroke="#21374f" stroke-width="1.50"/>
+<rect x="130.00" y="164.00" width="405.00" height="336.00" rx="8.00" fill="#0a1320" stroke="#173049" stroke-width="1.00"/>
+<line x1="130.00" y1="500.00" x2="535.00" y2="500.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="120.00" y="505.00" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="end">0</text>
+<line x1="130.00" y1="416.00" x2="535.00" y2="416.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="120.00" y="421.00" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="end">90</text>
+<line x1="130.00" y1="332.00" x2="535.00" y2="332.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="120.00" y="337.00" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="end">180</text>
+<line x1="130.00" y1="248.00" x2="535.00" y2="248.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="120.00" y="253.00" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="end">270</text>
+<line x1="130.00" y1="164.00" x2="535.00" y2="164.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="120.00" y="169.00" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="end">360</text>
+<line x1="130.00" y1="164.00" x2="130.00" y2="500.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="130.00" y="524.00" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">0.1</text>
+<rect x="102.00" y="185.08" width="56.00" height="314.92" rx="8.00" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1.00"/>
+<text x="130.00" y="175.08" fill="#edf5fb" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">337.4</text>
+<text x="130.00" y="544.00" fill="#93a9bc" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">deg</text>
+<line x1="332.50" y1="164.00" x2="332.50" y2="500.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="332.50" y="524.00" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">0.5</text>
+<rect x="304.50" y="437.02" width="56.00" height="62.98" rx="8.00" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1.00"/>
+<text x="332.50" y="427.02" fill="#edf5fb" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">67.5</text>
+<text x="332.50" y="544.00" fill="#93a9bc" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">deg</text>
+<line x1="535.00" y1="164.00" x2="535.00" y2="500.00" stroke="#183147" stroke-width="1.00" stroke-dasharray="4 6"/>
+<text x="535.00" y="524.00" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">1</text>
+<rect x="507.00" y="468.51" width="56.00" height="31.49" rx="8.00" fill="#74d4c1" stroke="#9ae3d4" stroke-width="1.00"/>
+<text x="535.00" y="458.51" fill="#edf5fb" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">33.7</text>
+<text x="535.00" y="544.00" fill="#93a9bc" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">deg</text>
+<text x="332.50" y="522.00" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">Latitude phi [deg]</text>
+<text x="94.00" y="146.00" fill="#eaf2fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Supportable areal density sigma_max [g/m^2]</text>
+<rect x="620.00" y="120.00" width="330.00" height="420.00" rx="18.00" fill="#0e1b2c" stroke="#223a53" stroke-width="1.50"/>
+<text x="644.00" y="158.00" fill="#f0f5fb" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Interpretation</text>
+<text x="644.00" y="206.00" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">0.1 deg</text>
+<text x="740.00" y="206.00" fill="#c7d5e2" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Entry-level low-latitude regime</text>
+<text x="644.00" y="258.00" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">0.5 deg</text>
+<text x="740.00" y="258.00" fill="#c7d5e2" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Still highly permissive</text>
+<text x="644.00" y="310.00" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">1.0 deg</text>
+<text x="740.00" y="310.00" fill="#c7d5e2" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Meaningful but tighter benchmark</text>
+<text x="644.00" y="362.00" fill="#74d4c1" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Trend</text>
+<text x="740.00" y="362.00" fill="#c7d5e2" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Small-angle support scales roughly as 1/phi</text>
+<text x="644.00" y="406.00" fill="#f0f5fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Representative ideal values</text>
+<text x="644.00" y="442.00" fill="#ffd36f" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">0.1 deg: 337.4 g/m^2</text>
+<text x="644.00" y="476.00" fill="#ffd36f" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">0.5 deg: 67.5 g/m^2</text>
+<text x="644.00" y="510.00" fill="#ffd36f" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">1.0 deg: 33.8 g/m^2</text>
+<text x="644.00" y="556.00" fill="#9fe4d6" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">0.1 deg is about 41 Earth radii</text>
+</svg>

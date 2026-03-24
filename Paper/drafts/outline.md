@@ -2,7 +2,7 @@
 
 ## Working Title
 
-**Orbital Dynamics and Engineering Feasibility of Micro-Displaced Dyson Swarm Nodes using Decoupled Solar Sail Architectures**
+**From Keplerian Swarms to Radiatively Supported Bubbles: A Low-Beta Continuum Framework for Dyson Architectures**
 
 基于解耦太阳帆架构的微位移戴森群节点轨道动力学与工程可行性
 
@@ -12,11 +12,11 @@
 
 The Dyson Swarm concept envisions vast arrays of orbiting collectors harvesting stellar energy. However, Keplerian orbital mechanics impose a fundamental constraint: all orbital planes must pass through the stellar center of mass, creating unavoidable nodal intersections when deploying numerous collectors at similar radii. This leads to collision risks and potential Kessler-syndrome cascades that scale catastrophically with swarm density.
 
-We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that resolves this deadlock by leveraging solar radiation pressure (SRP) to maintain small out-of-ecliptic displacements. Unlike Dyson Bubble concepts requiring $\beta \geq 1$ (and thus impractically low areal densities), our approach requires only $\beta \approx 0.01$–$0.05$. At 1 AU, a displacement angle of merely $\phi = 1°$ provides over $2.6 \times 10^6$ km of vertical separation—far exceeding collision thresholds—while enabling practical payload masses.
+We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that resolves this deadlock by leveraging solar radiation pressure (SRP) to maintain small out-of-ecliptic displacements. More broadly, we argue that Dyson architectures are better understood as a continuous support spectrum bridging the Keplerian swarm limit and the fully radiatively supported bubble/statite limit. Within that continuum, we show that a low-$\beta$ micro-displaced operating regime exists in which large off-plane stratification can be achieved without entering the $\beta \geq 1$ statite/bubble limit, and that its engineering window can be quantified systematically through $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$. Unlike Dyson Bubble concepts requiring $\beta \geq 1$ (and thus impractically low areal densities), our exact ideal-sail model shows that a 1° ring requires only $\beta_{\min} \approx 0.0453$. At 1 AU, that still provides over $2.6 \times 10^6$ km of vertical separation while keeping the total areal-density limit at a still-plausible $33.8\ \text{g/m}^2$.
 
 The key innovation is a **Decoupled Architecture** separating thrust generation from energy harvesting: large-area thin-film reflectors provide the required SRP force component, while compact high-efficiency photovoltaic modules face the Sun directly for power generation. This resolves the fundamental thermal paradox of simultaneous reflection and absorption.
 
-We develop the mathematical framework for displaced orbit dynamics, derive mass budget constraints from contemporary materials data, and establish thermal equilibrium conditions. Our analysis demonstrates that MDDS configurations are achievable with near-term technology, offering a viable path toward high-density stellar energy harvesting without the catastrophic failure modes inherent to traditional Keplerian swarm architectures.
+We develop the mathematical framework for displaced orbit dynamics and show that it naturally admits at least two design directions: a payload-optimized branch that maximizes allowable system areal density, and a synchronization-constrained branch that preserves Earth-synchronous or other operationally regular period relationships through a modified orbital radius. We then illustrate the framework with low-latitude examples at representative angles, showing that the working window is non-empty but narrow. The result is not a full engineering realization study, but a theory-grounded architectural framework with low-latitude feasibility slices.
 
 ---
 
@@ -74,18 +74,29 @@ Implications:
 
 We propose **Micro-Displaced Dyson Swarm (MDDS)**:
 
-1. **Micro-displacement strategy**: Use SRP for small out-of-plane force only
+1. **Dyson support continuum**: rewrite shell / swarm / bubble as regions of a continuous support-and-stratification spectrum
+
+2. **Micro-displacement strategy**: Use SRP for small out-of-plane force only
    - Orbital velocity still provides centripetal acceleration
    - Only need $\beta \sim 0.01$–$0.05$ (vs $\beta \geq 1$ for bubble)
    
-2. **Decoupled architecture**: Separate reflector and absorber
+3. **Decoupled architecture**: Separate reflector and absorber
    - Reflector: large area, minimal mass, tilted
    - Absorber: small area, faces Sun, carries payload
    - Breaks thermal paradox
 
-3. **Parallel ring configuration**: All rings share common axis
+4. **Parallel ring configuration**: All rings share common axis
    - Zero nodal intersections
    - Arbitrary number of rings stackable
+
+5. **Two natural design branches**
+   - Payload-friendly branch: minimize $\beta$ at fixed $\phi$
+   - Synchronization-constrained branch: impose Earth-synchronous or other period conditions
+
+6. **Progressive deployment path**
+   - Start from low-latitude / near-ecliptic rings
+   - Each deployed node is already useful
+   - Expand toward higher latitudes as system areal density improves
 
 ---
 
@@ -117,28 +128,48 @@ Physical interpretation:
 
 [Based on McInnes (1999), Chapter 3]
 
-For a circular displaced orbit at angle $\phi$ above the ecliptic plane, the force balance requires:
+For a circular displaced orbit at angle $\phi$ above the ecliptic plane, with sail cone angle $\alpha$ and orbital-rate ratio $\nu = \omega/\sqrt{\mu/r^3}$, the force balance requires:
 
-$$\beta = \frac{\tan\phi}{\cos\phi} \cdot \frac{1}{1 + \tan^2\phi \cdot (r/r_0)^2}$$
+$$\beta \cos^3\alpha = \cos\phi(1-\nu^2)$$
+$$\beta \cos^2\alpha \sin\alpha = \sin\phi$$
 
-For small $\phi$ and circular orbit at fixed $r$:
-$$\beta \approx \sin\phi$$
+Minimizing $\beta$ over sail attitude yields the low-$\beta$ branch:
 
-Key result: **$\beta$ scales linearly with displacement angle for small angles**
+$$\alpha_{\text{opt}} = \arctan\left(\frac{1}{\sqrt{2}}\right), \qquad
+\beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi$$
 
-### 2.4 Stability Analysis
+Key result: **$\beta$ still scales linearly with $\phi$ for small angles, but with a prefactor $3\sqrt{3}/2 \approx 2.598$, making the exact requirement materially stricter than the naive $\sin\phi$ heuristic.**
 
-[Linear stability around equilibrium]
+### 2.4 Design Branches Within the Same Framework
 
-- Radial perturbations: [analysis needed]
-- Axial perturbations: [analysis needed]
-- Attitude stability: [analysis needed]
+- **Payload-optimized branch**
+  - Minimize $\beta$ at fixed $\phi$
+  - Maximize allowable system areal density $\sigma_{\max}$
+  - Natural branch for feasibility bounds
+
+- **Synchronization-constrained branch**
+  - Impose Earth-synchronous or other period constraints
+  - Preserve operational regularity while modifying orbital radius
+  - Natural branch for deployment and operations
+
+### 2.5 Dyson Support Continuum
+
+- Treat shell / swarm / bubble as regions of a common support space
+- Bind the continuum to $\beta$, $\phi$, $\nu$, and $\sigma_{\max}(\phi)$
+- Clarify that continuum does not imply engineering equivalence
+- Position MDDS as the first explicitly articulated low-$\beta$ segment of that spectrum
+
+### 2.6 Scope Boundary
+
+- Main text stops at the framework and low-latitude examples
+- Detailed stability, structural closure, and control-system analysis are deferred
+- Engineering slices are illustrative rather than exhaustive
 
 ---
 
-## 3. The Micro-Displacement Strategy
+## 3. Low-Latitude Illustrative Slices
 
-### 3.1 Why Full Levitation is Impractical
+### 3.1 Why Low Latitude Matters
 
 For $\beta \geq 1$: $\sigma \leq 1.53$ g/m²
 
@@ -154,23 +185,23 @@ Even bare 1 μm Kapton barely achieves $\beta = 1$. Any structural support, any 
 
 **The payload trap**: Full levitation excludes useful payloads.
 
-### 3.2 The Micro-Displacement Insight
+### 3.2 Entry-Level Low-Beta Window
 
 We don't need $\beta = 1$. We need enough vertical separation to avoid collisions.
 
 For $\phi = 1°$:
-$$\beta_{\text{required}} \approx \sin(1°) \approx 0.0175$$
+$$\beta_{\text{required}} = \frac{3\sqrt{3}}{2}\sin(1^\circ) \approx 0.0453$$
 
 Vertical displacement at 1 AU:
-$$d = r \sin\phi = 1.5 \times 10^{11} \text{ m} \times 0.0175 \approx 2.6 \times 10^9 \text{ m} = 2.6 \times 10^6 \text{ km}$$
+$$d = r \sin\phi = 1.5 \times 10^{11} \text{ m} \times \sin(1^\circ) \approx 2.6 \times 10^9 \text{ m} = 2.6 \times 10^6 \text{ km}$$
 
 This is:
 - 17× the Earth-Moon distance
 - Far exceeding any reasonable collision avoidance threshold
 
-**With $\beta = 0.0175$ instead of $\beta = 1$, we can carry 57× more mass per unit reflector area.**
+**With $\beta = 0.0453$ instead of $\beta = 1$, we can carry about 22× more mass per unit reflector area.**
 
-### 3.3 The Decoupled Architecture
+### 3.3 Order-of-Magnitude Engineering Slices
 
 Traditional solar sail: same surface must reflect (for thrust) and may absorb (for power).
 
@@ -192,95 +223,96 @@ Problem: High reflectivity → low absorption → low power. High absorption →
     └─────────────┘
 ```
 
-Thermal advantage:
-- Reflector: reflects >95% → minimal heating
-- Payload: absorbs, but small area → manageable thermal load
-- No thermal coupling between thrust and power subsystems
+### 3.4 Synchronization Slice
+
+- Earth-synchronous constraint as an operational variant
+- Radius correction without changing the underlying support curve
+
+### 3.5 What These Slices Establish
+
+- Low-$\beta$ segment is non-empty
+- Entry regime overlaps current lightweight system levels in mass-per-area terms
+- Examples are supporting evidence, not the paper's main novelty claim
 
 ---
 
-## 4. Mathematical Model
+## 4. Low-Latitude Illustrative Analysis
 
-### 4.1 Coordinate System and Geometry
+### 4.1 Reference Cases
 
-[Define heliocentric coordinates, displacement geometry]
+- `\phi = 0.1^\circ`
+- `\phi = 0.5^\circ`
+- `\phi = 1.0^\circ`
 
-### 4.2 Force Balance Equations
+### 4.2 Order-of-Magnitude Areal-Density Check
 
-[Detailed derivation of equilibrium conditions]
+- Use `\sigma_{\text{sys}} < \sigma_{\max}(\phi)` as the only main-text feasibility test
+- Reflector + payload bookkeeping
+- Low-latitude example values only
 
-### 4.3 Mass Budget Model
+### 4.3 Entry-Level Characteristic Angle
 
-System areal density:
-$$\sigma_{\text{sys}} = \frac{m_{\text{total}}}{A_{\text{reflector}}} = \sigma_{\text{refl}} + \frac{m_{\text{payload}}}{A_{\text{reflector}}}$$
+- Use the angular radius of Earth as seen from the Sun, $\theta_\oplus \approx 0.00244^\circ$, as an intuitive scale
+- Compute $\beta_{\min}(\theta_\oplus)$ and $\sigma_{\max}(\theta_\oplus)$
+- Show that, in pure areal-density terms, the framework already enters a near-entry regime accessible to present lightweight spacecraft systems
 
-System lightness number:
-$$\beta_{\text{sys}} = \frac{\sigma^*}{\sigma_{\text{sys}}}$$
+### 4.4 Earth-Synchronous Variant
 
-For a given $\beta_{\text{target}}$, the maximum payload mass per unit reflector area:
-$$\frac{m_{\text{payload}}}{A_{\text{reflector}}} = \frac{\sigma^*}{\beta_{\text{target}}} - \sigma_{\text{refl}}$$
-
-### 4.4 Thermal Equilibrium
-
-[Steady-state temperature calculations for reflector and payload]
+- Radius correction under period constraint
+- Same `\beta_{\min}(\phi)` and `\sigma_{\max}(\phi)`
+- Operational interpretation
 
 ---
 
-## 5. Engineering Feasibility
+## 5. Discussion
 
-### 5.1 Materials Database
+### 5.1 What This Paper Establishes
 
-| Component | Material | Areal density | Notes |
-|-----------|----------|---------------|-------|
-| Reflector | 1 μm Kapton/Al | 1.4 g/m² | Flight heritage (IKAROS) |
-| Reflector | CP1 polymer | 1.0 g/m² | Advanced |
-| PV cell | Thin-film CIGS | 50–100 g/m² | ~15% efficiency |
-| PV cell | Flex GaAs | 200–500 g/m² | ~30% efficiency |
-| Structure | CF boom | varies | Deployment mechanism |
+- A low-`\beta` micro-displaced regime exists
+- Its support curve can be written in closed form
+- Low-latitude examples show a non-empty but still rapidly narrowing window
 
-### 5.2 Design Space Exploration
-
-[Parameter sweeps: $\phi$ vs payload capacity vs reflector area]
-
-### 5.3 Comparative Analysis
+### 5.2 Comparative Positioning
 
 | Architecture | $\beta$ required | Payload capacity | Collision risk |
 |--------------|------------------|------------------|----------------|
 | Keplerian Swarm | 0 | Unlimited | High |
 | Dyson Bubble | ≥1 | ~0 | None |
-| **MDDS (ours)** | 0.01–0.05 | Moderate | None |
+| **MDDS (ours)** | ~0.045 at 1° | Moderate | None |
 
----
+### 5.3 Positioning
 
-## 6. Discussion
+- Not a proof that Dyson spheres are now practical
+- A theory-grounded architecture and feasibility study
+- MDDS advantage is stratification and orbit manageability, not pure energy superiority
 
-### 6.1 Scalability
+### 5.4 Design Directions
 
-- Single displaced ring → multiple parallel rings
-- Gradual deployment strategy
-- Self-replication considerations
+- Payload-maximizing branch
+- Earth-synchronous / period-synchronous branch
+- Tradeoff between feasibility margin and operational regularity
 
-### 6.2 Operational Considerations
+### 5.5 Progressive Deployment Path
 
-- Station-keeping requirements
-- Failure modes and redundancy
-- Communication architecture
+- Begin from near-ecliptic, low-$\beta$ nodes
+- Use Earth-synchronous or near-Earth-synchronous heliocentric deployment logic
+- Treat each intermediate stage as operationally useful, not merely transitional
 
-### 6.3 Limitations
+### 5.6 Limits of the Present Paper
 
-- Axial range limited by achievable $\beta$
-- Polar regions require different strategy
-- Manufacturing at scale
+- Detailed structural closure deferred
+- Detailed stability / control analysis deferred
+- Detailed thermal and deployment economics deferred
 
-### 6.4 Future Work
+### 5.7 Future Work
 
 - Detailed stability analysis with perturbations
+- Low-mass system closure
 - Deployment trajectory optimization
-- Economic modeling
 
 ---
 
-## 7. Conclusion
+## 6. Conclusion
 
 [Summary of contributions and implications]
 

@@ -1,0 +1,24 @@
+{
+  "acs3_bus_mass_kg": 8.3,
+  "phi_levels_deg": [1.0, 2.0],
+  "power_levels_w": [10000.0, 30000.0, 100000.0],
+  "target_fill_factors": [0.05, 0.1, 0.25],
+  "scenarios": [
+    {
+      "label": "acs3_lines_dyneema_1p25mm",
+      "topology": "cross",
+      "boom_material": "acs3_composite_boom_2023",
+      "tether_material": "dyneema_1p25mm_usspars",
+      "fixed_mass_kg": 8.3,
+      "line_mass_margin_factor": 1.0
+    },
+    {
+      "label": "acs3_lines_dyneema_2mm",
+      "topology": "cross",
+      "boom_material": "acs3_composite_boom_2023",
+      "tether_material": "dyneema_2mm_usspars",
+      "fixed_mass_kg": 8.3,
+      "line_mass_margin_factor": 1.0
+    }
+  ]
+}

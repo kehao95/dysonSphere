@@ -1,0 +1,26 @@
+{
+  "headline": {
+    "acs3_total_system": {
+      "sigma_g_m2": 200.0,
+      "beta": 0.007654369993494753,
+      "max_supported_angle_deg": 0.16880325834659035,
+      "reduction_factor_to_1deg": 5.923764076483279
+    },
+    "nea_scout_total_system": {
+      "sigma_g_m2": 162.7906976744186,
+      "beta": 0.009403940277722126,
+      "max_supported_angle_deg": 0.2073870130803821,
+      "reduction_factor_to_1deg": 4.821668434346855
+    },
+    "acs3_membrane_plus_booms": {
+      "sigma_g_m2": 12.45,
+      "beta": 0.12296176696377115,
+      "max_supported_angle_deg": 2.712708367237795,
+      "ultralight_tandem_lambda_max_at_1deg": 0.3889108923632929
+    }
+  },
+  "interpretation": {
+    "key_point": "Flight-demonstrated sailcraft validate deployable sail technology, but current integrated spacecraft are still several times too massive for 1-degree-class MDDS operation at 1 AU.",
+    "acs3_decomposition": "ACS3 membrane plus booms alone are light enough for multi-degree displaced-orbit operation in principle, while the integrated spacecraft overhead drives the total system down to only ~0.17 deg."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "assumptions": {
+    "reflector": "cp1_subsystem_nasa_2009",
+    "pv": "ultralight_tandem_2021",
+    "phi_levels_deg": [
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      1.75,
+      2.0
+    ],
+    "power_levels_w": [
+      100.0,
+      300.0,
+      1000.0,
+      3000.0,
+      10000.0,
+      30000.0,
+      100000.0
+    ],
+    "target_fill_factors": [
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.5
+    ],
+    "note": "Relative-to-Swarm results assume the same PV efficiency on both architectures and no degradation/control losses for any concept."
+  },
+  "headline_thresholds": {
+    "one_deg": {
+      "cross_light": {
+        "relative_0p10": {
+          "minimum_power_w": 3130.911412723143,
+          "reflector_area_m2": 83.95800138163604,
+          "structure_areal_density_g_m2": 23.282316901508448
+        },
+        "relative_0p25": {
+          "minimum_power_w": 15946.831597972214,
+          "reflector_area_m2": 171.05103694655833,
+          "structure_areal_density_g_m2": 15.062316901508451
+        },
+        "relative_0p50": {
+          "minimum_power_w": 2667493.5710239657,
+          "reflector_area_m2": 14306.213073384028,
+          "structure_areal_density_g_m2": 1.3623169015084533
+        }
+      },
+      "cross_nominal": {
+        "relative_0p10": {
+          "minimum_power_w": 4724.011565010975,
+          "reflector_area_m2": 126.67831095134464,
+          "structure_areal_density_g_m2": 23.282316901508448
+        },
+        "relative_0p25": {
+          "minimum_power_w": 23043.269573791993,
+          "reflector_area_m2": 247.16979865375924,
+          "structure_areal_density_g_m2": 15.062316901508451
+        }
+      }
+    },
+    "two_deg": {
+      "cross_light": {
+        "relative_0p05": {
+          "minimum_power_w": 7522.306108964809,
+          "reflector_area_m2": 403.4338270467082,
+          "structure_areal_density_g_m2": 9.143729924599922
+        },
+        "relative_0p10": {
+          "minimum_power_w": 28447.200430720623,
+          "reflector_area_m2": 762.8354105965617,
+          "structure_areal_density_g_m2": 6.403729924599923
+        }
+      },
+      "perimeter_nominal": {
+        "relative_0p05": {
+          "minimum_power_w": 17056.69408440331,
+          "reflector_area_m2": 914.7789616052657,
+          "structure_areal_density_g_m2": 9.143729924599922
+        }
+      }
+    }
+  },
+  "ten_kw_examples": {
+    "cross_light_at_1deg": {
+      "relative_to_ideal_swarm_same_eta": 0.20336551388013643,
+      "equivalent_ideal_ring_half_angle_deg": 11.733834494516557
+    },
+    "cross_nominal_at_1deg": {
+      "relative_to_ideal_swarm_same_eta": 0.16485998952261838,
+      "equivalent_ideal_ring_half_angle_deg": 9.489101074479008
+    },
+    "cross_light_at_2deg": {
+      "relative_to_ideal_swarm_same_eta": 0.059758264259993664,
+      "equivalent_ideal_ring_half_angle_deg": 3.425937432404002
+    }
+  },
+  "max_angle_by_power": {
+    "cross_light": {
+      "power_10kw_relative_0p10_deg": 1.5319848367510562,
+      "power_10kw_relative_0p25_deg": 0.8726055555395857,
+      "power_30kw_relative_0p25_deg": 1.1600662665029449
+    },
+    "cross_nominal": {
+      "power_10kw_relative_0p10_deg": 1.3622258982673767,
+      "power_10kw_relative_0p25_deg": 0.754517294856527
+    }
+  }
+}

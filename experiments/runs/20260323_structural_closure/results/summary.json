@@ -1,0 +1,39 @@
+{
+  "assumptions": {
+    "reflector": "cp1_subsystem_nasa_2009",
+    "pv": "ultralight_tandem_2021",
+    "structure_line_densities": {
+      "cf_boom_g_per_m": 50.0,
+      "tether_dyneema_g_per_m": 0.97
+    },
+    "note": "Structure model is geometry-explicit but still exploratory because line-density values are placeholders."
+  },
+  "headline_1deg": {
+    "cross_light_100w": {
+      "reflector_area_m2": 61.009896688373075,
+      "reflector_side_m": 7.81088322076147,
+      "pv_fill_factor": 0.004395325294641413,
+      "structure_areal_density_g_m2": 28.5214530753621
+    },
+    "cross_light_10kw": {
+      "reflector_area_m2": 131.8602830054647,
+      "reflector_side_m": 11.483043281528843,
+      "pv_fill_factor": 0.20336551388013643,
+      "structure_areal_density_g_m2": 17.617886740876973
+    }
+  },
+  "power_thresholds_for_fill_factor_at_1deg": {
+    "cross_light": {
+      "lambda_0p01": 231.3763736257004,
+      "lambda_0p05": 1312.8123315772284,
+      "lambda_0p10": 3130.911412723143,
+      "lambda_0p25": 15946.831597972214
+    },
+    "cross_nominal": {
+      "lambda_0p01": 355.7649731658265,
+      "lambda_0p05": 2002.6737352577825,
+      "lambda_0p10": 4724.011565010975,
+      "lambda_0p25": 23043.269573791997
+    }
+  }
+}

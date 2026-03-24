@@ -1,0 +1,12 @@
+{
+  "experiment_type": "perturbation_sensitivity",
+  "date": "2026-03-23",
+  "parameters": {
+    "phi_levels_deg": [0.5, 1.0, 1.5, 2.0],
+    "cone_offsets_deg": [0.1, 0.25, 0.5, 1.0, 2.0],
+    "beta_scales": [0.99, 0.995, 1.005, 1.01],
+    "solar_wind_dynamic_pressure_n_m2": 2.6e-9
+  },
+  "model_version": "v0.5",
+  "notes": "Residual-acceleration sensitivity around the nominal exact displaced-orbit solution."
+}

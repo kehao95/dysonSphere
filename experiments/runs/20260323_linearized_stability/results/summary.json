@@ -1,0 +1,41 @@
+{
+  "closed_form": {
+    "optimal_cone_angle_rad": 0.6154797086703873,
+    "optimal_cone_angle_deg": 35.264389682754654,
+    "axial_fraction_formula": "eps_beta - 3 * delta_alpha_rad^2",
+    "radial_fraction_formula": "eps_beta - (3/sqrt(2)) * delta_alpha_rad",
+    "interpretation": "Axial response is second-order in cone-angle error, radial response is first-order."
+  },
+  "headline_checks": {
+    "delta_0p5_deg": {
+      "delta_alpha_deg": 0.5,
+      "delta_alpha_rad": 0.008726646259971648,
+      "exact_axial_fraction": 0.00022798083565523167,
+      "approx_axial_fraction": 0.00022846306484003144,
+      "axial_relative_error": 0.00211521807705378,
+      "exact_radial_fraction": 0.01851060469235465,
+      "approx_radial_fraction": 0.018512012242326525,
+      "radial_relative_error": 7.60401940006223e-05
+    },
+    "delta_1p0_deg": {
+      "delta_alpha_deg": 1.0,
+      "delta_alpha_rad": 0.017453292519943295,
+      "exact_axial_fraction": 0.0009098962796912347,
+      "approx_axial_fraction": 0.0009138522593601258,
+      "axial_relative_error": 0.004347725952054125,
+      "exact_radial_fraction": 0.03701278257522933,
+      "approx_radial_fraction": 0.03702402448465305,
+      "radial_relative_error": 0.0003037304585481937
+    },
+    "delta_2p0_deg": {
+      "delta_alpha_deg": 2.0,
+      "delta_alpha_rad": 0.03490658503988659,
+      "exact_axial_fraction": 0.0036221984798077357,
+      "approx_axial_fraction": 0.003655409037440503,
+      "axial_relative_error": 0.009168618952799659,
+      "exact_radial_fraction": 0.07395842690240849,
+      "approx_radial_fraction": 0.0740480489693061,
+      "radial_relative_error": 0.0012117897939591168
+    }
+  }
+}

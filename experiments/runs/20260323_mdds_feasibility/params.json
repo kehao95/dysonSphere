@@ -1,0 +1,20 @@
+{
+  "experiment_type": "first_pass_feasibility",
+  "date": "2026-03-23",
+  "parameters": {
+    "r_au": 1.0,
+    "angle_grid_deg": [0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 5.0],
+    "utilization_targets": [0.05, 0.1, 0.25, 0.5],
+    "reflector_cases": [
+      "cp1_subsystem_nasa_2009",
+      "kapton_76um_nasa_2001"
+    ],
+    "pv_cases": [
+      "ultralight_tandem_2021",
+      "cigs_space_projection_2002",
+      "miasole_flex_03w_2018"
+    ]
+  },
+  "model_version": "v0.2",
+  "notes": "Exact ideal-sail displaced-orbit model with source-backed material cases."
+}

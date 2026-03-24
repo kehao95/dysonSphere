@@ -1,26 +1,32 @@
 """
-Mass Budget Calculator for Micro-Displaced Dyson Swarm Nodes
+Mass-budget and utilization calculations for decoupled MDDS nodes.
 
-Calculates system-level lightness number β and determines feasibility
-of various payload/reflector configurations.
+The most important design variable is the PV fill factor
+
+    lambda = A_pv / A_reflector
+
+because it simultaneously determines:
+- payload power density,
+- relative energy utilization versus an all-collector Dyson Swarm, and
+- the areal-density penalty that reduces the achievable displacement angle.
 """
 
-import numpy as np
+from __future__ import annotations
+
 from dataclasses import dataclass
-from typing import Optional, Tuple
-from .materials import get_material, Material, REFLECTOR_MATERIALS, PV_MATERIALS
+from typing import Dict, Optional, Tuple
 
-# Import constants from orbital module
-import sys
-from pathlib import Path
+import numpy as np
 
-sys.path.append(str(Path(__file__).parent.parent))
-from orbital.displaced_orbit import SIGMA_STAR
+from models.orbital.displaced_orbit import DisplacedOrbit, SIGMA_STAR
+from models.structural.geometry import NodeStructure, StructuralDesignResult
+
+from .materials import Material, get_material
 
 
-@dataclass
+@dataclass(frozen=True)
 class MassBreakdown:
-    """Detailed mass breakdown of a MDDS node."""
+    """Detailed mass breakdown of a single MDDS node."""
 
     reflector_area_m2: float
     reflector_mass_kg: float
@@ -28,132 +34,215 @@ class MassBreakdown:
     pv_mass_kg: float
     structure_mass_kg: float
     total_mass_kg: float
+    reflector_areal_density_g_m2: float
+    pv_areal_density_g_m2: float
+    structure_areal_density_g_m2: float
     system_areal_density_g_m2: float
     system_beta: float
+    pv_fill_factor: float
+    absolute_utilization: float
+    relative_dyson_utilization: float
+
+
+@dataclass(frozen=True)
+class AngleFeasibility:
+    """Feasibility summary for a target displacement angle and material pair."""
+
+    phi_deg: float
+    beta_required: float
+    sigma_limit_g_m2: float
+    pv_fill_factor_max: float
+    absolute_utilization_max: float
+    relative_dyson_utilization_max: float
+    reflector_material: str
+    pv_material: str
+    feasible: bool
+
+
+@dataclass(frozen=True)
+class PowerAngleDesign:
+    """Solved node design for a target power and displacement angle."""
+
+    phi_deg: float
+    power_required_w: float
+    reflector_material: str
+    pv_material: str
+    reflector_area_m2: float
+    pv_area_m2: float
+    pv_fill_factor: float
+    structure_mass_kg: float
+    structure_areal_density_g_m2: float
+    system_areal_density_g_m2: float
+    sigma_limit_g_m2: float
+    achieved_power_w: float
+    feasible: bool
+
+
+@dataclass(frozen=True)
+class FillFactorPowerThreshold:
+    """Minimum-power node design that achieves a target PV fill factor."""
+
+    phi_deg: float
+    target_fill_factor: float
+    reflector_material: str
+    pv_material: str
+    reflector_area_m2: float
+    pv_area_m2: float
+    power_w: float
+    structure_mass_kg: float
+    structure_areal_density_g_m2: float
+    system_areal_density_g_m2: float
+    sigma_limit_g_m2: float
+    margin_g_m2: float
+    feasible: bool
+
+
+@dataclass(frozen=True)
+class FixedMassAllowance:
+    """Maximum fixed bus/control mass allowed for a target angle, fill factor, and power."""
+
+    phi_deg: float
+    power_required_w: float
+    target_fill_factor: float
+    reflector_material: str
+    pv_material: str
+    reflector_area_m2: float
+    pv_area_m2: float
+    reflector_mass_kg: float
+    pv_mass_kg: float
+    variable_structure_mass_kg: float
+    total_mass_budget_kg: float
+    fixed_mass_max_kg: float
+    sigma_limit_g_m2: float
+    feasible: bool
 
 
 class SystemBudget:
     """
-    Mass budget calculator for a decoupled solar sail node.
+    Mass budget calculator for a decoupled MDDS node.
 
-    The node consists of:
-    - Reflector: Large-area thin film for thrust generation
-    - Payload: PV cells + electronics for power/computation
-    - Structure: Booms, tethers, deployment mechanisms
+    Parameters are expressed for one reflector-payload unit. The "structure"
+    term captures all non-reflector, non-PV hardware that still scales with the
+    node area, such as booms, tethers, deployment hardware, and avionics mass
+    amortized over the reflector footprint.
     """
 
     def __init__(
         self,
-        reflector_material: str = "kapton_al_1um",
-        pv_material: str = "cigs_flex",
+        reflector_material: str = "cp1_subsystem_nasa_2009",
+        pv_material: str = "cigs_space_projection_2002",
         reflector_area_m2: float = 1000.0,
-        pv_area_m2: float = 10.0,
-        structure_mass_kg: float = 1.0,
+        pv_area_m2: float = 100.0,
+        structure_mass_kg: float = 0.0,
     ):
-        """
-        Initialize mass budget calculator.
+        if reflector_area_m2 <= 0.0:
+            raise ValueError("reflector_area_m2 must be positive.")
+        if pv_area_m2 < 0.0:
+            raise ValueError("pv_area_m2 must be non-negative.")
+        if structure_mass_kg < 0.0:
+            raise ValueError("structure_mass_kg must be non-negative.")
 
-        Parameters
-        ----------
-        reflector_material : str
-            Key for reflector material from database
-        pv_material : str
-            Key for PV material from database
-        reflector_area_m2 : float
-            Total reflector area in m²
-        pv_area_m2 : float
-            Total PV cell area in m²
-        structure_mass_kg : float
-            Mass of structural components (booms, tethers) in kg
-        """
         self.reflector = get_material(reflector_material)
         self.pv = get_material(pv_material)
         self.A_r = reflector_area_m2
         self.A_p = pv_area_m2
         self.m_s = structure_mass_kg
 
+    @classmethod
+    def from_fill_factor(
+        cls,
+        reflector_material: str,
+        pv_material: str,
+        fill_factor: float,
+        reflector_area_m2: float = 1.0,
+        extra_areal_density_g_m2: float = 0.0,
+    ) -> "SystemBudget":
+        """
+        Create a system budget from the PV fill factor lambda = A_p / A_r.
+
+        ``extra_areal_density_g_m2`` captures non-PV, non-reflector mass as an
+        areal-density equivalent distributed over the reflector footprint.
+        """
+        if fill_factor < 0.0:
+            raise ValueError("fill_factor must be non-negative.")
+        if extra_areal_density_g_m2 < 0.0:
+            raise ValueError("extra_areal_density_g_m2 must be non-negative.")
+
+        structure_mass_kg = reflector_area_m2 * extra_areal_density_g_m2 / 1000.0
+        return cls(
+            reflector_material=reflector_material,
+            pv_material=pv_material,
+            reflector_area_m2=reflector_area_m2,
+            pv_area_m2=reflector_area_m2 * fill_factor,
+            structure_mass_kg=structure_mass_kg,
+        )
+
+    def pv_fill_factor(self) -> float:
+        """Return lambda = A_p / A_r."""
+        return self.A_p / self.A_r
+
     def reflector_mass(self) -> float:
-        """Calculate reflector mass in kg."""
-        # Convert g/m² to kg/m²
-        sigma_r = self.reflector.areal_density / 1000
-        return sigma_r * self.A_r
+        """Return reflector mass in kg."""
+        return (self.reflector.areal_density / 1000.0) * self.A_r
 
     def pv_mass(self) -> float:
-        """Calculate PV cell mass in kg."""
-        sigma_p = self.pv.areal_density / 1000
-        return sigma_p * self.A_p
+        """Return PV mass in kg."""
+        return (self.pv.areal_density / 1000.0) * self.A_p
+
+    def structure_areal_density(self) -> float:
+        """Return extra structural areal density in g/m^2."""
+        return 1000.0 * self.m_s / self.A_r
 
     def total_mass(self) -> float:
-        """Calculate total system mass in kg."""
+        """Return total mass in kg."""
         return self.reflector_mass() + self.pv_mass() + self.m_s
 
     def system_areal_density(self) -> float:
-        """
-        Calculate system areal density σ_sys = m_total / A_reflector.
-
-        Returns
-        -------
-        float
-            System areal density in g/m²
-        """
-        m_total = self.total_mass()
-        sigma_sys_kg_m2 = m_total / self.A_r
-        return sigma_sys_kg_m2 * 1000  # Convert to g/m²
+        """Return total areal density sigma_sys in g/m^2."""
+        return 1000.0 * self.total_mass() / self.A_r
 
     def system_beta(self) -> float:
-        """
-        Calculate system lightness number β = σ* / σ_sys.
-
-        Returns
-        -------
-        float
-            System lightness number (dimensionless)
-        """
-        sigma_sys_kg_m2 = self.system_areal_density() / 1000
+        """Return the system lightness number beta = sigma* / sigma_sys."""
+        sigma_sys_kg_m2 = self.system_areal_density() / 1000.0
         return SIGMA_STAR / sigma_sys_kg_m2
 
-    def max_displacement_angle(self) -> float:
-        """
-        Calculate maximum displacement angle achievable (small angle approx).
-
-        For small φ: β ≈ sin(φ), so φ ≈ arcsin(β)
-
-        Returns
-        -------
-        float
-            Maximum displacement angle in degrees
-        """
-        beta = self.system_beta()
-        if beta >= 1:
-            return 90.0  # Full levitation
-        phi_rad = np.arcsin(beta)
-        return np.degrees(phi_rad)
+    def max_displacement_angle_deg(self) -> float:
+        """Return the maximum exact displacement angle supported by this node."""
+        return DisplacedOrbit.max_supported_angle_deg(self.system_beta())
 
     def power_output(self, solar_flux_w_m2: float = 1361.0) -> float:
-        """
-        Calculate electrical power output from PV cells.
+        """Return electrical output in W."""
+        efficiency = self.pv.efficiency or 0.0
+        return self.A_p * solar_flux_w_m2 * efficiency
 
-        Parameters
-        ----------
-        solar_flux_w_m2 : float
-            Solar flux at operating distance (default: 1361 W/m² at 1 AU)
+    def electrical_power_density(self, solar_flux_w_m2: float = 1361.0) -> float:
+        """Return electrical output per reflector area in W/m^2."""
+        return self.power_output(solar_flux_w_m2=solar_flux_w_m2) / self.A_r
 
-        Returns
-        -------
-        float
-            Electrical power output in Watts
+    def absolute_utilization(self) -> float:
         """
-        return self.A_p * solar_flux_w_m2 * self.pv.efficiency
+        Return electrical utilization versus incident stellar flux on reflector area.
+
+        This equals ``lambda * eta_pv`` for the decoupled architecture.
+        """
+        return self.pv_fill_factor() * (self.pv.efficiency or 0.0)
+
+    def relative_dyson_utilization(self, reference_efficiency: float | None = None) -> float:
+        """
+        Return utilization relative to an all-collector Dyson Swarm.
+
+        If ``reference_efficiency`` is omitted, we compare against a Dyson Swarm
+        using the same PV technology over the full shell area, so the ratio
+        reduces to the PV fill factor ``lambda``.
+        """
+        if reference_efficiency is None:
+            reference_efficiency = self.pv.efficiency or 0.0
+        if reference_efficiency <= 0.0:
+            return 0.0
+        return self.absolute_utilization() / reference_efficiency
 
     def get_breakdown(self) -> MassBreakdown:
-        """
-        Get complete mass breakdown.
-
-        Returns
-        -------
-        MassBreakdown
-            Detailed mass breakdown dataclass
-        """
+        """Return a structured mass/utilization summary."""
         return MassBreakdown(
             reflector_area_m2=self.A_r,
             reflector_mass_kg=self.reflector_mass(),
@@ -161,199 +250,411 @@ class SystemBudget:
             pv_mass_kg=self.pv_mass(),
             structure_mass_kg=self.m_s,
             total_mass_kg=self.total_mass(),
+            reflector_areal_density_g_m2=self.reflector.areal_density,
+            pv_areal_density_g_m2=self.pv.areal_density,
+            structure_areal_density_g_m2=self.structure_areal_density(),
             system_areal_density_g_m2=self.system_areal_density(),
             system_beta=self.system_beta(),
+            pv_fill_factor=self.pv_fill_factor(),
+            absolute_utilization=self.absolute_utilization(),
+            relative_dyson_utilization=self.relative_dyson_utilization(),
         )
 
     def __repr__(self) -> str:
         bd = self.get_breakdown()
         return (
-            f"SystemBudget:\n"
-            f"  Reflector: {self.reflector.name}\n"
-            f"    Area = {bd.reflector_area_m2:.1f} m²\n"
-            f"    Mass = {bd.reflector_mass_kg:.3f} kg\n"
-            f"  PV: {self.pv.name}\n"
-            f"    Area = {bd.pv_area_m2:.1f} m²\n"
-            f"    Mass = {bd.pv_mass_kg:.3f} kg\n"
-            f"  Structure: {bd.structure_mass_kg:.3f} kg\n"
-            f"  ───────────────────────\n"
-            f"  Total mass: {bd.total_mass_kg:.3f} kg\n"
-            f"  System σ: {bd.system_areal_density_g_m2:.2f} g/m²\n"
-            f"  System β: {bd.system_beta:.4f}\n"
-            f"  Max φ: {self.max_displacement_angle():.2f}°\n"
-            f"  Power: {self.power_output():.1f} W\n"
+            "SystemBudget(\n"
+            f"  reflector = {self.reflector.name}\n"
+            f"  pv = {self.pv.name}\n"
+            f"  lambda = {bd.pv_fill_factor:.3f}\n"
+            f"  sigma_sys = {bd.system_areal_density_g_m2:.2f} g/m^2\n"
+            f"  beta = {bd.system_beta:.5f}\n"
+            f"  phi_max = {self.max_displacement_angle_deg():.3f} deg\n"
+            f"  eta_abs = {bd.absolute_utilization:.4f}\n"
+            f"  eta_rel = {bd.relative_dyson_utilization:.4f}\n"
+            ")"
         )
+
+
+def max_fill_factor_for_angle(
+    phi_deg: float,
+    reflector_material: str,
+    pv_material: str,
+    extra_areal_density_g_m2: float = 0.0,
+    r_au: float = 1.0,
+) -> AngleFeasibility:
+    """
+    Return the maximum PV fill factor allowed by the displaced-orbit mass budget.
+
+    The total areal density constraint is
+
+        sigma_reflector + lambda * sigma_pv + sigma_extra <= sigma_max(phi)
+    """
+    orbit = DisplacedOrbit(r_au=r_au, phi_deg=phi_deg)
+    sigma_limit = orbit.max_areal_density()
+    reflector = get_material(reflector_material)
+    pv = get_material(pv_material)
+
+    numerator = sigma_limit - reflector.areal_density - extra_areal_density_g_m2
+    fill_factor_max = max(0.0, numerator / pv.areal_density)
+    candidate = SystemBudget.from_fill_factor(
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        fill_factor=fill_factor_max,
+        reflector_area_m2=1.0,
+        extra_areal_density_g_m2=extra_areal_density_g_m2,
+    )
+
+    return AngleFeasibility(
+        phi_deg=phi_deg,
+        beta_required=orbit.required_beta_exact(),
+        sigma_limit_g_m2=sigma_limit,
+        pv_fill_factor_max=fill_factor_max,
+        absolute_utilization_max=candidate.absolute_utilization(),
+        relative_dyson_utilization_max=candidate.relative_dyson_utilization(),
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        feasible=fill_factor_max > 0.0,
+    )
 
 
 def find_optimal_ratio(
     target_beta: float,
-    reflector_material: str = "kapton_al_1um",
-    pv_material: str = "cigs_flex",
-    structure_fraction: float = 0.1,
+    reflector_material: str = "cp1_subsystem_nasa_2009",
+    pv_material: str = "cigs_space_projection_2002",
+    extra_areal_density_g_m2: float = 0.0,
     pv_power_required_w: float = 100.0,
+    solar_flux_w_m2: float = 1361.0,
 ) -> Optional[SystemBudget]:
     """
-    Find the reflector area needed for a given target β and power requirement.
-
-    Parameters
-    ----------
-    target_beta : float
-        Target system lightness number
-    reflector_material : str
-        Key for reflector material
-    pv_material : str
-        Key for PV material
-    structure_fraction : float
-        Structure mass as fraction of total non-reflector mass
-    pv_power_required_w : float
-        Required electrical power output in Watts
-
-    Returns
-    -------
-    SystemBudget or None
-        Optimized system budget, or None if infeasible
+    Solve for the reflector area required to meet a target beta and power output.
     """
-    refl = get_material(reflector_material)
+    if target_beta <= 0.0:
+        raise ValueError("target_beta must be positive.")
+
     pv = get_material(pv_material)
+    reflector = get_material(reflector_material)
+    efficiency = pv.efficiency or 0.0
+    if efficiency <= 0.0:
+        raise ValueError("PV material must define an efficiency.")
 
-    # Required PV area for power
-    solar_flux = 1361.0  # W/m² at 1 AU
-    A_p = pv_power_required_w / (solar_flux * pv.efficiency)
-
-    # PV mass
-    m_p = (pv.areal_density / 1000) * A_p  # kg
-
-    # Structure mass (as fraction of payload)
-    m_s = structure_fraction * m_p
-
-    # Payload mass (non-reflector)
-    m_payload = m_p + m_s
-
-    # Required system areal density for target β
-    # β = σ* / σ_sys
-    # σ_sys = σ* / β
-    sigma_sys_target = (SIGMA_STAR / target_beta) * 1000  # g/m²
-
-    # Reflector areal density
-    sigma_r = refl.areal_density  # g/m²
-
-    # System: σ_sys = (m_r + m_payload) / A_r
-    #              = σ_r + m_payload / A_r
-    # Therefore: A_r = m_payload / (σ_sys - σ_r)
-
-    denominator = sigma_sys_target - sigma_r
-    if denominator <= 0:
-        # Reflector alone is too heavy
-        print(
-            f"Infeasible: reflector σ = {sigma_r:.2f} g/m² > target σ_sys = {sigma_sys_target:.2f} g/m²"
-        )
+    required_pv_area = pv_power_required_w / (solar_flux_w_m2 * efficiency)
+    sigma_target = (SIGMA_STAR / target_beta) * 1000.0
+    denominator = sigma_target - reflector.areal_density - extra_areal_density_g_m2
+    if denominator <= 0.0:
         return None
 
-    A_r = (m_payload * 1000) / denominator  # Convert kg to g, then divide
-
-    # Check if result is reasonable
-    if A_r < A_p:
-        print(f"Warning: reflector area ({A_r:.1f} m²) < PV area ({A_p:.1f} m²)")
-
-    return SystemBudget(
+    reflector_area = required_pv_area * pv.areal_density / denominator
+    return SystemBudget.from_fill_factor(
         reflector_material=reflector_material,
         pv_material=pv_material,
-        reflector_area_m2=A_r,
-        pv_area_m2=A_p,
-        structure_mass_kg=m_s,
+        fill_factor=required_pv_area / reflector_area,
+        reflector_area_m2=reflector_area,
+        extra_areal_density_g_m2=extra_areal_density_g_m2,
+    )
+
+
+def design_for_angle_power_with_structure(
+    phi_deg: float,
+    pv_power_required_w: float,
+    reflector_material: str = "cp1_subsystem_nasa_2009",
+    pv_material: str = "ultralight_tandem_2021",
+    structure_model: Optional[NodeStructure] = None,
+    r_au: float = 1.0,
+    solar_flux_w_m2: float = 1361.0,
+    area_bounds_m2: Tuple[float, float] = (1.0, 1.0e8),
+) -> Optional[PowerAngleDesign]:
+    """
+    Solve for the reflector area needed to satisfy both power and angle limits.
+
+    Unlike ``find_optimal_ratio``, this function treats structural mass as a
+    geometry-dependent quantity that scales with reflector size.
+    """
+    if pv_power_required_w <= 0.0:
+        raise ValueError("pv_power_required_w must be positive.")
+
+    if structure_model is None:
+        structure_model = NodeStructure()
+
+    orbit = DisplacedOrbit(r_au=r_au, phi_deg=phi_deg)
+    sigma_limit = orbit.max_areal_density()
+    reflector = get_material(reflector_material)
+    pv = get_material(pv_material)
+    pv_efficiency = pv.efficiency or 0.0
+    if pv_efficiency <= 0.0:
+        raise ValueError("PV material must define an efficiency.")
+
+    required_pv_area = pv_power_required_w / (solar_flux_w_m2 * pv_efficiency)
+
+    def sigma_margin(reflector_area_m2: float) -> float:
+        structure_sigma = structure_model.extra_areal_density(reflector_area_m2)
+        fill_factor = required_pv_area / reflector_area_m2
+        sigma_system = reflector.areal_density + fill_factor * pv.areal_density + structure_sigma
+        return sigma_limit - sigma_system
+
+    lo, hi = area_bounds_m2
+    if lo <= 0.0:
+        raise ValueError("area_bounds_m2 must be positive.")
+
+    if sigma_margin(hi) < 0.0:
+        return None
+
+    while sigma_margin(lo) >= 0.0 and lo > 1.0e-12:
+        lo *= 0.5
+        if lo <= 1.0e-12:
+            break
+
+    for _ in range(100):
+        mid = 0.5 * (lo + hi)
+        if sigma_margin(mid) >= 0.0:
+            hi = mid
+        else:
+            lo = mid
+
+    reflector_area = hi
+    fill_factor = required_pv_area / reflector_area
+    structure_mass = structure_model.total_structure_mass(reflector_area)
+    budget = SystemBudget(
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        reflector_area_m2=reflector_area,
+        pv_area_m2=required_pv_area,
+        structure_mass_kg=structure_mass,
+    )
+
+    return PowerAngleDesign(
+        phi_deg=phi_deg,
+        power_required_w=pv_power_required_w,
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        reflector_area_m2=reflector_area,
+        pv_area_m2=required_pv_area,
+        pv_fill_factor=fill_factor,
+        structure_mass_kg=structure_mass,
+        structure_areal_density_g_m2=budget.structure_areal_density(),
+        system_areal_density_g_m2=budget.system_areal_density(),
+        sigma_limit_g_m2=sigma_limit,
+        achieved_power_w=budget.power_output(solar_flux_w_m2=solar_flux_w_m2),
+        feasible=budget.system_areal_density() <= sigma_limit + 1.0e-9,
+    )
+
+
+def minimum_power_for_fill_factor_with_structure(
+    phi_deg: float,
+    target_fill_factor: float,
+    reflector_material: str = "cp1_subsystem_nasa_2009",
+    pv_material: str = "ultralight_tandem_2021",
+    structure_model: Optional[NodeStructure] = None,
+    r_au: float = 1.0,
+    solar_flux_w_m2: float = 1361.0,
+    area_bounds_m2: Tuple[float, float] = (1.0, 1.0e8),
+) -> Optional[FillFactorPowerThreshold]:
+    """
+    Return the minimum-power node that can sustain ``target_fill_factor``.
+
+    At fixed ``lambda = A_p / A_r``, the reflector and PV contributions to the
+    areal density are constant, while the structural term decreases with node
+    size. The smallest feasible reflector area therefore gives the minimum node
+    power required to realize that fill factor at the requested angle.
+    """
+    if target_fill_factor <= 0.0:
+        raise ValueError("target_fill_factor must be positive.")
+
+    if structure_model is None:
+        structure_model = NodeStructure()
+
+    orbit = DisplacedOrbit(r_au=r_au, phi_deg=phi_deg)
+    sigma_limit = orbit.max_areal_density()
+    reflector = get_material(reflector_material)
+    pv = get_material(pv_material)
+    pv_efficiency = pv.efficiency or 0.0
+    if pv_efficiency <= 0.0:
+        raise ValueError("PV material must define an efficiency.")
+
+    constant_sigma = reflector.areal_density + target_fill_factor * pv.areal_density
+    if constant_sigma >= sigma_limit:
+        return None
+
+    def sigma_margin(reflector_area_m2: float) -> float:
+        structure_sigma = structure_model.extra_areal_density(reflector_area_m2)
+        sigma_system = constant_sigma + structure_sigma
+        return sigma_limit - sigma_system
+
+    lo, hi = area_bounds_m2
+    if lo <= 0.0:
+        raise ValueError("area_bounds_m2 must be positive.")
+
+    if sigma_margin(hi) < 0.0:
+        return None
+
+    while sigma_margin(lo) >= 0.0 and lo > 1.0e-12:
+        lo *= 0.5
+        if lo <= 1.0e-12:
+            break
+
+    for _ in range(100):
+        mid = 0.5 * (lo + hi)
+        if sigma_margin(mid) >= 0.0:
+            hi = mid
+        else:
+            lo = mid
+
+    reflector_area = hi
+    pv_area = target_fill_factor * reflector_area
+    structure_mass = structure_model.total_structure_mass(reflector_area)
+    budget = SystemBudget(
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        reflector_area_m2=reflector_area,
+        pv_area_m2=pv_area,
+        structure_mass_kg=structure_mass,
+    )
+
+    return FillFactorPowerThreshold(
+        phi_deg=phi_deg,
+        target_fill_factor=target_fill_factor,
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        reflector_area_m2=reflector_area,
+        pv_area_m2=pv_area,
+        power_w=budget.power_output(solar_flux_w_m2=solar_flux_w_m2),
+        structure_mass_kg=structure_mass,
+        structure_areal_density_g_m2=budget.structure_areal_density(),
+        system_areal_density_g_m2=budget.system_areal_density(),
+        sigma_limit_g_m2=sigma_limit,
+        margin_g_m2=sigma_limit - budget.system_areal_density(),
+        feasible=budget.system_areal_density() <= sigma_limit + 1.0e-9,
+    )
+
+
+def max_fixed_mass_for_angle_power_fill_factor(
+    phi_deg: float,
+    pv_power_required_w: float,
+    target_fill_factor: float,
+    reflector_material: str = "cp1_subsystem_nasa_2009",
+    pv_material: str = "ultralight_tandem_2021",
+    structure_model: Optional[NodeStructure] = None,
+    r_au: float = 1.0,
+    solar_flux_w_m2: float = 1361.0,
+) -> FixedMassAllowance:
+    """
+    Return the maximum fixed non-scaling mass allowed by the angle-power budget.
+
+    Unlike ``minimum_power_for_fill_factor_with_structure``, this function holds
+    both power and fill factor fixed, which uniquely determines the reflector
+    area. The remaining mass margin can then be interpreted as the allowable
+    fixed bus / deployment / control mass.
+    """
+    if pv_power_required_w <= 0.0:
+        raise ValueError("pv_power_required_w must be positive.")
+    if target_fill_factor <= 0.0:
+        raise ValueError("target_fill_factor must be positive.")
+
+    if structure_model is None:
+        structure_model = NodeStructure()
+
+    orbit = DisplacedOrbit(r_au=r_au, phi_deg=phi_deg)
+    sigma_limit = orbit.max_areal_density()
+    reflector = get_material(reflector_material)
+    pv = get_material(pv_material)
+    pv_efficiency = pv.efficiency or 0.0
+    if pv_efficiency <= 0.0:
+        raise ValueError("PV material must define an efficiency.")
+
+    pv_area = pv_power_required_w / (solar_flux_w_m2 * pv_efficiency)
+    reflector_area = pv_area / target_fill_factor
+
+    reflector_mass = (reflector.areal_density / 1000.0) * reflector_area
+    pv_mass = (pv.areal_density / 1000.0) * pv_area
+    variable_structure_mass = (
+        structure_model.total_structure_mass(reflector_area) - structure_model.fixed_mass_kg
+    )
+    total_mass_budget = sigma_limit * reflector_area / 1000.0
+    fixed_mass_max = total_mass_budget - reflector_mass - pv_mass - variable_structure_mass
+
+    return FixedMassAllowance(
+        phi_deg=phi_deg,
+        power_required_w=pv_power_required_w,
+        target_fill_factor=target_fill_factor,
+        reflector_material=reflector_material,
+        pv_material=pv_material,
+        reflector_area_m2=reflector_area,
+        pv_area_m2=pv_area,
+        reflector_mass_kg=reflector_mass,
+        pv_mass_kg=pv_mass,
+        variable_structure_mass_kg=variable_structure_mass,
+        total_mass_budget_kg=total_mass_budget,
+        fixed_mass_max_kg=fixed_mass_max,
+        sigma_limit_g_m2=sigma_limit,
+        feasible=fixed_mass_max >= 0.0,
     )
 
 
 def design_space_sweep(
-    beta_range: Tuple[float, float] = (0.01, 0.1),
-    power_range: Tuple[float, float] = (10, 1000),
-    n_points: int = 20,
-    reflector_material: str = "kapton_al_1um",
-    pv_material: str = "cigs_flex",
-) -> dict:
-    """
-    Sweep design space to find feasible configurations.
-
-    Returns
-    -------
-    dict
-        Arrays of beta, power, reflector_area, total_mass, feasible
-    """
-    betas = np.linspace(beta_range[0], beta_range[1], n_points)
-    powers = np.linspace(power_range[0], power_range[1], n_points)
+    phi_range_deg: Tuple[float, float] = (0.1, 5.0),
+    n_points: int = 50,
+    reflector_material: str = "cp1_subsystem_nasa_2009",
+    pv_material: str = "cigs_space_projection_2002",
+    extra_areal_density_g_m2: float = 0.0,
+    r_au: float = 1.0,
+) -> Dict[str, np.ndarray]:
+    """Sweep angle and return the maximum fill factor / utilization envelope."""
+    phi_values = np.linspace(phi_range_deg[0], phi_range_deg[1], n_points)
 
     results = {
-        "beta": [],
-        "power_w": [],
-        "reflector_area_m2": [],
-        "total_mass_kg": [],
-        "feasible": [],
+        "phi_deg": phi_values,
+        "beta_required": np.zeros(n_points),
+        "sigma_limit_g_m2": np.zeros(n_points),
+        "pv_fill_factor_max": np.zeros(n_points),
+        "absolute_utilization_max": np.zeros(n_points),
+        "relative_dyson_utilization_max": np.zeros(n_points),
     }
 
-    for beta in betas:
-        for power in powers:
-            budget = find_optimal_ratio(
-                target_beta=beta,
-                pv_power_required_w=power,
-                reflector_material=reflector_material,
-                pv_material=pv_material,
-            )
-
-            results["beta"].append(beta)
-            results["power_w"].append(power)
-
-            if budget is not None:
-                results["reflector_area_m2"].append(budget.A_r)
-                results["total_mass_kg"].append(budget.total_mass())
-                results["feasible"].append(True)
-            else:
-                results["reflector_area_m2"].append(np.nan)
-                results["total_mass_kg"].append(np.nan)
-                results["feasible"].append(False)
-
-    # Convert to numpy arrays
-    for key in results:
-        results[key] = np.array(results[key])
+    for i, phi_deg in enumerate(phi_values):
+        summary = max_fill_factor_for_angle(
+            phi_deg=float(phi_deg),
+            reflector_material=reflector_material,
+            pv_material=pv_material,
+            extra_areal_density_g_m2=extra_areal_density_g_m2,
+            r_au=r_au,
+        )
+        results["beta_required"][i] = summary.beta_required
+        results["sigma_limit_g_m2"][i] = summary.sigma_limit_g_m2
+        results["pv_fill_factor_max"][i] = summary.pv_fill_factor_max
+        results["absolute_utilization_max"][i] = summary.absolute_utilization_max
+        results["relative_dyson_utilization_max"][i] = (
+            summary.relative_dyson_utilization_max
+        )
 
     return results
 
 
 if __name__ == "__main__":
-    print("=" * 70)
-    print("Mass Budget Calculator: Micro-Displaced Dyson Swarm Node")
-    print("=" * 70)
+    print("=" * 76)
+    print("MDDS Mass Budget and Dyson-Swarm Utilization Trade Study")
+    print("=" * 76)
 
-    print(f"\nCritical areal density σ* = {SIGMA_STAR * 1000:.3f} g/m²")
-
-    # Example 1: Baseline configuration
-    print("\n--- Example 1: Baseline Configuration ---\n")
-    budget = SystemBudget(
-        reflector_material="kapton_al_1um",
-        pv_material="cigs_flex",
-        reflector_area_m2=1000,
-        pv_area_m2=10,
-        structure_mass_kg=1.0,
+    budget = SystemBudget.from_fill_factor(
+        reflector_material="cp1_subsystem_nasa_2009",
+        pv_material="ultralight_tandem_2021",
+        fill_factor=0.5,
+        reflector_area_m2=1000.0,
     )
+    print("\nRepresentative node\n")
     print(budget)
 
-    # Example 2: Find optimal for target β
-    print("\n--- Example 2: Design for β = 0.02, 100W ---\n")
-    optimal = find_optimal_ratio(
-        target_beta=0.02,
-        pv_power_required_w=100,
-        reflector_material="kapton_al_1um",
-        pv_material="cigs_flex",
-    )
-    if optimal:
-        print(optimal)
-
-    # Example 3: Compare materials
-    print("\n--- Example 3: Material Comparison (100W, β=0.03) ---\n")
-    for refl in ["kapton_al_2um", "kapton_al_1um", "cp1_al"]:
-        print(f"\nReflector: {refl}")
-        opt = find_optimal_ratio(
-            target_beta=0.03, pv_power_required_w=100, reflector_material=refl
+    print("\nMaximum fill factor at 1 deg\n")
+    for pv_key in (
+        "ultralight_tandem_2021",
+        "cigs_space_projection_2002",
+        "miasole_flex_03w_2018",
+    ):
+        summary = max_fill_factor_for_angle(
+            phi_deg=1.0,
+            reflector_material="cp1_subsystem_nasa_2009",
+            pv_material=pv_key,
         )
-        if opt:
-            print(f"  Reflector area needed: {opt.A_r:.1f} m²")
-            print(f"  Total mass: {opt.total_mass():.2f} kg")
+        print(
+            f"{pv_key:<28} lambda_max={summary.pv_fill_factor_max:.3f} "
+            f"eta_abs={summary.absolute_utilization_max:.3f}"
+        )
