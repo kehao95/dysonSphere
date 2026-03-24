@@ -1,6 +1,6 @@
 # Project Status
 
-**Last Updated**: 2026-03-23
+**Last Updated**: 2026-03-24
 
 ## Current Phase
 
@@ -43,6 +43,7 @@
 | 2026-03-23 | 采用微位移策略而非完全悬浮 | 即便用精确模型，1° 环仍远低于 $\beta \ge 1$ 的全悬浮门槛 |
 | 2026-03-23 | 解耦推力/载荷模块 | 打破"反射-吸收"热力学死结 |
 | 2026-03-23 | 论文范围收束为“理论框架 + 低纬示例” | 避免论文滑向未完成的重系统工程研究，主贡献保持为框架建立 |
+| 2026-03-24 | 当前版本先定位 arXiv 发布，JBIS 作为后续更匹配的正式期刊方向 | 现阶段 manuscript 更像 framework-first / advanced concepts paper；先以 arXiv 固化叙事与引用，再视拓扑指标或非理想修正补强后评估 JBIS |
 
 ## Blockers
 

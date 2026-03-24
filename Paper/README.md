@@ -53,19 +53,20 @@
 更具体地说，当前 manuscript 的主贡献已经收束成三层，而且第一层现在是正文主轴：
 
 - **Continuum 层面**：本文主张 Dyson architectures 更应被理解为一条连续的 support spectrum，而不是完全离散的 shell / swarm / bubble taxonomy。
-- **架构层面**：MDDS 是这条连续谱中的低-`\beta` 微位移工作段，提供了一条相对于传统纯开普勒 Dyson Swarm 更易组织的渐进式替代路线，通过光压辅助的纬度分层降低轨道拓扑复杂度。
+- **架构层面**：MDDS 是这条连续谱中的低-`\beta` 微位移工作段，提供了一条相对于传统纯开普勒 Dyson Swarm 更易组织的渐进式替代路线，通过光压辅助的纬度分层降低轨道拓扑复杂度，并把问题从固定参数开普勒巨型星座的 intersection management，转写为 layered support geometry。
 - **物理层面**：地日环境下存在一个非空的小角度工作区间，在这个区间内，微小角位移已经能带来巨大的离面部署平面，而对应的纯面密度门槛在入口级角度上已接近或进入现有人类轻量航天系统能力范围。
 
 当前写作策略也已相应调整：
 
 - 低纬 `\theta_\oplus / 0.1^\circ / 0.5^\circ / 1^\circ` 例子保留，但只作为 supporting slices
 - 正文重心回到 `Dyson support continuum` 这一主张
+- 引言与讨论现已显式把 conventional Keplerian swarm 收束为 `topology-and-growth problem`，并把 `Walker-like / phase-separated` 方案定位为对交会时序的重新分配，而非对底层交叉图的几何消除
 - `β`、`φ`、`ν`、`\sigma_{\max}(\phi)` 被反复用作 continuum 的参数化语言，而不只是局部算例变量
 - `low-latitude` 部分的职责被明确限制为：证明该 continuum 中的低-`\beta` 工作段非空，而不是承载全文的主 novelty
 
 当前 safest one-sentence claim 为：
 
-> **The main novelty of this work lies not in proposing a fundamentally new family of solar-sail dynamics, but in using known low-latitude displaced non-Keplerian dynamics to define a continuous Dyson support spectrum and an analytic architecture criterion for layered Dyson-swarm design.**
+> **The main novelty of this work lies not in proposing a fundamentally new family of solar-sail dynamics, but in using known low-latitude displaced non-Keplerian dynamics to define a continuous Dyson support spectrum and an analytic architecture criterion that shifts Dyson organization from nodal-intersection management to layered support geometry.**
 
 ### Core Results For Main Text
 
@@ -247,12 +248,11 @@ Paper/
 
 ---
 
-## Target Venues (TBD)
+## Target Venues
 
-- *Acta Astronautica*
-- *Journal of Spacecraft and Rockets*
-- *Advances in Space Research*
-- *arXiv* (astro-ph.EP or astro-ph.IM)
+- **Current release target**: *arXiv* (`astro-ph.EP` or `astro-ph.IM`) for the present framework-first version
+- **Best-fit journal direction after another strengthening pass**: *JBIS* (*Journal of the British Interplanetary Society*), especially if the paper continues to position itself as an advanced concepts / architecture paper
+- **Longer-shot / more conventional alternatives**: *Acta Astronautica*, *Journal of Spacecraft and Rockets*, *Advances in Space Research*
 
 ---
 

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="580" viewBox="0 0 1120 580" fill="none">
+<rect x="0" y="0" width="1120" height="580" fill="#08111f"/>
+<text x="40" y="48" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Figure 3. Latitude support curves</text>
+<text x="40" y="78" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Left: β_min(φ). Right: σ_max(φ).</text>
+<rect x="60" y="100" width="460" height="400" rx="16" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="78" y="130" fill="#eaf2fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">Required lightness number β_min(φ)</text>
+<rect x="118" y="148" width="372" height="302" rx="8" fill="#0a1320" stroke="#173049" stroke-width="1"/>
+<line x1="118" y1="450.0" x2="490" y2="450.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="455.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.00</text>
+<line x1="118" y1="389.6" x2="490" y2="389.6" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="394.6" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.05</text>
+<line x1="118" y1="329.2" x2="490" y2="329.2" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="334.2" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.10</text>
+<line x1="118" y1="268.8" x2="490" y2="268.8" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="273.8" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.15</text>
+<line x1="118" y1="208.4" x2="490" y2="208.4" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="213.4" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.20</text>
+<line x1="118" y1="148.0" x2="490" y2="148.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="108" y="153.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0.25</text>
+<line x1="118.0" y1="148" x2="118.0" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="118.0" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0</text>
+<line x1="192.4" y1="148" x2="192.4" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="192.4" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">1</text>
+<line x1="266.8" y1="148" x2="266.8" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="266.8" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">2</text>
+<line x1="341.2" y1="148" x2="341.2" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="341.2" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">3</text>
+<line x1="415.6" y1="148" x2="415.6" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="415.6" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">4</text>
+<line x1="490.0" y1="148" x2="490.0" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="490.0" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">5</text>
+<text x="304.0" y="492" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Latitude φ [deg]</text>
+<polyline points="118.74,449.45 120.60,448.09 122.46,446.72 124.31,445.35 126.17,443.99 128.03,442.62 129.88,441.25 131.74,439.89 133.59,438.52 135.45,437.15 137.31,435.79 139.16,434.42 141.02,433.05 142.88,431.69 144.73,430.32 146.59,428.95 148.44,427.59 150.30,426.22 152.16,424.85 154.01,423.49 155.87,422.12 157.73,420.75 159.58,419.39 161.44,418.02 163.29,416.65 165.15,415.29 167.01,413.92 168.86,412.55 170.72,411.19 172.58,409.82 174.43,408.45 176.29,407.09 178.14,405.72 180.00,404.35 181.86,402.99 183.71,401.62 185.57,400.25 187.43,398.89 189.28,397.52 191.14,396.15 193.00,394.79 194.85,393.42 196.71,392.05 198.56,390.69 200.42,389.32 202.28,387.96 204.13,386.59 205.99,385.22 207.85,383.86 209.70,382.49 211.56,381.12 213.41,379.76 215.27,378.39 217.13,377.02 218.98,375.66 220.84,374.29 222.70,372.93 224.55,371.56 226.41,370.19 228.26,368.83 230.12,367.46 231.98,366.09 233.83,364.73 235.69,363.36 237.55,362.00 239.40,360.63 241.26,359.26 243.11,357.90 244.97,356.53 246.83,355.17 248.68,353.80 250.54,352.43 252.40,351.07 254.25,349.70 256.11,348.34 257.97,346.97 259.82,345.60 261.68,344.24 263.53,342.87 265.39,341.51 267.25,340.14 269.10,338.77 270.96,337.41 272.82,336.04 274.67,334.68 276.53,333.31 278.38,331.95 280.24,330.58 282.10,329.21 283.95,327.85 285.81,326.48 287.67,325.12 289.52,323.75 291.38,322.39 293.23,321.02 295.09,319.66 296.95,318.29 298.80,316.92 300.66,315.56 302.52,314.19 304.37,312.83 306.23,311.46 308.08,310.10 309.94,308.73 311.80,307.37 313.65,306.00 315.51,304.64 317.37,303.27 319.22,301.91 321.08,300.54 322.93,299.18 324.79,297.81 326.65,296.45 328.50,295.08 330.36,293.72 332.22,292.35 334.07,290.99 335.93,289.62 337.79,288.26 339.64,286.89 341.50,285.53 343.35,284.16 345.21,282.80 347.07,281.43 348.92,280.07 350.78,278.70 352.64,277.34 354.49,275.97 356.35,274.61 358.20,273.24 360.06,271.88 361.92,270.52 363.77,269.15 365.63,267.79 367.49,266.42 369.34,265.06 371.20,263.69 373.05,262.33 374.91,260.96 376.77,259.60 378.62,258.24 380.48,256.87 382.34,255.51 384.19,254.14 386.05,252.78 387.90,251.42 389.76,250.05 391.62,248.69 393.47,247.32 395.33,245.96 397.19,244.60 399.04,243.23 400.90,241.87 402.75,240.51 404.61,239.14 406.47,237.78 408.32,236.42 410.18,235.05 412.04,233.69 413.89,232.33 415.75,230.96 417.61,229.60 419.46,228.24 421.32,226.87 423.17,225.51 425.03,224.15 426.89,222.78 428.74,221.42 430.60,220.06 432.46,218.69 434.31,217.33 436.17,215.97 438.02,214.60 439.88,213.24 441.74,211.88 443.59,210.52 445.45,209.15 447.31,207.79 449.16,206.43 451.02,205.07 452.87,203.70 454.73,202.34 456.59,200.98 458.44,199.62 460.30,198.25 462.16,196.89 464.01,195.53 465.87,194.17 467.72,192.81 469.58,191.44 471.44,190.08 473.29,188.72 475.15,187.36 477.01,186.00 478.86,184.63 480.72,183.27 482.57,181.91 484.43,180.55 486.29,179.19 488.14,177.83 490.00,176.46" fill="none" stroke="#74d4c1" stroke-width="2.5"/>
+<circle cx="125.4" cy="444.5" r="5" fill="#ffffff"/>
+<text x="135.4" y="434.5" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">0.1° → β=0.0045</text>
+<circle cx="155.2" cy="422.6" r="5" fill="#ffffff"/>
+<text x="165.2" y="412.6" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">0.5° → β=0.0227</text>
+<circle cx="192.4" cy="395.2" r="5" fill="#ffffff"/>
+<text x="202.4" y="385.2" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">1.0° → β=0.0453</text>
+<rect x="600" y="100" width="460" height="400" rx="16" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="618" y="130" fill="#eaf2fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">Max areal density σ_max(φ) [g/m²]</text>
+<rect x="658" y="148" width="372" height="302" rx="8" fill="#0a1320" stroke="#173049" stroke-width="1"/>
+<line x1="658" y1="450.0" x2="1030" y2="450.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="648" y="455.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">0</text>
+<line x1="658" y1="374.5" x2="1030" y2="374.5" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="648" y="379.5" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">100</text>
+<line x1="658" y1="299.0" x2="1030" y2="299.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="648" y="304.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">200</text>
+<line x1="658" y1="223.5" x2="1030" y2="223.5" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="648" y="228.5" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">300</text>
+<line x1="658" y1="148.0" x2="1030" y2="148.0" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="648" y="153.0" fill="#b8c7d6" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="end">400</text>
+<line x1="658.0" y1="148" x2="658.0" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="658.0" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">0</text>
+<line x1="732.4" y1="148" x2="732.4" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="732.4" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">1</text>
+<line x1="806.8" y1="148" x2="806.8" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="806.8" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">2</text>
+<line x1="881.2" y1="148" x2="881.2" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="881.2" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">3</text>
+<line x1="955.6" y1="148" x2="955.6" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="955.6" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">4</text>
+<line x1="1030.0" y1="148" x2="1030.0" y2="450" stroke="#183147" stroke-width="1" stroke-dasharray="4 6"/>
+<text x="1030.0" y="470" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">5</text>
+<text x="844.0" y="492" fill="#b8c7d6" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Latitude φ [deg]</text>
+<polyline points="661.72,148.00 663.56,148.00 665.40,193.97 667.24,244.97 669.09,279.03 670.93,303.38 672.77,321.66 674.61,335.89 676.45,347.28 678.29,356.60 680.13,364.37 681.98,370.95 683.82,376.59 685.66,381.47 687.50,385.75 689.34,389.53 691.18,392.88 693.02,395.88 694.87,398.59 696.71,401.03 698.55,403.26 700.39,405.29 702.23,407.15 704.07,408.86 705.91,410.44 707.75,411.91 709.60,413.27 711.44,414.53 713.28,415.71 715.12,416.82 716.96,417.85 718.80,418.83 720.64,419.74 722.49,420.61 724.33,421.42 726.17,422.20 728.01,422.93 729.85,423.62 731.69,424.28 733.53,424.91 735.38,425.50 737.22,426.07 739.06,426.62 740.90,427.14 742.74,427.63 744.58,428.11 746.42,428.56 748.27,429.00 750.11,429.42 751.95,429.82 753.79,430.21 755.63,430.59 757.47,430.94 759.31,431.29 761.16,431.62 763.00,431.95 764.84,432.26 766.68,432.56 768.52,432.85 770.36,433.13 772.20,433.40 774.05,433.67 775.89,433.92 777.73,434.17 779.57,434.41 781.41,434.64 783.25,434.87 785.09,435.09 786.94,435.30 788.78,435.50 790.62,435.71 792.46,435.90 794.30,436.09 796.14,436.28 797.98,436.46 799.83,436.63 801.67,436.81 803.51,436.97 805.35,437.13 807.19,437.29 809.03,437.45 810.87,437.60 812.71,437.75 814.56,437.89 816.40,438.03 818.24,438.17 820.08,438.30 821.92,438.43 823.76,438.56 825.60,438.69 827.45,438.81 829.29,438.93 831.13,439.05 832.97,439.16 834.81,439.28 836.65,439.39 838.49,439.50 840.34,439.60 842.18,439.71 844.02,439.81 845.86,439.91 847.70,440.01 849.54,440.10 851.38,440.20 853.23,440.29 855.07,440.38 856.91,440.47 858.75,440.56 860.59,440.64 862.43,440.73 864.27,440.81 866.12,440.89 867.96,440.97 869.80,441.05 871.64,441.12 873.48,441.20 875.32,441.27 877.16,441.35 879.01,441.42 880.85,441.49 882.69,441.56 884.53,441.63 886.37,441.70 888.21,441.76 890.05,441.83 891.89,441.89 893.74,441.96 895.58,442.02 897.42,442.08 899.26,442.14 901.10,442.20 902.94,442.26 904.78,442.32 906.63,442.37 908.47,442.43 910.31,442.48 912.15,442.54 913.99,442.59 915.83,442.64 917.67,442.70 919.52,442.75 921.36,442.80 923.20,442.85 925.04,442.90 926.88,442.95 928.72,442.99 930.56,443.04 932.41,443.09 934.25,443.13 936.09,443.18 937.93,443.22 939.77,443.27 941.61,443.31 943.45,443.36 945.30,443.40 947.14,443.44 948.98,443.48 950.82,443.52 952.66,443.56 954.50,443.60 956.34,443.64 958.19,443.68 960.03,443.72 961.87,443.76 963.71,443.79 965.55,443.83 967.39,443.87 969.23,443.90 971.08,443.94 972.92,443.98 974.76,444.01 976.60,444.05 978.44,444.08 980.28,444.11 982.12,444.15 983.96,444.18 985.81,444.21 987.65,444.24 989.49,444.28 991.33,444.31 993.17,444.34 995.01,444.37 996.85,444.40 998.70,444.43 1000.54,444.46 1002.38,444.49 1004.22,444.52 1006.06,444.55 1007.90,444.58 1009.74,444.61 1011.59,444.63 1013.43,444.66 1015.27,444.69 1017.11,444.72 1018.95,444.74 1020.79,444.77 1022.63,444.80 1024.48,444.82 1026.32,444.85 1028.16,444.87 1030.00,444.90" fill="none" stroke="#74d4c1" stroke-width="2.5"/>
+<circle cx="665.4" cy="195.3" r="5" fill="#ffffff"/>
+<text x="675.4" y="185.3" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">0.1° → 337.4 g/m²</text>
+<circle cx="695.2" cy="399.0" r="5" fill="#ffffff"/>
+<text x="705.2" y="389.0" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">0.5° → 67.5 g/m²</text>
+<circle cx="732.4" cy="424.5" r="5" fill="#ffffff"/>
+<text x="742.4" y="414.5" fill="#d9e5f0" font-size="13" font-family="Arial, Helvetica, sans-serif">1.0° → 33.7 g/m²</text>
+</svg>
