@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" fill="none">
+<rect x="0.0" y="0.0" width="1440.0" height="900.0" rx="0" fill="#08111f"/>
+<text x="70.0" y="72.0" fill="#f3f6fb" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Dyson Support Continuum</text>
+<text x="70.0" y="108.0" fill="#adc0d3" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">A panoramic view from the Keplerian swarm limit to bubble-capable support</text>
+<text x="70.0" y="136.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Key marked points: θ⊕ entry scale, 0.1°–0.5° current lightweight frontier, 22.6° bubble/statite entry, 35.3° branch endpoint</text>
+<text x="70.0" y="160.0" fill="#8fa3b7" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Horizontal spacing is visually expanded near φ = 0 so the entry window remains legible.</text>
+<rect x="60.0" y="190.0" width="1320.0" height="280.0" rx="18" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="90.0" y="230.0" fill="#f3f6fb" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Support-and-Stratification Spectrum</text>
+<rect x="110.0" y="310.0" width="1210.0" height="72.0" rx="18" fill="#0a1320" stroke="#173049" stroke-width="1.0"/>
+<rect x="110.0" y="310.0" width="142.5" height="72.0" rx="18" fill="#5fa8ff"/>
+<rect x="252.5" y="310.0" width="389.8" height="72.0" rx="0" fill="#f4a259"/>
+<rect x="642.3" y="310.0" width="184.7" height="72.0" rx="0" fill="#74d4c1"/>
+<rect x="827.0" y="310.0" width="439.5" height="72.0" rx="0" fill="#2a9d8f"/>
+<rect x="1266.5" y="310.0" width="51.1" height="72.0" rx="0" fill="#ffd166"/>
+<rect x="1317.6" y="310.0" width="2.4" height="72.0" rx="18" fill="#e76f51"/>
+<text x="128.0" y="338.0" fill="#08111f" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Keplerian</text>
+<text x="128.0" y="362.0" fill="#08111f" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">pure orbital support</text>
+<text x="539.7" y="338.0" fill="#08111f" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Low-β MDDS</text>
+<text x="539.7" y="362.0" fill="#08111f" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">entry and present frontier</text>
+<text x="1046.7" y="338.0" fill="#08111f" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Mixed-support expansion</text>
+<text x="1046.7" y="362.0" fill="#08111f" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">harder but still orbital-radiative</text>
+<text x="1292.1" y="338.0" fill="#08111f" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Bubble-capable region</text>
+<text x="1292.1" y="362.0" fill="#08111f" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">β ≥ 1 available</text>
+<line x1="252.5" y1="252.0" x2="252.5" y2="502.0" stroke="#f4a259" stroke-width="2.0" opacity="0.9" stroke-dasharray="6 6"/>
+<circle cx="252.5" cy="346.0" r="8.0" fill="#ffffff" stroke="#f4a259" stroke-width="3"/>
+<text x="252.5" y="270.0" fill="#f4a259" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">θ⊕</text>
+<text x="252.5" y="288.0" fill="#f4a259" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Earth-radius scale</text>
+<line x1="642.3" y1="252.0" x2="642.3" y2="502.0" stroke="#74d4c1" stroke-width="2.0" opacity="0.9" stroke-dasharray="6 6"/>
+<circle cx="642.3" cy="346.0" r="8.0" fill="#ffffff" stroke="#74d4c1" stroke-width="3"/>
+<text x="642.3" y="250.0" fill="#74d4c1" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">0.1°</text>
+<line x1="827.0" y1="252.0" x2="827.0" y2="502.0" stroke="#74d4c1" stroke-width="2.0" opacity="0.9" stroke-dasharray="6 6"/>
+<circle cx="827.0" cy="346.0" r="8.0" fill="#ffffff" stroke="#74d4c1" stroke-width="3"/>
+<text x="827.0" y="250.0" fill="#74d4c1" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">0.5°</text>
+<line x1="1266.5" y1="252.0" x2="1266.5" y2="502.0" stroke="#ffd166" stroke-width="2.0" opacity="0.9" stroke-dasharray="6 6"/>
+<circle cx="1266.5" cy="346.0" r="8.0" fill="#ffffff" stroke="#ffd166" stroke-width="3"/>
+<text x="1266.5" y="250.0" fill="#ffd166" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">22.6°</text>
+<text x="1266.5" y="268.0" fill="#ffd166" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">β = 1</text>
+<line x1="1317.6" y1="252.0" x2="1317.6" y2="502.0" stroke="#e76f51" stroke-width="2.0" opacity="0.9" stroke-dasharray="6 6"/>
+<circle cx="1317.6" cy="346.0" r="8.0" fill="#ffffff" stroke="#e76f51" stroke-width="3"/>
+<text x="1317.6" y="250.0" fill="#e76f51" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">35.3°</text>
+<text x="1317.6" y="268.0" fill="#e76f51" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">ν = 0</text>
+<line x1="642.3" y1="458.0" x2="827.0" y2="458.0" stroke="#74d4c1" stroke-width="4" opacity="1.0"/>
+<line x1="642.3" y1="448.0" x2="642.3" y2="468.0" stroke="#74d4c1" stroke-width="4" opacity="1.0"/>
+<line x1="827.0" y1="448.0" x2="827.0" y2="468.0" stroke="#74d4c1" stroke-width="4" opacity="1.0"/>
+<text x="734.6" y="488.0" fill="#74d4c1" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Approximate present lightweight-sail frontier</text>
+<text x="734.6" y="510.0" fill="#adc0d3" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">roughly 0.1°–0.5° in the optimistic architecture sense</text>
+<rect x="60.0" y="520.0" width="392.0" height="300.0" rx="18" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="84.0" y="554.0" fill="#f4a259" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">① Entry Point: θ⊕</text>
+<text x="84.0" y="588.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Take the angular radius of Earth as seen from the Sun.</text>
+<text x="84.0" y="622.0" fill="#f3f6fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">φ ≈ 0.00244°</text>
+<text x="84.0" y="650.0" fill="#f3f6fb" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">β_min ≈ 1.11e-04</text>
+<text x="84.0" y="678.0" fill="#f3f6fb" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">σ_max ≈ 13.83 kg/m²</text>
+<text x="84.0" y="714.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">Geometric meaning: about one Earth radius</text>
+<text x="84.0" y="740.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">of off-plane separation at 1 AU.</text>
+<text x="84.0" y="778.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">This is the point where the continuum starts to</text>
+<text x="84.0" y="802.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">feel near-entry rather than purely futuristic.</text>
+<rect x="474.0" y="520.0" width="392.0" height="300.0" rx="18" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="498.0" y="554.0" fill="#74d4c1" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">② Present Human Frontier</text>
+<text x="498.0" y="588.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">A useful rough bracket for lightweight sailcraft-style</text>
+<text x="498.0" y="612.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">systems is around 0.1°–0.5° in this framework.</text>
+<text x="498.0" y="650.0" fill="#f3f6fb" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">0.1°  →  σ_max ≈ 337.4 g/m²</text>
+<text x="498.0" y="678.0" fill="#f3f6fb" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">0.5°  →  σ_max ≈ 67.5 g/m²</text>
+<text x="498.0" y="714.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">This is not a claim that full MDDS is solved today.</text>
+<text x="498.0" y="738.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">It is a claim that the low-angle part of the spectrum</text>
+<text x="498.0" y="762.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">already overlaps plausible human lightweight-spacecraft</text>
+<text x="498.0" y="786.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">mass-per-area scales.</text>
+<rect x="888.0" y="520.0" width="392.0" height="300.0" rx="18" fill="#0d1828" stroke="#21374f" stroke-width="1.5"/>
+<text x="912.0" y="554.0" fill="#ffd166" font-size="22" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">③ Bubble Threshold</text>
+<text x="912.0" y="588.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">At φ ≈ 22.6°, β reaches 1.</text>
+<text x="912.0" y="622.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">This is where bubble/statite-like architectures</text>
+<text x="912.0" y="646.0" fill="#adc0d3" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">enter the admissible design space.</text>
+<text x="912.0" y="682.0" fill="#f3f6fb" font-size="17" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="start">Important nuance:</text>
+<text x="912.0" y="710.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">this is not the end of the whole continuum.</text>
+<text x="912.0" y="734.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">It is the point where purely radiative-support</text>
+<text x="912.0" y="758.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">architectures become available as an option.</text>
+<text x="912.0" y="794.0" fill="#8fa3b7" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="start">The current payload-optimized branch ends later, at about 35.3°.</text>
+<text x="720.0" y="870.0" fill="#adc0d3" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="400" text-anchor="middle">Micro-Displaced Dyson Swarm (MDDS): not a single object, but a low-β working segment inside a continuous Dyson support spectrum.</text>
+</svg>

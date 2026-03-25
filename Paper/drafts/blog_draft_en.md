@@ -14,7 +14,7 @@ But anyone who has spent time with the topic knows that **"Dyson Swarm becomes a
 
 What I want to do here is not to repackage that known problem as some dramatic discovery. I want to take it apart and look at why it is so geometrically persistent, why it is not only a collision-management problem but also a growth problem, and then explain why precisely this lack of elegance forced me to look for a cleaner geometric viewpoint.
 
-And here "elegance" is not an aesthetic preference. **The more a structure gets its order directly from geometry, rather than from endless coordination and traffic control, the more beautiful it is.**
+And here "elegance" is not an aesthetic preference. **The more a structure gets its order directly from geometry, rather than from endless coordination and traffic control, the more elegant it is.**
 
 ## The real difficulty of a Dyson Swarm is not just energy, but topology and growth
 
@@ -46,7 +46,7 @@ Of course it is limited. It covers only a small fraction of stellar radiation an
 
 And if you mentally unpack a "same-altitude large Dyson Swarm," it is in some sense not fundamentally different from many Dyson Rings broken apart and scattered. More abstractly, Dyson Ring and Dyson Swarm belong to the same topological class: both are collections of orbital corridors that have to be organized at nearly the same stellar radius, and both generate a network of orbital intersections. A single Ring is just one corridor in that network; a Swarm is many corridors laid over one another. More orbits mean more nodes. The system starts to look less like a free spatial cloud and more like a transportation network forced to organize passage through a small number of bottlenecks.
 
-Dyson Ring is beautiful, but too limited. Dyson Swarm looks more practical, but once I looked closely at its orbital organization problem, it no longer felt geometrically clean.
+Dyson Ring is elegant, but too limited. Dyson Swarm looks more practical, but once I looked closely at its orbital organization problem, it no longer felt geometrically clean.
 
 ## The common fixes never really break the deadlock
 
@@ -56,7 +56,7 @@ That helps, and it is a very natural engineering instinct. But it is better unde
 
 You can turn one conflict point into many conflict points. You can turn one congested intersection into many smaller ones. But as long as the system is still built out of a large number of intersecting Keplerian tracks, the burdens of traffic management, phasing, collision avoidance, and long-term stability do not really disappear. Once the system keeps growing, complexity still blows up. Walker-style architectures are very good at redistributing encounters in time; they do not geometrically remove the underlying crossing topology.
 
-And there is a deeper problem: **this style of solution is not very friendly to progressive build-out**. Walker constellations are "beautiful" partly because, for a fixed number of planes, fixed number of satellites, and fixed phase relation, there is an overall optimized arrangement. They are naturally biased toward a static solution for a fixed parameter set. But once you add another plane or another batch of nodes, the whole "optimal arrangement" may need to be reorganized.
+And there is a deeper problem: **this style of solution is not very friendly to progressive build-out**. Walker constellations are "elegant" partly because, for a fixed number of planes, fixed number of satellites, and fixed phase relation, there is an overall optimized arrangement. They are naturally biased toward a static solution for a fixed parameter set. But once you add another plane or another batch of nodes, the whole "optimal arrangement" may need to be reorganized.
 
 For a paper design that is fine. For a Dyson-scale architecture already under construction, it becomes a deeply unrealistic requirement. We cannot expect to tear up and re-phase everything that has already been launched and deployed every time we add another layer. A genuinely sustainable large architecture has to allow continued growth without requiring wholesale global reconfiguration.
 
@@ -64,7 +64,7 @@ Another response is to separate the structure into radial layers. If same-radius
 
 That is also reasonable, but it quickly introduces new problems: inner layers shading outer ones, radiative coupling between layers, and a more difficult hierarchy of organization and maintenance.
 
-And, by the standard I laid out earlier, it is not especially beautiful. The order of the structure still does not come directly from geometry. It has to be maintained by continued layered management.
+And, by the standard I laid out earlier, it is not especially elegant. The order of the structure still does not come directly from geometry. It has to be maintained by continued layered management.
 
 ## The turning point: can we keep the orbit, without remaining trapped by the orbital plane?
 
@@ -247,13 +247,13 @@ There are two threshold points on that continuum that are worth marking:
 - **the $\beta = 1$ threshold** (around $\phi \approx 22.6^\circ$): at this point purely radiatively supported bubble/statite architectures become available in principle, but along the present payload-friendly branch orbital support is still present ($\nu \approx 0.64$)
 - **the $\nu = 0$ threshold** (around $\phi \approx 35.3^\circ$, with $\beta = 1.5$): the internal endpoint of the current low-$\beta$ branch, where orbital support disappears completely
 
-![Support continuum](../figures/results/support_continuum.svg)
+![Panoramic Dyson support continuum](../figures/results/blog_dyson_panorama.svg)
 
 And the real value of this continuum is not just classificatory elegance. It changes the language of the problem. We are used to thinking about Dyson Swarms as an intersection-management problem: how to coordinate traffic, phasing, and collision avoidance among unavoidable crossing nodes. MDDS rewrites that as a support-geometry problem: how to use stratification, synchronization, and low-$\beta$ support to organize an expandable three-dimensional structure.
 
-## Back to beauty
+## Back to elegance
 
-Back to the definition from the beginning: the more the order of a structure comes from geometry itself, rather than from continued coordination and regulation, the more beautiful it is.
+Back to the definition from the beginning: the more the order of a structure comes from geometry itself, rather than from continued coordination and regulation, the more elegant it is.
 
 The problem with an ordinary Dyson Swarm is that it looks free, but much of that freedom is deceptive. The conflict is merely hidden inside the nodes. The order of the system has to be maintained by continual traffic management, and as the system grows, that management burden becomes part of the structure itself.
 
@@ -263,4 +263,31 @@ By contrast, this low-$\beta$, micro-displaced stratified approach has a much cl
 - not preserving the same topology by fragmenting it into ever more complicated traffic patterns
 - but directly rewriting the geometry through a very small, but very consequential, physical correction
 
-Once the geometry is rewritten, order can emerge from the structure itself rather than from endless coordination. That makes this direction worth studying as engineering, and also more beautiful as a concept.
+Once the geometry is rewritten, order can emerge from the structure itself rather than from endless coordination. That makes this direction worth studying as engineering, and also more elegant as a concept.
+
+## A more plausible growth path
+
+If this perspective is right, then a Dyson architecture may be better understood not as a single terminal object to be completed all at once, but as a structure that can grow in stages: start in the low-latitude, small-angle region closest to the Keplerian limit, and then expand toward higher latitudes as materials, deployment, and control improve.
+
+More concretely, that path can be thought of in at least three stages:
+
+1. **Start near the ecliptic.**  
+   This is where the required $\beta$ is lowest and the allowable system areal density is highest. It is the easiest part of the continuum to enter, and it does not force us to challenge the harshest material limits on day one.
+
+2. **Make every early node immediately useful.**  
+   Those first nodes can be tuned to Earth-synchronous or near-Earth-synchronous heliocentric periods, turning them into long-lived collector, relay, or infrastructure units rather than temporary placeholders waiting for some distant final shell.
+
+3. **Expand outward in latitude over time.**  
+   As system areal density improves and deployment and control become more capable, the stratified band can be pushed progressively farther from the ecliptic. The key is that growth does not require global reconfiguration each time. Existing layers remain useful while new layers thicken the structure.
+
+That, to me, is one of the most important features of the idea: **every intermediate state is useful.**  
+The early low-latitude nodes are not disposable prototypes. They are the first layer of the eventual stellar-energy infrastructure.
+
+From that perspective, I think a slightly bolder statement is also justified:
+
+**we do not need to wait for some distant future "Dyson age" before beginning.**  
+If we only ask for the most entry-level low-latitude regime, on the scale of roughly one Earth radius of out-of-plane stratification, then the pure areal-density threshold already falls within the broad order of magnitude of present lightweight spacecraft systems. That does not mean we can build a Dyson Swarm today. But it does mean that **today's technology may already be sufficient to take the first step onto this continuum.**
+
+In that sense, a Dyson structure stops looking like a static noun and starts looking like evolving infrastructure: an expandable architecture rather than a megastructure defined only by its final state.
+
+So instead of treating Shell, Swarm, and Bubble as disconnected labels, it may be better to understand them as regions of a single **Dyson support continuum**.
