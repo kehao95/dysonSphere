@@ -30,7 +30,8 @@ curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$, which convert the archite
 question into a direct areal-density criterion. The resulting paper is positioned as a
 theory-grounded architecture/framework study with illustrative low-latitude feasibility
 slices at $0.1^\circ$, $0.5^\circ$, and $1.0^\circ$, rather than as a full engineering
-realization or a claim of new orbit-family discovery.
+realization, a claim of new orbit-family discovery, or a claim that the displaced-orbit
+bridge itself is identified here for the first time.
 \end{abstract}
 
 \section{Introduction}
@@ -46,8 +47,10 @@ burden as swarm density rises.
 
 Modern Dyson-swarm literature has usually left this issue at a qualitative level, often by
 appealing to broad collector distributions or radial nesting without providing a compact
-criterion for topological separation at fixed stellar distance
-\cite{wright2015gies,mcinnes2025ringworlds,mcinnes2026bubbles}.
+criterion for topological separation at fixed stellar distance. A recent exception is
+McInnes (2026), which explicitly notes that collisions in orbiting Dyson swarms could in
+principle be reduced using displaced non-Keplerian orbits whose planes can be stacked in
+parallel \cite{wright2015gies,mcinnes2025ringworlds,mcinnes2026bubbles}.
 
 This is the Dyson-scale problem that motivates the present paper. The aim is not merely to
 identify another solar-sail operating point, but to ask whether the usual Dyson taxonomy is
@@ -68,12 +71,13 @@ displaced non-Keplerian orbit stability and control, and later synchronous helio
 variants \cite{mcinnes1992haloorbits1,mcinnes1992haloorbits2,mcinnes1997displaced,mcinnes1998dnko,quarta2020earthsync,bassetto2024marssync}.
 
 The present paper therefore takes a deliberately conservative novelty posture. Its main
-novelty is not a fundamentally new orbit family, but the reorganization of known
-low-latitude displaced-orbit dynamics into an analytic architecture criterion for layered
-Dyson-swarm design. More broadly, it proposes that Dyson architectures are better understood
-as a continuous support spectrum than as a purely discrete shell/swarm/bubble taxonomy. In
-that sense, it should be read as an analytic architecture/framework paper rather than as a
-new solar-sail dynamics paper.
+novelty is not a fundamentally new orbit family, nor the first identification of the
+displaced-orbit bridge from swarm-collision relief to parallel plane stacking, but the
+development of that bridge into an analytic architecture criterion for layered Dyson-swarm
+design. More broadly, it proposes that Dyson architectures are better understood as a
+continuous support spectrum than as a purely discrete shell/swarm/bubble taxonomy. In that
+sense, it should be read as an analytic architecture/framework paper rather than as a new
+solar-sail dynamics paper.
 
 \section{Theoretical Framework}
 
@@ -118,6 +122,28 @@ $\phi_c = \arctan(1/\sqrt{2}) \approx 35.264^\circ$ marks the endpoint of the pr
 payload-optimized displaced-orbit branch, where $\nu \to 0$ and $\beta \to 1.5$. It should
 not be read as the terminal latitude of the full Dyson support continuum.
 
+\section{Architecture Reframing}
+
+The intended paper claim is framework-level rather than full-engineering closure, and
+architectural rather than dynamical in its novelty posture. The core claim is not merely that
+a low-$\beta$ displaced-orbit regime exists, but that Dyson architectures can be usefully
+organized as a continuous support spectrum ranging from purely orbital to purely
+radiatively-supported configurations. McInnes (2026) already points to the same geometric
+bridge in compressed form; what is added here is a full architecture language built around
+that bridge.
+
+This is also why the Dyson framing is substantive rather than decorative. The present paper
+does not claim that shell, swarm, and bubble architectures are engineeringly interchangeable.
+It claims that they can be parameterized within a common support logic, while still occupying
+very different regions of cost, control, and payload consequence. The specific role of MDDS is
+to take a low-$\beta$ region that recent Dyson literature has signposted only briefly and
+make it explicit as a usable framework.
+
+For Dyson theory, this replaces a discourse organized around static end states with one
+organized around reachable regions of design space. That is the level at which the paper
+claims conceptual novelty; the low-latitude examples that follow remain supporting slices
+rather than the paper's principal intellectual center.
+
 \section{Low-Latitude Illustrative Analysis}
 
 The main-text examples are intentionally subordinate to the continuum claim above. Their role
@@ -152,32 +178,13 @@ These values sit far below the $\theta_\oplus$ threshold and below the $0.1^\cir
 but well above the $1^\circ$ threshold, which is exactly why the present paper treats the
 former as entry regimes and the latter as a more demanding extrapolation.
 
-\section{Discussion}
+\section{Boundaries and Next Steps}
 
-The intended paper claim is framework-level rather than full-engineering closure, and
-architectural rather than dynamical in its novelty posture. The core claim is not merely that
-a low-$\beta$ displaced-orbit regime exists, but that Dyson architectures can be usefully
-organized as a continuous support spectrum ranging from purely orbital to purely
-radiatively-supported configurations. The synchronization-constrained branch should likewise
-be read as a useful recasting of known synchronous DNKO design space
-\cite{heiligers2015earthfollowing,quarta2020earthsync,bassetto2024marssync}, not as an
-independent orbit-family discovery. Likewise, the paper motivates a reduced orbital-topology
-burden for layered swarms, but does not yet claim a fully quantified collision or conjunction
-metric. Finally, the broader displaced-orbit literature already establishes that stability and
-station-keeping are nontrivial questions for such trajectories; existing control results make
-the architecture direction plausible, but the present paper does not yet close that layer of
-analysis \cite{mcinnes1998dnko,bookless2006thesis,dachwald2005degradation}.
-
-This is also why the Dyson framing is substantive rather than decorative. The present paper
-does not claim that shell, swarm, and bubble architectures are engineeringly interchangeable.
-It claims that they can be parameterized within a common support logic, while still occupying
-very different regions of cost, control, and payload consequence. The specific role of MDDS is
-to make one previously under-articulated low-$\beta$ region of that space explicit.
-
-For Dyson theory, this replaces a discourse organized around static end states with one
-organized around reachable regions of design space. That is the level at which the paper
-claims conceptual novelty; the low-latitude examples remain supporting slices rather than the
-paper's principal intellectual center.
+The synchronization-constrained branch should be read as a useful recasting of known
+synchronous DNKO design space \cite{heiligers2015earthfollowing,quarta2020earthsync,bassetto2024marssync},
+not as an independent orbit-family discovery. Likewise, the paper motivates a reduced
+orbital-topology burden for layered swarms, but does not yet claim a fully quantified
+collision or conjunction metric.
 
 The topology benefit can nevertheless be stated in a precise geometric sense. A same-radius
 Keplerian swarm generates repeated nodal crossings between non-coplanar planes, whereas the
@@ -186,6 +193,14 @@ separated in the normal direction while remaining near the same collection radiu
 future traffic analysis can therefore be posed in terms of node-intersection count, minimum
 normal separation, and conjunction-corridor density, but the present manuscript intentionally
 stops at the architecture-defining geometry rather than claiming a closed operations metric.
+
+The broader displaced-orbit literature already establishes that stability and station-keeping
+are nontrivial questions for such trajectories; existing control results make the architecture
+direction plausible, but the present paper does not yet close that layer of analysis
+\cite{mcinnes1998dnko,bookless2006thesis,dachwald2005degradation}. The same is true for
+optical realism, heavier system-level mass closure, deployment mechanics, and technosignature
+modeling. Those questions are natural next steps, but they belong on top of the framework
+established here rather than inside its first statement.
 
 \section{Figures}
 

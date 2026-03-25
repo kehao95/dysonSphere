@@ -12,16 +12,16 @@
 
 **Stage**: Manuscript Drafting and Figure Production
 
-**Latest shift**: after dedicated prior-art review, the manuscript is now explicitly positioned as an analytic architecture/framework paper built on known DNKO theory, rather than as a new solar-sail orbit-family paper.
+**Latest shift**: after dedicated prior-art review, including McInnes 2026, the manuscript is now explicitly positioned as an analytic architecture/framework paper built on known DNKO theory and on a bridge that recent Dyson literature has already begun to state, rather than as a new solar-sail orbit-family paper.
 
 | Section | Status | Notes |
 |---------|--------|-------|
 | Abstract | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
 | 1. Introduction | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
-| 2. Theoretical Framework | 🟡 First draft written | 见 `drafts/manuscript_draft.md` 与 `drafts/high_level_derivation.md` |
-| 3. Core Innovation | 🟡 Focused low-latitude story | 低纬窗口与设计分支已收束 |
-| 4. Low-Latitude Illustrative Analysis | 🟡 First draft written | 含轻量 areal-density check 与 Earth-synchronous slice |
-| 5. Discussion | 🟡 First draft written | 主张边界与理想镜面 disclaimer 已写入 |
+| 2. Analytic Support Framework | 🟡 First draft written | 见 `drafts/manuscript_draft.md` 与 `drafts/high_level_derivation.md` |
+| 3. Architecture Reframing | 🟡 First draft written | main novelty 已前移到算例之前 |
+| 4. Low-Latitude Illustrative Analysis | 🟡 First draft written | 明确降级为 supporting slices |
+| 5. Boundaries and Next Steps | 🟡 First draft written | 主张边界与 deferred work 已单独成节 |
 | 6. Conclusion | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
 
 ### Current Writing Surface
@@ -56,6 +56,11 @@
 - **架构层面**：MDDS 是这条连续谱中的低-`\beta` 微位移工作段，提供了一条相对于传统纯开普勒 Dyson Swarm 更易组织的渐进式替代路线，通过光压辅助的纬度分层降低轨道拓扑复杂度，并把问题从固定参数开普勒巨型星座的 intersection management，转写为 layered support geometry。
 - **物理层面**：地日环境下存在一个非空的小角度工作区间，在这个区间内，微小角位移已经能带来巨大的离面部署平面，而对应的纯面密度门槛在入口级角度上已接近或进入现有人类轻量航天系统能力范围。
 
+同时，latest prior-art update 现在已经明确指出一个必须写进正文的边界：
+
+- **McInnes 2026 已明确占住桥接命题**：Dyson swarm 的碰撞可原则上通过 displaced non-Keplerian orbit families 来缓解，因为轨道面可以做 parallel stacking，而不是继续保持 mutually inclined 的相交结构。
+- 因此，本文**不再把“这座桥是否存在”当作 novelty**；真正保得住的贡献，是把这条已经被点出的桥发展成 `Dyson support continuum + analytic screening criterion + staged-growth architecture language`。
+
 当前写作策略也已相应调整：
 
 - 低纬 `\theta_\oplus / 0.1^\circ / 0.5^\circ / 1^\circ` 例子保留，但只作为 supporting slices
@@ -66,7 +71,7 @@
 
 当前 safest one-sentence claim 为：
 
-> **The main novelty of this work lies not in proposing a fundamentally new family of solar-sail dynamics, but in using known low-latitude displaced non-Keplerian dynamics to define a continuous Dyson support spectrum and an analytic architecture criterion that shifts Dyson organization from nodal-intersection management to layered support geometry.**
+> **The main novelty of this work lies not in identifying the displaced-NKO bridge itself, which recent Dyson literature now explicitly notes, but in developing that bridge into a continuous Dyson support spectrum, an analytic architecture criterion, and a staged-growth language that shifts Dyson organization from nodal-intersection management to layered support geometry.**
 
 ### Core Results For Main Text
 
@@ -78,6 +83,7 @@
 - 低纬主结果现已收束为 `0.1^\circ`、`0.5^\circ`、`1^\circ` 三个正文代表点：用于展示从“极宽松入口”到“仍有意义但已明显收紧”的低纬窗口；`2^\circ` 保留为对照点，说明窗口会继续快速缩窄。
 - 当前正文的主建模边界也已明确：主推导采用完美镜面太阳帆，并把 reflector 视为唯一显式承受并利用光压的支撑表面；payload（例如太阳能电池板）造成的额外光压、热再辐射与受力偏移未进入主方程，只在 $\sigma_{\text{sys}}$ 中作为质量预算处理。
 - current prior-art map 已明确表明：Earth-synchronous / period-constrained branch 在现有 DNKO 文献中已有成熟先例，因此正文中只把它当作 framework 内的 illustrative operational variant，不再当作独立 novelty claim。
+- McInnes 2026 进一步表明：`Dyson-swarm collision relief -> displaced NKO parallel stacking` 这条主桥本身也已被显式说出，因此正文 novelty posture 现已进一步收紧为 `bridge development` 而不是 `bridge discovery`。
 - 高层理论主线现已单独记录：MDDS 可以被统一表述为“纬度支撑曲线 $\beta_{\min}(\phi)$ / $\sigma_{\max}(\phi)$ 与系统面密度 $\sigma_{\text{sys}}$ 的交点问题”，详见 `Paper/drafts/high_level_derivation.md`。
 - 更高层的概念定位也已收紧：MDDS 可被解释为连接“平面开普勒 swarm 极限”和“辐射支撑 statite / bubble 端点”的构型连续体，而本文当前严格分析的是其中低纬、低-$\beta$、可工程化的 displaced-orbit 分支。
 - 理论框架下的两类自然设计方向也已明确：一类是通过最小化 $\beta$ 来最大化质量裕度的 payload-friendly branch，另一类是通过施加外部周期条件来保持运行规则性的 synchronization-constrained branch。
@@ -107,109 +113,111 @@
 
 ### 1. Introduction
 
-**目标**: 建立问题的重要性和现有方案的不足
+**目标**: 先说清楚问题，再说清楚 prior-art boundary 与本文新增内容
 
-1.1 The Dyson Swarm Concept
-- 戴森球作为 Type II 文明标志
-- 戴森群（Swarm）vs 戴森壳（Shell）vs 戴森泡（Bubble）
+1.1 Dyson Swarms as a Topology-and-Growth Problem
+- 所有开普勒轨道必须过中心体
+- 同半径多倾角轨道天然生成 node-crossing graph
+- 问题不只是碰撞，而是 growth path 的几何病理
 
-1.2 The Keplerian Deadlock
-- 所有开普勒轨道必须过质心 → 大圆轨迹
-- 同高度多节点必然产生轨道交点
-- 碰撞风险与 Kessler 灾难
+1.2 The Prior-Art Bridge and Its Boundary
+- DNKO / statite / displaced-orbit 理论链已经成熟
+- McInnes 2026 已明确指出 Dyson swarm 可借 displaced NKO parallel stacking 缓解碰撞
+- 因此本文不能再把“桥是否存在”作为 novelty
 
-1.3 Limitations of Existing Approaches
-- Co-orbital phase separation: 微扰不稳定
-- Nested rings: 遮挡与热串扰
-- Full levitation (Dyson Bubble): 材料不可行
+1.3 What This Paper Adds
+- 把 bridge 发展成 support continuum
+- 把架构问题压缩为 `\beta_{\min}(\phi)` / `\sigma_{\max}(\phi)` / `\sigma_{\text{sys}}`
+- 把问题从 intersection management 改写为 layered support geometry
 
-1.4 Our Contribution
-- 微位移策略：中等但显著低于 1 的 $\beta$ 实现大分离
-- 解耦架构：打破反射-吸收死结
+1.4 Claim Boundary and Roadmap
+- 明确不主张 orbit-family discovery
+- 明确不做完整系统工程 closure
+- 提前说明后文结构：framework -> architecture consequences -> illustrative slices -> boundaries
 
-### 2. Theoretical Framework: Displaced Orbits
+### 2. Analytic Support Framework
 
-**目标**: 建立理论基础
+**目标**: 建立全文真正承重的解析骨架
 
-2.1 Solar Radiation Pressure
-- 光压基本原理
-- 临界面密度 $\sigma^*$
+2.1 Geometry, Kinematics, and Force Balance
+- 圆形位移轨道几何
+- 轨道支撑与辐射支撑的分解
 
-2.2 Lightness Number $\beta$
-$$\beta = \frac{F_{\text{rad}}}{F_{\text{grav}}} = \frac{\sigma^*}{\sigma}$$
+2.2 Payload-Optimized Branch
+- 精确理想帆最优角
+- `\beta_{\min}(\phi)` 与 `\sigma_{\max}(\phi)`
+- 把轨道问题转写为 screening criterion
 
-2.3 Non-Keplerian Displaced Orbits (McInnes)
-- 圆形位移轨道方程
-- $\beta$-$\phi$ 关系
+2.3 Dyson Support Continuum
+- Keplerian swarm 极限
+- low-`\beta` MDDS 工作段
+- bubble / statite access threshold 与 branch endpoint 的区分
 
-2.4 Stability Considerations
-- 径向稳定性
-- 轴向稳定性
+2.4 Synchronization-Constrained Branch
+- Earth-synchronous / period-constrained slice
+- 作为同一 framework 的 operational variant
 
-### 3. Core Innovation: Micro-Displacement with Decoupled Architecture
+2.5 Scope of the Main-Text Model
+- 理想镜面边界
+- payload 只作为面密度预算进入
 
-**目标**: 阐述核心创新
+### 3. Architecture Reframing and Design Consequences
 
-3.1 Why Full Levitation Fails
-- $\beta \ge 1$ 要求 $\sigma < 1.53$ g/m²
-- 无法携带有意义的载荷
+**目标**: 在算例之前先把论文真正的主贡献讲清楚
 
-3.2 The Micro-Displacement Insight
-- 小角度 $\phi \sim 1°$ 的精确理想帆结果为 $\beta_{\min} \approx 0.0453$
-- 1 AU 处物理分离达数百万公里
-- 完全消除轨道交点
+3.1 Architecture Reframing
+- novelty 在于 bridge development，不在 bridge discovery
+- 从 nodal-intersection management 转向 layered support geometry
 
-3.3 Decoupled Architecture
-- 推力模块（反射）与载荷模块（吸收）分离
-- 热力学解耦
-- 系统 $\beta$ 计算
+3.2 From End-State Taxonomy to Design Space
+- shell / swarm / bubble 改写为同一 support space 的不同区域
+- growth path 与 transition threshold 变成一等理论对象
+
+3.3 Growth Path and Deployment Logic
+- 低纬起步、逐步拓纬的 progressive architecture
+- 后续可自然引出 traffic-style metrics
+
+3.4 Observational Implications
+- developing Dyson systems 更像 stratified circumstellar disk
+- technosignature implication 作为 framework-generated hypothesis
 
 ### 4. Low-Latitude Illustrative Analysis
 
-**目标**: 用少量代表点证明框架不是空的
+**目标**: 只证明 framework 非空，不承载主 novelty
 
-4.1 Reference Points
+4.1 Representative Latitudes
+- `\theta_\oplus`
 - `0.1^\circ`
 - `0.5^\circ`
 - `1.0^\circ`
 
-4.2 Lightweight Areal-Density Bookkeeping
-- 反射膜
-- PV / payload 填充
-- 只做 order-of-magnitude 级别约束，不做 exhaustive engineering closure
+4.2 Entry-Level Interpretation
+- Earth-angle 作为近入口特征角
+- 微小角位移即可换来巨大法向分离
 
-4.3 Entry-Level Characteristic Angle
-- 用从太阳看地球角直径 $\theta_\oplus$ 作为直观标尺
-- 说明 MDDS 并非只在遥远未来材料极限下才出现非空工作区
-- 将其定位为“近入口区间”，而不是高价值宽分层区间
+4.3 Order-of-Magnitude Engineering Slices
+- 轻量 reflector + PV bookkeeping
+- 只做 screening-level 说明
 
-4.4 Earth-Synchronous Variant
-- 同步约束如何改变半径
-- 不改变 `\beta_{\min}(\phi)` / `\sigma_{\max}(\phi)`
+4.4 Synchronization Slice
+- 同步约束改变半径
+- 不改变 support curve 本身
 
-### 5. Discussion
+4.5 What the Slices Show
+- 只证明 low-`\beta` window 非空且快速收紧
 
-**目标**: 定位贡献边界，而非做重工程扩展
+### 5. Boundaries and Next Steps
 
-5.1 What This Paper Establishes
-- 低-`\beta` 微位移工作区间存在
-- 该工作区间可被统一判据系统量化
-- 低纬区间存在非空示例窗口
+**目标**: 把 claim boundary 单独放出来，而不是混在主论证里
 
-5.2 What This Paper Does Not Claim
-- 不证明完整 Dyson 工程已可实现
-- 不声称纯能量上优于理想 Dyson Swarm
-- 不声称本文已完成全面系统工程论证
+5.1 Modeling Boundaries
+- 非理想光学
+- 稳定性 / 控制闭合
 
-5.3 Design Directions
-- Payload-optimized branch
-- Synchronization-constrained branch
-- 渐进部署路径
-
-5.4 Deferred Engineering Questions
+5.2 Deferred Engineering Questions
 - 结构闭合
-- 固定 bus / deployment / control 质量
-- 更完整稳定性、热学与控制分析
+- fixed bus / deployment / control mass
+- 更完整 thermal / control / traffic analysis
 
 ### 6. Conclusion
 
