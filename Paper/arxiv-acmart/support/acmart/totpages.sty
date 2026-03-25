@@ -1,0 +1,19 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{totpages}[2024/05/09 Minimal stub for local builds]
+
+\newcounter{TotPages}
+
+\makeatletter
+\AtEndDocument{%
+  \clearpage
+  \refstepcounter{TotPages}%
+  \begingroup
+    \edef\TotPages@value{\thepage}%
+    \immediate\write\@auxout{%
+      \string\newlabel{TotPages}{{}{\TotPages@value}}%
+    }%
+  \endgroup
+}
+\makeatother
+
+\endinput

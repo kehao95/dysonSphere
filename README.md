@@ -8,9 +8,9 @@
 
 ## Abstract
 
-Traditional Dyson Swarm concepts are constrained by Keplerian orbital mechanics: all orbital planes must pass through the stellar center of mass (great circle trajectories). This creates unavoidable nodal intersections at the equatorial plane when deploying numerous nodes at similar orbital radii, risking irreversible gravitational chaos and Kessler-syndrome catastrophes.
+Traditional Dyson Swarm concepts are constrained by Keplerian orbital mechanics: all orbital planes must pass through the stellar center of mass (great circle trajectories). This creates unavoidable nodal intersections at the equatorial plane when deploying numerous nodes at similar orbital radii. The result is not only a collision problem, but a topology-and-growth problem: every added same-radius plane also enlarges the persistent intersection network that the swarm must manage.
 
-We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that leverages solar radiation pressure (SRP) to maintain small out-of-plane displacements. Unlike full-levitation schemes (Dyson Bubble) requiring exotic materials, our exact ideal-sail model shows that a 1° ring needs only $\beta \approx 0.045$ while already achieving millions of kilometers of physical separation and eliminating orbital intersections.
+We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that leverages solar radiation pressure (SRP) to maintain small out-of-plane displacements. More broadly, we treat Dyson architectures as a **support continuum** rather than a set of disconnected shell / swarm / bubble categories. In that framing, MDDS occupies a low-$\beta$ mixed-support regime between the planar Keplerian limit and the fully radiatively supported bubble/statite endpoint.
 
 The key innovation is a **Decoupled Architecture**: separating the reflective thrust module (large-area thin film mirror) from the absorptive payload module (high-efficiency solar cells). This resolves the fundamental "reflect vs. absorb" thermal paradox while enabling practical mass budgets.
 
@@ -30,11 +30,13 @@ The key innovation is a **Decoupled Architecture**: separating the reflective th
      → Collision risk / Kessler cascade
 ```
 
+This is not just a local conjunction issue. In a dense same-radius swarm, it becomes a topology-and-growth problem: expanding capacity means expanding the nodal graph itself, so the architecture inherits more crossing structure as it scales.
+
 ### Why Existing Solutions Fail
 
 | Approach | Limitation |
 |----------|------------|
-| Co-orbital phase separation | Unstable under solar wind perturbation |
+| Co-orbital phase separation | Redistributes encounter timing but does not remove geometric intersections |
 | Nested rings (different radii) | Severe shadowing & thermal crosstalk |
 | Full levitation (Dyson Bubble) | Requires $\sigma < 1.53$ g/m² — no useful payload |
 
@@ -55,6 +57,8 @@ The key innovation is a **Decoupled Architecture**: separating the reflective th
      → Physical separation d ~ millions of km
      → ZERO orbital intersections
 ```
+
+The larger reframing is that Dyson structures need not be discussed as fully separate end states. Instead, they can be organized along a support continuum: purely orbital Keplerian swarms at one end, fully radiatively supported bubble/statite concepts at the other, and low-$\beta$ mixed-support MDDS layers in between.
 
 ### Core Insight
 

@@ -1,0 +1,30 @@
+---
+title: "From Keplerian Swarms to Radiatively Supported Bubbles: A Low-Beta Continuum Framework for Dyson Architectures"
+author: |
+  Hao Ke
+date: "March 2026"
+numbersections: true
+reference-section-title: "References"
+abstract: |
+  Conventional Dyson swarms inherit a topology problem because Keplerian orbital planes at a common heliocentric radius inevitably intersect, whereas fully radiatively supported statite or bubble concepts avoid those intersections only at severe areal-density cost. We therefore argue that Dyson architectures are better understood as a continuous support-and-stratification spectrum between those limits. Using established solar-sail displaced non-Keplerian orbit (DNKO) theory, rather than proposing a new orbit family, we reinterpret the low-latitude displaced-orbit regime as an analytic architecture framework for layered Dyson-swarm design. In this Micro-Displaced Dyson Swarm (MDDS) framing, collectors remain primarily orbital while solar-radiation pressure maintains small out-of-plane displacements that create stratified latitude bands. For an ideal specular sail, this yields the closed-form support curve $\beta_{\min}(\phi)=\frac{3\sqrt{3}}{2}\sin\phi$ and equivalent areal-density limit $\sigma_{\max}(\phi)=\frac{2\sigma^*}{3\sqrt{3}\sin\phi}$.
+
+  This converts the architecture question into a simple screening criterion: a system is supportable at latitude $\phi$ if $\sigma_{\text{sys}} < \sigma_{\max}(\phi)$. The same framework yields a payload-optimized branch and a synchronization-constrained branch. We do not claim a complete Dyson-engineering realization, nor a new foundation for solar-sail orbit theory; our narrower contribution is to recast known low-latitude DNKO dynamics into a Dyson support continuum and analytic criterion for layered swarm design. Representative Sun-Earth examples at $\theta_\oplus$, $0.1^\circ$, $0.5^\circ$, and $1^\circ$ show a non-empty low-latitude window well below the full statite/bubble limit, although the allowable mass margin narrows rapidly with latitude. The result is a theory-grounded architectural framework that identifies an idealized low-latitude operating regime for further study.
+documentclass: acmart
+classoption:
+  - manuscript
+  - screen
+  - nonacm
+nobibliography: false
+nocite:
+  - '@*'
+header-includes:
+  - \usepackage{float}
+  - \floatplacement{figure}{tbp}
+  - \usepackage{booktabs}
+  - \settopmatter{printacmref=false,printfolios=false}
+  - \renewcommand\footnotetextcopyrightpermission[1]{}
+  - \makeatletter\let\@copyrightspace\relax\makeatother
+  - \pagestyle{plain}
+  - \fancyhead{}
+  - \fancyfoot{}
+---
