@@ -90,11 +90,13 @@ $if(has-frontmatter)$
 $endif$
 $if(abstract)$
 \begin{abstract}
+\noindent\textbf{Abstract}\par
 $abstract$
 \end{abstract}
 $endif$
 $if(title)$
 \maketitle
+\setlength{\headheight}{21pt}
 $endif$
 
 $for(include-before)$

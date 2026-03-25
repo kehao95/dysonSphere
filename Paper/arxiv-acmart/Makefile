@@ -4,10 +4,10 @@
 OUT_DIR ?= output
 SRC_DIR ?= sections
 META ?= metadata.yaml
-BIB ?= references.bib
+BIB ?= ../references/bibliography.bib
 
-SECTIONS ?= $(SRC_DIR)/01-paper.md
-FIGURES ?= $(wildcard figures/concept/*.svg) $(wildcard figures/results/*.svg)
+SECTIONS ?= ../content/manuscript.md
+FIGURES ?= $(wildcard ../figures/concept/*.svg) $(wildcard ../figures/results/*.svg)
 FIGURE_PDFS ?= $(FIGURES:.svg=.pdf)
 
 FULL_MD ?= $(OUT_DIR)/full_paper.md
@@ -16,13 +16,13 @@ PDF ?= $(OUT_DIR)/$(PDF_NAME)
 LATEX_FILE ?= $(OUT_DIR)/paper.tex
 HTML ?= $(OUT_DIR)/paper.html
 DOCX ?= $(OUT_DIR)/paper.docx
-TEMPLATE ?= templates/acmart.latex
+TEMPLATE ?= ../templates/acmart/acmart.latex
 
 ARXIV_DIR ?= $(OUT_DIR)/arxiv_submission
 ARXIV_TEX ?= $(ARXIV_DIR)/main.tex
 ARXIV_ZIP ?= $(OUT_DIR)/arxiv_submission.tar.gz
 
-SUPPORT_DIR ?= support/acmart
+SUPPORT_DIR ?= ../templates/acmart/support/acmart
 SUPPORT_FILES ?= $(SUPPORT_DIR)/acmart.cls \
                  $(SUPPORT_DIR)/acmauthoryear.bbx \
                  $(SUPPORT_DIR)/acmauthoryear.cbx \
@@ -31,7 +31,7 @@ SUPPORT_FILES ?= $(SUPPORT_DIR)/acmart.cls \
                  $(SUPPORT_DIR)/acmnumeric.cbx \
                  $(SUPPORT_DIR)/totpages.sty
 
-RESOURCE_PATH ?= .:$(SRC_DIR):figures:figures/concept:figures/results
+RESOURCE_PATH ?= .:../content:../figures:../figures/concept:../figures/results
 
 PANDOC_PDF_OPTS := --standalone \
                    --from markdown \
@@ -89,15 +89,22 @@ $(FULL_MD): $(META) $(SECTIONS) | setup
 	awk 'FNR==1 && NR!=1 {print ""} {print}' $(META) $(SECTIONS) > $(FULL_MD)
 
 $(FIGURE_PDFS): %.pdf: %.svg
-	rsvg-convert -f pdf -o $@ $<
+	rsvg-convert -f pdf -o $@.tmp $<
+	gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -sOutputFile=$@ $@.tmp
+	rm -f $@.tmp
 
-pdf: check setup $(FULL_MD) $(FIGURE_PDFS)
-	pandoc $(FULL_MD) -o $(PDF) $(PANDOC_PDF_OPTS)
+pdf: check setup $(FULL_MD) $(FIGURE_PDFS) $(LATEX_FILE)
+	ln -sfn ../figures figures
+	ln -sfn ../../figures $(OUT_DIR)/figures
+	xelatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUT_DIR) $(LATEX_FILE)
+	xelatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUT_DIR) $(LATEX_FILE)
 	@echo "PDF generated at $(PDF)"
 
-tex: check $(FULL_MD) $(FIGURE_PDFS)
+$(LATEX_FILE): $(FULL_MD) $(FIGURE_PDFS) $(TEMPLATE) $(META) $(BIB) | setup
 	pandoc $(FULL_MD) -o $(LATEX_FILE) $(PANDOC_LATEX_OPTS)
 	@echo "TeX generated at $(LATEX_FILE)"
+
+tex: check $(LATEX_FILE)
 
 html: check $(FULL_MD)
 	pandoc $(FULL_MD) -o $(HTML) --standalone --resource-path=$(RESOURCE_PATH) --citeproc --bibliography=$(BIB)

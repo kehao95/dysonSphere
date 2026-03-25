@@ -1,6 +1,6 @@
 # Paper: Micro-Displaced Dyson Swarm
 
-**Working Title**: From Keplerian Swarms to Radiatively Supported Bubbles: A Low-Beta Continuum Framework for Dyson Architectures
+**Working Title**: From Keplerian Swarms to Radiatively Supported Bubbles: A Continuum Framework for Dyson Architectures
 
 ---
 
@@ -26,11 +26,13 @@
 
 ### Current Writing Surface
 
-- 主正文草稿现已开始落地于 `Paper/drafts/manuscript_draft.md`
-- 当前策略：先完成可读的英文 main text，再视需要迁移到 LaTeX
-- 核心参考文献骨架已初始化于 `Paper/references/bibliography.bib`
+- canonical build manuscript 现已上提到 `Paper/content/manuscript.md`
+- `Paper/drafts/manuscript_draft.md` 保留为较自由的 prose / note surface，而不是模板内正文源
+- 对外联系草稿现集中保存在 `Paper/drafts/mcinnes_cold_email.md`
+- 核心参考文献 canonical source 为 `Paper/references/bibliography.bib`
 - 最小 `main.tex` 已补齐于 `Paper/main.tex`
 - 图像生成脚本已落地于 `Paper/figures/generate_figures.py`
+- 当前结构已显式分离为：`Paper/content/` 管正文，`Paper/templates/` 管 class/template 资产，`Paper/arxiv-acmart/` 与 `Paper/mnras/` 只保留为薄构建包装
 
 ### Paper Positioning
 
@@ -81,6 +83,8 @@
 - 一个更直观的入口级特征角也已纳入正文：取从太阳看地球角半径 $\theta_\oplus \approx 0.00244^\circ$，则有 $\beta_{\min}(\theta_\oplus) \approx 1.11\times 10^{-4}$、$\sigma_{\max}(\theta_\oplus) \approx 13.83\ \text{kg/m}^2$。这说明在纯面密度意义上，MDDS 框架已经进入了一个明显落在人类现有轻量航天系统能力范围内的近入口区间。
 - 该点现在不再只是旁注，而是正式并入代表性例子：在 1 AU 上它对应约一个地球半径的法向分离，$z \approx 6{,}371\ \text{km}$；若施加 Earth-synchronous 约束，对应 inward shift 约 `3000 km`。
 - 低纬主结果现已收束为 `0.1^\circ`、`0.5^\circ`、`1^\circ` 三个正文代表点：用于展示从“极宽松入口”到“仍有意义但已明显收紧”的低纬窗口；`2^\circ` 保留为对照点，说明窗口会继续快速缩窄。
+- 来自 McInnes 2026 的一个新启发是：虽然其稳定圆轨道上限 $\overline{\beta}_S(\overline{\xi})$ 是在相反的 `R \gg R_*` 扩展反射盘极限下推导的，不能直接当作 MDDS 的严格证明，但作为 heuristic screen 很利好。其全局最小值约为 `0.983`（在 `\bar{\xi} \approx 2.38`），因此当前 payload-optimized MDDS 分支在 `\phi \lesssim 22.2^\circ` 时都低于这条稳定性上限；正文中的 `0.1^\circ / 0.5^\circ / 1^\circ` 点都深处于 screened-stable 一侧。这一比较现已进入正文 Discussion，并把“对 exact MDDS branch 做 formal linearized stability analysis”明确抬升为下一步。
+- 同一篇 McInnes 2026 还把若干未完成工作显著前移了：不仅是 exact MDDS branch 的 formal stability map，还包括 finite-extent force-law corrections、被动稳定性如何被工程化而不是假定、distributed loading / in-plane stress 的结构闭合，以及在 swarm densification 之后 mutual attenuation / self-shadowing / diffuse reradiation / secular optical drift 等 collective effects。正文 Discussion 现已把这些内容压缩为一个高层“unfinished agenda”段落。
 - 当前正文的主建模边界也已明确：主推导采用完美镜面太阳帆，并把 reflector 视为唯一显式承受并利用光压的支撑表面；payload（例如太阳能电池板）造成的额外光压、热再辐射与受力偏移未进入主方程，只在 $\sigma_{\text{sys}}$ 中作为质量预算处理。
 - current prior-art map 已明确表明：Earth-synchronous / period-constrained branch 在现有 DNKO 文献中已有成熟先例，因此正文中只把它当作 framework 内的 illustrative operational variant，不再当作独立 novelty claim。
 - McInnes 2026 进一步表明：`Dyson-swarm collision relief -> displaced NKO parallel stacking` 这条主桥本身也已被显式说出，因此正文 novelty posture 现已进一步收紧为 `bridge development` 而不是 `bridge discovery`。
@@ -231,6 +235,7 @@ Paper/
 ├── drafts/             # Working drafts
 │   ├── outline.md      # Detailed outline
 │   ├── high_level_derivation.md  # High-level theoretical derivation
+│   ├── mcinnes_cold_email.md     # Cold email draft for arXiv endorsement
 │   ├── quantitative_findings.md  # Supporting quantitative notes
 │   └── manuscript_draft.md       # Main-text draft in progress
 ├── figures/            # Diagrams and plots

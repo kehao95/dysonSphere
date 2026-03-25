@@ -4,7 +4,7 @@ This outline is a lightweight control surface for the current manuscript posture
 
 ## Working Title
 
-**From Keplerian Swarms to Radiatively Supported Bubbles: A Low-Beta Continuum Framework for Dyson Architectures**
+**From Keplerian Swarms to Radiatively Supported Bubbles: A Continuum Framework for Dyson Architectures**
 
 ## Current Claim Boundary
 
