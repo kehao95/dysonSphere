@@ -1,6 +1,6 @@
 # Pandoc -> MNRAS build for review/submission-style PDFs.
 
-OUT_DIR ?= output
+OUT_DIR ?= ../output
 SECTIONS ?= ../content/manuscript.md
 META ?= metadata.yaml
 BIB ?= ../references/bibliography.bib
@@ -14,9 +14,9 @@ PDF ?= $(OUT_DIR)/$(PDF_NAME)
 LATEX_FILE ?= $(OUT_DIR)/paper.tex
 HTML ?= $(OUT_DIR)/paper.html
 DOCX ?= $(OUT_DIR)/paper.docx
-TEMPLATE ?= ../templates/mnras/mnras.latex
+TEMPLATE ?= mnras.latex
 
-SUPPORT_DIR ?= ../templates/mnras/support/mnras
+SUPPORT_DIR ?= support/mnras
 SUPPORT_FILES ?= $(SUPPORT_DIR)/mnras.cls $(SUPPORT_DIR)/mnras.bst
 
 RESOURCE_PATH ?= .:../content:../figures:../figures/concept:../figures/results
@@ -76,7 +76,7 @@ $(LATEX_FILE): $(FULL_MD) $(FIGURE_PDFS) $(TEMPLATE) $(META) $(BIB) | setup
 
 pdf: check $(LATEX_FILE)
 	ln -sfn ../figures figures
-	ln -sfn ../../figures $(OUT_DIR)/figures
+	ln -sfn ../figures $(OUT_DIR)/figures
 	TEXINPUTS=.:$(SUPPORT_DIR): pdflatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUT_DIR) $(LATEX_FILE)
 	TEXINPUTS=.:$(SUPPORT_DIR): pdflatex -interaction=nonstopmode -halt-on-error -output-directory=$(OUT_DIR) $(LATEX_FILE)
 	@echo "PDF generated at $(PDF)"

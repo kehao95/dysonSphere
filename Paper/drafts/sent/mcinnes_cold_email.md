@@ -1,5 +1,15 @@
 # McInnes Cold Email Draft
 
+## Metadata
+
+- **Recipient**: Professor Colin R. McInnes
+- **Public email**: `Colin.Mcinnes@glasgow.ac.uk`
+- **Why this contact fits**: He is the single most directly relevant senior contact for this manuscript: foundational DNKO theory, displaced-orbit stability, and recent Dyson / bubble work all run through his research.
+- **Relation to manuscript**: His recent Dyson papers materially changed the manuscript's novelty posture and prior-art boundary. The paper now explicitly treats the displaced-orbit bridge as already visible in recent literature and develops it into a support continuum and analytic architecture criterion.
+- **Best use of contact**: highest-priority prior-art / framing reader and possible `astro-ph.EP` arXiv endorser
+- **Public draft**: <https://zenodo.org/records/19226004>
+- **Endorsement link**: <https://arxiv.org/auth/endorse?x=4CKQFC>
+
 **Suggested Subject:** Your 2026 paper reshaped my Dyson-swarm manuscript
 
 ## Email Body
