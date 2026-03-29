@@ -14,6 +14,16 @@
 
 **Latest shift**: after dedicated prior-art review, including McInnes 2026, the manuscript is now explicitly positioned as an analytic architecture/framework paper built on known DNKO theory and on a bridge that recent Dyson literature has already begun to state, rather than as a new solar-sail orbit-family paper.
 
+### Public Draft Record (Zenodo)
+
+Versioned public manuscript snapshots are now archived on Zenodo. Current latest public snapshot: `v3`.
+
+| Version | DOI | Date | Notes |
+|---------|-----|------|-------|
+| v3 | [10.5281/zenodo.19298178](https://doi.org/10.5281/zenodo.19298178) | 2026-03-28 | 当前最新公开快照 |
+| v2 | [10.5281/zenodo.19226004](https://doi.org/10.5281/zenodo.19226004) | 2026-03-25 | 中间公开修订版 |
+| v0.1 | [10.5281/zenodo.19224636](https://doi.org/10.5281/zenodo.19224636) | 2026-03-25 | 首个公开快照 |
+
 | Section | Status | Notes |
 |---------|--------|-------|
 | Abstract | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
@@ -28,11 +38,11 @@
 
 - canonical build manuscript 现已上提到 `Paper/content/manuscript.md`
 - `Paper/drafts/manuscript_draft.md` 保留为较自由的 prose / note surface，而不是模板内正文源
-- 对外联系草稿现集中保存在 `Paper/drafts/mcinnes_cold_email.md`
+- 对外联系草稿现集中保存在 `Paper/drafts/`，包括 `mcinnes_cold_email.md`、`wright_cold_email.md`、`quarta_cold_email.md`、`heiligers_cold_email.md` 与 `friend_forward_packet.md`；各 cold-email draft 现记录公开邮箱、联系理由以及其与 manuscript 的关系
 - 核心参考文献 canonical source 为 `Paper/references/bibliography.bib`
 - 最小 `main.tex` 已补齐于 `Paper/main.tex`
 - 图像生成脚本已落地于 `Paper/figures/generate_figures.py`
-- 当前结构已显式分离为：`Paper/content/` 管正文，`Paper/templates/` 管 class/template 资产，`Paper/arxiv-acmart/` 与 `Paper/mnras/` 只保留为薄构建包装
+- 当前结构已显式分离为：`Paper/content/` 管正文，`Paper/template/` 管唯一保留的 MNRAS build/template 资产，`Paper/output/` 管构建产物
 
 ### Paper Positioning
 
@@ -83,8 +93,9 @@
 - 一个更直观的入口级特征角也已纳入正文：取从太阳看地球角半径 $\theta_\oplus \approx 0.00244^\circ$，则有 $\beta_{\min}(\theta_\oplus) \approx 1.11\times 10^{-4}$、$\sigma_{\max}(\theta_\oplus) \approx 13.83\ \text{kg/m}^2$。这说明在纯面密度意义上，MDDS 框架已经进入了一个明显落在人类现有轻量航天系统能力范围内的近入口区间。
 - 该点现在不再只是旁注，而是正式并入代表性例子：在 1 AU 上它对应约一个地球半径的法向分离，$z \approx 6{,}371\ \text{km}$；若施加 Earth-synchronous 约束，对应 inward shift 约 `3000 km`。
 - 低纬主结果现已收束为 `0.1^\circ`、`0.5^\circ`、`1^\circ` 三个正文代表点：用于展示从“极宽松入口”到“仍有意义但已明显收紧”的低纬窗口；`2^\circ` 保留为对照点，说明窗口会继续快速缩窄。
-- 来自 McInnes 2026 的一个新启发是：虽然其稳定圆轨道上限 $\overline{\beta}_S(\overline{\xi})$ 是在相反的 `R \gg R_*` 扩展反射盘极限下推导的，不能直接当作 MDDS 的严格证明，但作为 heuristic screen 很利好。其全局最小值约为 `0.983`（在 `\bar{\xi} \approx 2.38`），因此当前 payload-optimized MDDS 分支在 `\phi \lesssim 22.2^\circ` 时都低于这条稳定性上限；正文中的 `0.1^\circ / 0.5^\circ / 1^\circ` 点都深处于 screened-stable 一侧。这一比较现已进入正文 Discussion，并把“对 exact MDDS branch 做 formal linearized stability analysis”明确抬升为下一步。
-- 同一篇 McInnes 2026 还把若干未完成工作显著前移了：不仅是 exact MDDS branch 的 formal stability map，还包括 finite-extent force-law corrections、被动稳定性如何被工程化而不是假定、distributed loading / in-plane stress 的结构闭合，以及在 swarm densification 之后 mutual attenuation / self-shadowing / diffuse reradiation / secular optical drift 等 collective effects。正文 Discussion 现已把这些内容压缩为一个高层“unfinished agenda”段落。
+- 正文现已补入 exact payload-optimized branch 的一阶局部 `r-\phi` 线性化：在定义 `q=r_0\delta\phi` 与 `y=r_0\cos\phi_0\,\psi` 后，可得到耦合扰动方程与特征二次式 `u^2+[1+\nu^2(1+2\sin^2\phi_0)]u+\nu^2\cos^2\phi_0=0`（其中 `u=\lambda^2/n^2`）。因此对整个 `0<\phi<\phi_c` 分支，`r-\phi` 子系统保持振荡有界，而 along-track phase mode 仍是中性模态。
+- 来自 McInnes 2026 的一个新启发是：虽然其稳定圆轨道上限 $\overline{\beta}_S(\overline{\xi})$ 是在相反的 `R \gg R_*` 扩展反射盘极限下推导的，不能直接当作 MDDS 的严格证明，但作为 heuristic screen 很利好。其全局最小值约为 `0.983`（在 `\bar{\xi} \approx 2.38`），因此当前 payload-optimized MDDS 分支在 `\phi \lesssim 22.2^\circ` 时都低于这条稳定性上限；正文中的 `0.1^\circ / 0.5^\circ / 1^\circ` 点都深处于 screened-stable 一侧。这一比较现已进入正文 Discussion，并把后续重点收束到 passive / closed-loop stability closure，而不再是“是否存在 exact branch 的线性化处理”这个更前一层的问题。
+- 同一篇 McInnes 2026 还把若干未完成工作显著前移了：在本文已加入 local `r-\phi` 线性化之后，下一步不再是“有没有 formal stability map”这个抽象问题，而是 passive / closed-loop stability、finite-extent force-law corrections、distributed loading / in-plane stress 的结构闭合，以及在 swarm densification 之后 mutual attenuation / self-shadowing / diffuse reradiation / secular optical drift 等 collective effects。正文 Discussion 现已把这些内容压缩为一个高层“unfinished agenda”段落。
 - 当前正文的主建模边界也已明确：主推导采用完美镜面太阳帆，并把 reflector 视为唯一显式承受并利用光压的支撑表面；payload（例如太阳能电池板）造成的额外光压、热再辐射与受力偏移未进入主方程，只在 $\sigma_{\text{sys}}$ 中作为质量预算处理。
 - current prior-art map 已明确表明：Earth-synchronous / period-constrained branch 在现有 DNKO 文献中已有成熟先例，因此正文中只把它当作 framework 内的 illustrative operational variant，不再当作独立 novelty claim。
 - McInnes 2026 进一步表明：`Dyson-swarm collision relief -> displaced NKO parallel stacking` 这条主桥本身也已被显式说出，因此正文 novelty posture 现已进一步收紧为 `bridge development` 而不是 `bridge discovery`。
@@ -161,7 +172,12 @@
 - Earth-synchronous / period-constrained slice
 - 作为同一 framework 的 operational variant
 
-2.5 Scope of the Main-Text Model
+2.5 Local Radial-Latitude Dynamics
+- exact payload-optimized branch 的 `r / \phi` 线性化
+- bounded oscillatory `r-\phi` subspace vs neutral along-track mode
+- `\delta\beta/\beta \sim \cot\phi\,\delta\phi` 与 `\delta\omega/\omega = -\tfrac32 \delta r/r`
+
+2.6 Scope of the Main-Text Model
 - 理想镜面边界
 - payload 只作为面密度预算进入
 

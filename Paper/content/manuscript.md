@@ -2,7 +2,7 @@
 
 ## Problem setting: topology burden and the missing middle regime
 
-Dyson swarms are often treated as the least structurally extreme stellar-collection concept because they replace a monolithic shell with independent orbiting collectors [Dyson, 1960]. The simplification is real, but it leaves a different systems problem unresolved: how a very large same-shell collector population can coexist dynamically without turning nodal crossings into a persistent collision-management burden.
+Dyson swarms are often treated as the least structurally extreme stellar-collection concept because they replace a monolithic shell with independent orbiting collectors [Dyson, 1960; Wright, 2020]. The simplification is real, but it leaves a different systems problem unresolved: how a very large same-shell collector population can coexist dynamically without turning nodal crossings into a persistent collision-management burden.
 
 In a conventional Keplerian swarm, every orbital plane passes through the central mass. Any two non-coplanar planes therefore intersect along a common nodal line. For circular or near-circular same-radius shells, that geometry creates path-crossing corridors at the nodes; for eccentric cases, exact path intersection occurs when the nodal radii coincide. For sparse systems this may be tolerable. For dense systems, however, large-constellation collision and debris analyses already show that conjunction risk and debris consequences become system-level management issues rather than isolated operational events (Radtke et al., 2017; Le May et al., 2018). Each added orbital plane then contributes not only collecting area, but also more crossing structure that must be phased, screened, and kept mutually separated.
 
@@ -36,7 +36,7 @@ The scope is intentionally narrow. We do not attempt full structural, thermal, c
 
 ## Prior art and claim boundary
 
-The relevant prior-art landscape has two mature branches. The first is the solar-sail and DNKO literature: statites, solar-sail halo orbits, families of displaced two-body orbits, displaced non-Keplerian orbit stability and control, and later synchronous heliocentric variants have all been studied extensively (Forward, 1991; McInnes and Simmons, 1992a,b; McInnes, 1997, 1998; McInnes, 1999; Quarta et al., 2020; Bassetto and Quarta, 2024). The second is the Dyson-swarm / Dyson-bubble literature, which frames stellar collector populations as large-scale engineering or observability problems rather than primarily as orbit-design problems (Dyson, 1960; Wright et al., 2015; McInnes, 2025, 2026).
+The relevant prior-art landscape has two mature branches. The first is the solar-sail and DNKO literature: statites, solar-sail halo orbits, families of displaced two-body orbits, displaced non-Keplerian orbit stability and control, and later synchronous heliocentric variants have all been studied extensively (Forward, 1991; McInnes and Simmons, 1992a,b; McInnes, 1997, 1998; McInnes, 1999; Quarta et al., 2020; Bassetto and Quarta, 2024). The second is the Dyson-swarm / Dyson-bubble literature, which frames stellar collector populations as large-scale engineering or observability problems rather than primarily as orbit-design problems (Dyson, 1960; Wright, 2020; Wright et al., 2015; McInnes, 2025, 2026).
 
 Recent Dyson-focused work narrows the novelty boundary further. In particular, McInnes (2026) explicitly notes that collisions in an orbiting Dyson swarm could in principle be reduced using displaced non-Keplerian orbits whose planes can be stacked in parallel rather than left mutually inclined. That observation is already close to the central geometric move developed here. The remaining question is therefore not whether such a bridge exists in principle, but whether it can be elevated into a compact architecture language with explicit screening variables, a continuum interpretation, and a bounded low-latitude working regime.
 
@@ -86,7 +86,7 @@ Figure 3 is intended to visualize this displaced geometry at the architectural l
 
 ## The payload-optimized branch
 
-At fixed $\phi$, the most important engineering objective is usually to maximize the mass budget available to the system. Since $\beta = \sigma^*/\sigma$, this is equivalent to minimizing the required $\beta$. Solving that optimization over sail attitude yields
+At fixed $\phi$, the most important engineering objective is usually to maximize the mass budget available to the system. Since $\beta = \sigma^*/\sigma$ for an ideal reflector (McInnes, 1999), this is equivalent to minimizing the required $\beta$. Solving that optimization over sail attitude yields
 
 $$
 \alpha_{\text{opt}} = \arctan\left(\frac{1}{\sqrt{2}}\right),
@@ -191,6 +191,156 @@ An important consequence follows immediately: the synchronization constraint mod
 
 That distinction matters for how the branch is interpreted later in the paper. The payload-optimized branch answers the question, "What is the most mass-efficient way to support a chosen latitude?" The synchronization-constrained branch answers a different question: "What geometric adjustment is required if regular timing or common angular rate is imposed from outside?" These are different cuts through the same support space, not competing definitions of the architecture itself.
 
+## Local radial-latitude dynamics
+
+The support curve above establishes the existence of the displaced branch, but not its nearby open-loop dynamical character. For a first local stability slice, write the heliocentric dynamics in spherical variables $(r,\phi,\theta)$ and decompose the ideal-specular sail force into the standard radial and meridional coefficients
+
+$$
+A \equiv \mu\beta\cos^3\alpha,\qquad
+B \equiv \mu\beta\cos^2\alpha\sin\alpha.
+$$
+
+The exact equations of motion are then
+
+$$
+\ddot r-r\dot\phi^2-r\cos^2\phi\,\dot\theta^2
+=
+-\frac{\mu}{r^2}
++\frac{A\cos\phi+B\sin\phi}{r^2},
+$$
+
+$$
+r\ddot\phi+2\dot r\dot\phi+r\sin\phi\cos\phi\,\dot\theta^2
+=
+\frac{-A\sin\phi+B\cos\phi}{r^2},
+$$
+
+$$
+r\cos\phi\,\ddot\theta
++2\dot r\cos\phi\,\dot\theta
+-2r\sin\phi\,\dot\phi\,\dot\theta
+=0.
+$$
+
+For the displaced circular solution $(r_0,\phi_0,\dot\theta=\omega)$, these reduce to
+
+$$
+A=\mu\cos\phi_0(1-\nu^2),\qquad
+B=\mu\sin\phi_0,\qquad
+\nu=\frac{\omega}{\sqrt{\mu/r_0^3}}.
+$$
+
+Now set
+
+$$
+r=r_0+\xi,\qquad
+\phi=\phi_0+\delta\phi,\qquad
+\theta=\omega t+\psi,
+$$
+
+and define the length-like perturbations
+
+$$
+q \equiv r_0\,\delta\phi,\qquad
+y \equiv r_0\cos\phi_0\,\psi.
+$$
+
+To first order, the local dynamics become
+
+$$
+\ddot\xi-2\omega\cos\phi_0\,\dot y
+=
+3n^2\nu^2\cos^2\phi_0\,\xi
+-n^2\nu^2\sin\phi_0\cos\phi_0\,q,
+$$
+
+$$
+\ddot q+2\omega\sin\phi_0\,\dot y
+=
+-3n^2\nu^2\sin\phi_0\cos\phi_0\,\xi
+-n^2(1-\nu^2\sin^2\phi_0)\,q,
+$$
+
+$$
+\ddot y+2\omega(\cos\phi_0\,\dot\xi-\sin\phi_0\,\dot q)=0,
+$$
+
+with $n=\sqrt{\mu/r_0^3}$.
+
+The third equation integrates once to
+
+$$
+\dot y+2\omega(\cos\phi_0\,\xi-\sin\phi_0\,q)=C,
+$$
+
+where $C$ is the conserved along-track phase/angular-momentum offset. For perturbations with no injected along-track bias, $C=0$, and the radial-latitude subsystem reduces to
+
+$$
+\ddot\xi+n^2\nu^2\cos^2\phi_0\,\xi
+-3n^2\nu^2\sin\phi_0\cos\phi_0\,q=0,
+$$
+
+$$
+\ddot q-n^2\nu^2\sin\phi_0\cos\phi_0\,\xi
++n^2(1+3\nu^2\sin^2\phi_0)\,q=0.
+$$
+
+Seeking solutions proportional to $e^{\lambda t}$ gives
+
+$$
+\left(\lambda^2+n^2\nu^2\cos^2\phi_0\right)
+\left[\lambda^2+n^2(1+3\nu^2\sin^2\phi_0)\right]
+-3n^4\nu^4\sin^2\phi_0\cos^2\phi_0=0.
+$$
+
+Writing $u\equiv\lambda^2/n^2$ yields the compact quadratic
+
+$$
+u^2+\left[1+\nu^2(1+2\sin^2\phi_0)\right]u+\nu^2\cos^2\phi_0=0.
+$$
+
+For the entire payload-optimized branch,
+
+$$
+0<\phi_0<\phi_c=\arctan\left(\frac{1}{\sqrt{2}}\right),
+$$
+
+one has $\nu^2>0$ and $\cos^2\phi_0>0$, so both roots satisfy $u<0$. The two nontrivial radial-latitude modes are therefore oscillatory, with frequencies
+
+$$
+\omega_\pm^2
+=
+\frac{n^2}{2}
+\left[
+1+\nu^2(1+2\sin^2\phi_0)
+\pm
+\sqrt{
+\left(1+\nu^2(1+2\sin^2\phi_0)\right)^2
+-4\nu^2\cos^2\phi_0
+}
+\right].
+$$
+
+This yields a bounded open-loop $r$-$\phi$ response throughout the low-$\beta$ branch. The branch nevertheless softens as $\phi\to\phi_c$ because $\nu\to0$ and hence $\omega_-\to0$. The along-track degree of freedom remains neutral through the conserved constant $C$, so this is not a proof of passive asymptotic self-restoration; it is a local boundedness result for the coupled radial-latitude subsystem.
+
+The same framework also clarifies why $\phi$- and $r$-perturbations represent different kinds of design burden. Along the payload-optimized branch,
+
+$$
+\frac{\delta\beta_{\min}}{\beta_{\min}}
+=
+\cot\phi_0\,\delta\phi,
+$$
+
+so latitude errors directly perturb the support demand. By contrast, the equilibrium family remains scale-free in radius, and the neighboring circular solution instead shifts its orbital rate according to
+
+$$
+\frac{\delta\omega}{\omega}
+=
+-\frac{3}{2}\frac{\delta r}{r_0}.
+$$
+
+Thus $r$ errors act primarily as orbital-rate mismatch rather than as a first-order change in the underlying support threshold.
+
 ## Assumptions
 
 The present analysis adopts the standard ideal-specular sail assumption and treats the sail as the sole optically active support surface. Payload elements enter only through the aggregate system areal density $\sigma_{\mathrm{sys}}$ used in the later bookkeeping examples. The results should therefore be read as an ideal baseline framework rather than as a complete optical-realism, payload-coupled, or control-closure model. This matters especially for MDDS because non-ideal optical behavior can perturb not only thrust magnitude but also force direction, thereby shifting the practical support curve away from the ideal limit (Dachwald et al., 2005; Wawrzyniak and Howell, 2011).
@@ -287,13 +437,13 @@ The same staged-growth logic also suggests a limited observational hypothesis: o
 
 The most immediate realism layers are optical non-idealities, stability, and structural closure. For purely radial radiative-support concepts, optical non-idealities primarily act as thrust-efficiency penalties. For MDDS, by contrast, non-ideal optical behavior can also perturb the effective force direction because the displaced configuration relies on a specific vector decomposition of radiation pressure. The closed-form support curve derived here is therefore best understood as an ideal reference limit that later optical-realism studies should correct upward rather than replace wholesale.
 
-Long-term maintainability is the next major boundary. The broader DNKO literature has already shown that displaced orbits can include marginally stable or unstable subfamilies under open-loop dynamics, and that linear state feedback can be used to stabilize such configurations in practice (McInnes, 1998; Bookless, 2006). The present framework addresses geometric existence and screening-level supportability; long-horizon station-keeping, phase control, and swarm-wide feedback design belong to the next layer of analysis.
+Long-term maintainability is the next major boundary. The broader DNKO literature has already shown that displaced orbits can include marginally stable or unstable subfamilies under open-loop dynamics, and that linear state feedback can be used to stabilize such configurations in practice (McInnes, 1998; Bookless, 2006). The present manuscript now adds a first local linearized treatment of the exact payload-optimized MDDS branch itself: the coupled $r$-$\phi$ subsystem remains oscillatory throughout $0<\phi<\phi_c$, while the along-track phase degree of freedom remains neutral. That result is encouraging but intentionally limited. It does not yet include passive-stability offsets, finite-sail attitude dynamics, optical non-idealities, or swarm-scale feedback design.
 
-A recent complementary result also suggests a useful, if necessarily indirect, consistency check. In the extended-reflector limit $R \gg R_{*}$, McInnes (2026) derives a stability ceiling $\overline{\beta}_{S}(\overline{\xi})$ for circular orbits of large reflective discs and shows that stable orbits exist only for $\overline{\beta}<\overline{\beta}_{S}$ (McInnes, 2026). That is not the same dynamical regime as the present MDDS model, which treats the opposite small-sail displaced-orbit limit $R_{*} \gg R$, so the result cannot be imported as a formal proof. Even so, the comparison is strongly favorable: the minimum of the McInnes stability ceiling is approximately $\min_{\overline{\xi}>0}\overline{\beta}_{S}\approx0.983$ at $\overline{\xi}\approx2.38$. Therefore any payload-optimized MDDS operating point with $\beta_{\min}(\phi)<0.983$, corresponding to $\phi \lesssim 22.2^\circ$ on the present branch, lies below that screening threshold. The representative low-latitude cases used in this paper, such as $\phi=0.1^\circ$ with $\beta_{\min}\approx4.53\times10^{-3}$ and $\phi=1^\circ$ with $\beta_{\min}\approx4.53\times10^{-2}$, sit deep inside the stable-orbit side of that heuristic comparison. The correct reading is again limited: this is not a substitute for a formal MDDS stability proof, but it does strengthen the case that the low-$\beta$ payload-optimized branch is not obviously in tension with neighboring orbit-stability results and points directly to the next analytic layer, namely a linearized stability treatment of the exact MDDS displaced-orbit equations themselves.
+A recent complementary result also suggests a useful, if necessarily indirect, consistency check. In the extended-reflector limit $R \gg R_{*}$, McInnes (2026) derives a stability ceiling $\overline{\beta}_{S}(\overline{\xi})$ for circular orbits of large reflective discs and shows that stable orbits exist only for $\overline{\beta}<\overline{\beta}_{S}$ (McInnes, 2026). That is not the same dynamical regime as the present MDDS model, which treats the opposite small-sail displaced-orbit limit $R_{*} \gg R$ familiar from the non-point-source radiation-pressure analysis of McInnes and Brown (1990), so the result cannot be imported as a formal proof. Even so, the comparison is strongly favorable: the minimum of the McInnes stability ceiling is approximately $\min_{\overline{\xi}>0}\overline{\beta}_{S}\approx0.983$ at $\overline{\xi}\approx2.38$. Therefore any payload-optimized MDDS operating point with $\beta_{\min}(\phi)<0.983$, corresponding to $\phi \lesssim 22.2^\circ$ on the present branch, lies below that screening threshold. The representative low-latitude cases used in this paper, such as $\phi=0.1^\circ$ with $\beta_{\min}\approx4.53\times10^{-3}$ and $\phi=1^\circ$ with $\beta_{\min}\approx4.53\times10^{-2}$, sit deep inside the stable-orbit side of that heuristic comparison. The correct reading is again limited: this is not a substitute for a formal MDDS stability proof, but it does strengthen the case that the low-$\beta$ payload-optimized branch is not obviously in tension with neighboring orbit-stability results and is consistent with pushing the analysis toward passive and closed-loop stability closure rather than relying only on cross-model analogy.
 
 ## Scope and next steps
 
-After the favorable McInnes-style screening comparison above, the most natural next step is a formal linearized stability analysis of the exact payload-optimized MDDS branch rather than further reliance on cross-model analogy. Beyond that, the unfinished agenda is now fairly clear: move beyond the point-sail limit; make passive stability explicit through centre-of-pressure/centre-of-mass offsets, sail conicity, and mass distribution; close the structural problem under differential loading and in-plane stress; and add collective effects such as mutual attenuation, self-shadowing, diffuse reradiation, and secular optical drift.
+After the favorable McInnes-style screening comparison above, the most natural next step is no longer the existence of a linearized map in the abstract, but its extension toward passive and closed-loop stability closure. Beyond the local $r$-$\phi$ result derived here, the unfinished agenda is now fairly clear: move beyond the point-sail limit; make passive stability explicit through centre-of-pressure/centre-of-mass offsets, sail conicity, and mass distribution; close the structural problem under differential loading and in-plane stress; and add collective effects such as mutual attenuation, self-shadowing, diffuse reradiation, and secular optical drift.
 
 Stated compactly, McInnes (2026) does not collapse the MDDS framework claim so much as sharpen its next obligations: once low-$\beta$ supportability is shown, the decisive follow-on question is how much passive stability, structural closure, and collective robustness survives after the ideal point-sail abstraction is progressively relaxed.
 
@@ -301,6 +451,6 @@ The appropriate claim at this stage is therefore limited but substantive: the fr
 
 # Conclusion
 
-We have introduced a continuum framework for Dyson architectures and developed its low-$\beta$ Micro-Displaced Dyson Swarm branch into a closed-form support relation linking off-plane latitude to required radiation-pressure support. That relation yields a simple density-based screening criterion and exposes two natural design directions: a payload-optimized branch and a synchronization-constrained branch. The contribution is therefore not a new orbit family, nor first discovery of the displaced-orbit bridge itself, but a compact Dyson-architecture framework that turns that bridge into a continuous support spectrum with an explicit low-latitude operating window.
+This paper has argued that the unresolved systems problem in conventional Dyson swarms is not only collector abundance, but same-shell crossing topology, while fully radiatively supported bubble/statite concepts resolve that geometry only at severe areal-density cost. The main result is to make the middle regime explicit. By treating Dyson architectures as a continuous support spectrum and then developing its low-$\beta$ displaced branch, we obtained the closed-form support relation $\beta_{\min}(\phi)=\frac{3\sqrt{3}}{2}\sin\phi$ and the corresponding density ceiling $\sigma_{\max}(\phi)=\frac{2\sigma^*}{3\sqrt{3}\sin\phi}$. In that form, the architecture question becomes a screening problem in latitude and areal density rather than a purely qualitative contrast between swarm and bubble endpoints. The representative Sun-Earth slices at $\theta_\oplus$, $0.1^\circ$, $0.5^\circ$, and $1^\circ$ then show that this continuum is non-empty in a genuinely low-latitude regime, where very small angular displacements already create large normal separations before the architecture approaches the fully radiative-support limit.
 
-Its architectural significance is that Dyson growth can be discussed in terms of layered support geometry, synchronization choices, and staged latitude expansion rather than only as the management of increasingly dense same-shell crossing structure. The next step is correspondingly clear: test how much of the low-$\beta$ MDDS picture survives once the main idealizations are relaxed, beginning with a formal stability treatment of the exact payload-optimized branch and then extending to optical realism, structural closure, and collective swarm effects.
+The architectural significance is that Dyson growth can be described in terms of layered support geometry, synchronization choices, and staged latitude expansion rather than only as the management of increasingly dense same-shell crossing structure. On that reading, MDDS is best understood as an analytic entry segment of a broader Dyson support continuum: not the whole design space, but the first part of it that can be written compactly and screened quantitatively. A first local radial-latitude linearization already shows that the exact payload-optimized branch is open-loop bounded in the $r$-$\phi$ subspace while retaining a neutral along-track phase mode. The next step is therefore not to restate the framework, but to test how much of it survives once the idealizations are relaxed, beginning with passive and closed-loop stability closure and then extending to optical realism, structural closure, and collective swarm effects.
