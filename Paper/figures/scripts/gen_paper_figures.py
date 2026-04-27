@@ -44,12 +44,12 @@ def setup_style() -> None:
         {
             "font.family": "DejaVu Serif",
             "mathtext.fontset": "dejavuserif",
-            "font.size": 8.5,
-            "axes.labelsize": 8.5,
-            "axes.titlesize": 9.0,
-            "xtick.labelsize": 7.5,
-            "ytick.labelsize": 7.5,
-            "legend.fontsize": 7.5,
+            "font.size": 7.0,
+            "axes.labelsize": 7.0,
+            "axes.titlesize": 7.0,
+            "xtick.labelsize": 6.3,
+            "ytick.labelsize": 6.3,
+            "legend.fontsize": 6.3,
             "figure.dpi": 140,
             "savefig.dpi": 300,
             "svg.fonttype": "none",
@@ -115,6 +115,26 @@ def clean_axis(ax) -> None:
         spine.set_visible(False)
 
 
+def style_plot_axis(ax, grid_axis: str = "both") -> None:
+    ax.grid(True, axis=grid_axis, which="major")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.tick_params(length=3.0, width=0.7)
+
+
+def panel_label(ax, label: str) -> None:
+    ax.text(
+        0.0,
+        1.02,
+        label,
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontweight="bold",
+        color=BLACK,
+    )
+
+
 def orbit_normal(inc_deg: float, node_deg: float) -> np.ndarray:
     inc = math.radians(inc_deg)
     node = math.radians(node_deg)
@@ -172,18 +192,18 @@ def plot_projected_orbit(ax, pts: np.ndarray, color: str, lw: float = 1.0) -> No
 
 
 def generate_keplerian_deadlock() -> None:
-    fig = plt.figure(figsize=(7.2, 3.3))
-    gs = fig.add_gridspec(1, 2, width_ratios=[1.45, 1.0], wspace=0.28)
+    fig = plt.figure(figsize=(3.45, 4.25))
+    gs = fig.add_gridspec(2, 1, height_ratios=[1.18, 1.0], hspace=0.45)
     ax = fig.add_subplot(gs[0, 0])
-    ax2 = fig.add_subplot(gs[0, 1])
+    ax2 = fig.add_subplot(gs[1, 0])
 
-    orbits = [(0, 0), (58, 0), (58, 90), (58, 45), (42, 135)]
-    colors = [BLUE, ORANGE, GREEN, PURPLE, GRAY]
+    orbits = [(0, 0), (58, 28), (58, 122)]
+    colors = [BLACK, BLUE, ORANGE]
 
-    shell = Ellipse((0, 0), 2.0, 1.74, facecolor="none", edgecolor=LIGHT, lw=0.9, ls=(0, (3, 2)))
+    shell = Ellipse((0, 0), 2.02, 1.66, facecolor="none", edgecolor=LIGHT, lw=0.8, ls=(0, (3, 2)))
     ax.add_patch(shell)
     for orbit, color in zip(orbits, colors):
-        plot_projected_orbit(ax, orbit_points(*orbit), color=color, lw=1.1)
+        plot_projected_orbit(ax, orbit_points(*orbit), color=color, lw=1.25)
 
     intersections: list[np.ndarray] = []
     for i in range(len(orbits)):
@@ -192,94 +212,98 @@ def generate_keplerian_deadlock() -> None:
             norm = np.linalg.norm(d)
             if norm > 1e-9:
                 d = d / norm
+                dx, dy = project(np.array([d, -d]))
+                ax.plot(dx, dy, color=RED, lw=0.65, alpha=0.52, zorder=1)
                 intersections.extend([d, -d])
 
-    unique: list[np.ndarray] = []
-    for point in intersections:
-        if not any(np.linalg.norm(point - old) < 0.05 for old in unique):
-            unique.append(point)
-    if unique:
-        points = np.array(unique)
-        px, py = project(points)
-        ax.scatter(px, py, s=18, facecolor="white", edgecolor=RED, linewidth=0.9, zorder=5)
+    points = np.array(intersections)
+    px, py = project(points)
+    ax.scatter(px, py, s=16, facecolor="white", edgecolor=RED, linewidth=0.8, zorder=5)
 
     ax.add_patch(Circle((0, 0), 0.075, facecolor="#f2b05e", edgecolor=BLACK, lw=0.5, zorder=6))
-    ax.text(0, -1.03, "(a) same-radius Keplerian planes", ha="center", va="top", color=BLACK)
-    ax.text(0.0, 0.98, "pairwise nodal crossings", ha="center", va="bottom", color=RED)
+    panel_label(ax, "(a)")
+    ax.text(-1.12, 0.98, "same shell,\nmultiple planes", ha="left", va="top", color=BLACK)
+    ax.annotate(
+        "pairwise\nnode lines",
+        xy=(0.47, 0.33),
+        xytext=(0.76, 0.78),
+        arrowprops=dict(arrowstyle="-", color=RED, lw=0.7),
+        color=RED,
+        ha="left",
+        va="center",
+    )
     ax.set_xlim(-1.25, 1.25)
     ax.set_ylim(-1.08, 1.08)
     ax.set_aspect("equal")
     clean_axis(ax)
 
-    planes = np.arange(1, 11)
+    planes = np.arange(1, 13)
     node_lines = planes * (planes - 1) / 2
     ax2.plot(planes, node_lines, color=BLACK, lw=1.3)
-    ax2.scatter(planes, node_lines, s=16, color=BLUE, zorder=3)
-    ax2.set_xlabel("number of orbital planes, $P$")
-    ax2.set_ylabel("pairwise nodal lines")
-    ax2.set_title(r"$N_{\rm node}=P(P-1)/2$", pad=4)
-    ax2.grid(True)
-    ax2.set_xlim(1, 10)
-    ax2.set_ylim(0, 46)
-    ax2.spines["top"].set_visible(False)
-    ax2.spines["right"].set_visible(False)
-    ax2.text(0.02, -0.25, "(b) topology burden scaling", transform=ax2.transAxes, color=BLACK)
+    ax2.scatter(planes, node_lines, s=14, color=BLUE, zorder=3)
+    ax2.set_xlabel("orbital-plane count, $P$")
+    ax2.set_ylabel("pairwise node-line count")
+    ax2.set_xlim(1, 12)
+    ax2.set_ylim(0, 70)
+    style_plot_axis(ax2)
+    panel_label(ax2, "(b)")
+    ax2.text(0.05, 0.92, r"$N_{\rm node}=P(P-1)/2$", transform=ax2.transAxes, ha="left", va="top")
+    ax2.text(0.55, 0.12, "quadratic\nbookkeeping", transform=ax2.transAxes, color=GRAY, ha="left")
 
     save(fig, CONCEPT / "keplerian_deadlock")
 
 
 def generate_force_balance() -> None:
-    fig, ax = plt.subplots(figsize=(6.4, 3.0))
+    fig, ax = plt.subplots(figsize=(3.45, 2.75))
     clean_axis(ax)
     ax.set_aspect("equal")
-    ax.set_xlim(-1.65, 1.75)
-    ax.set_ylim(-0.36, 1.35)
+    ax.set_xlim(-0.18, 1.82)
+    ax.set_ylim(-0.18, 1.10)
 
-    star = np.array([-1.20, 0.0])
-    center = np.array([0.0, 0.62])
-    body = np.array([1.05, 0.62])
+    star = np.array([0.0, 0.0])
+    center = np.array([0.0, 0.56])
+    body = np.array([1.10, 0.56])
 
-    ax.axhline(star[1], color=LIGHT, lw=0.8, ls=(0, (3, 2)))
-    ax.axhline(center[1], color=LIGHT, lw=0.8, ls=(0, (3, 2)))
-    ax.plot([center[0], body[0]], [center[1], body[1]], color=GRAY, lw=0.8, ls=(0, (2, 2)))
+    ax.axhline(0.0, color=LIGHT, lw=0.8, ls=(0, (3, 2)))
+    ax.axvline(0.0, color=LIGHT, lw=0.8, ls=(0, (3, 2)))
+    ax.axhline(center[1], color=LIGHT, lw=0.75, ls=(0, (3, 2)))
     ax.plot([star[0], body[0]], [star[1], body[1]], color=LIGHT, lw=0.9)
+    ax.plot([center[0], body[0]], [center[1], body[1]], color=GRAY, lw=0.8, ls=(0, (2, 2)))
+    ax.plot([center[0], center[0]], [star[1], center[1]], color=GRAY, lw=0.8, ls=(0, (2, 2)))
 
-    ax.add_patch(Circle(star, 0.075, facecolor="#f2b05e", edgecolor=BLACK, lw=0.5))
-    ax.add_patch(Circle(center, 0.025, facecolor=BLACK, edgecolor=BLACK))
-    ax.add_patch(Circle(body, 0.035, facecolor=BLACK, edgecolor=BLACK))
+    ax.add_patch(Circle(star, 0.070, facecolor="#f2b05e", edgecolor=BLACK, lw=0.5, zorder=6))
+    ax.add_patch(Circle(center, 0.023, facecolor=BLACK, edgecolor=BLACK, zorder=6))
+    ax.add_patch(Circle(body, 0.034, facecolor=BLACK, edgecolor=BLACK, zorder=6))
 
-    g_end = body + 0.68 * (star - body) / np.linalg.norm(star - body)
-    sail_end = body + np.array([0.46, 0.55])
-    c_end = body + np.array([-0.62, 0.0])
-    cf_end = body + np.array([0.46, 0.0])
+    g_vec = 0.50 * (star - body) / np.linalg.norm(star - body)
+    srp_vec = np.array([0.24, -g_vec[1]])
+    c_vec = g_vec + srp_vec
+    g_end = body + g_vec
+    sail_end = body + srp_vec
+    c_end = body + c_vec
 
-    arrow(ax, body, g_end, RED, 1.2, 10)
-    arrow(ax, body, sail_end, BLUE, 1.2, 10)
-    arrow(ax, body, c_end, GREEN, 1.2, 10)
-    arrow(ax, body, cf_end, GRAY, 1.0, 9, alpha=0.75)
+    arrow(ax, body, sail_end, BLUE, 1.15, 9.5)
+    arrow(ax, body, g_end, RED, 1.15, 9.5)
+    arrow(ax, body, c_end, GREEN, 1.15, 9.5)
 
-    ax.text(g_end[0] - 0.05, g_end[1] - 0.08, r"$F_g$", color=RED, ha="right")
-    ax.text(sail_end[0] + 0.02, sail_end[1], r"$F_{\rm SRP}$", color=BLUE, ha="left")
-    ax.text(c_end[0] - 0.02, c_end[1] + 0.05, r"$F_c$", color=GREEN, ha="right")
-    ax.text(cf_end[0] + 0.02, cf_end[1] - 0.07, r"$F_{\rm cf}$", color=GRAY, ha="left")
+    ax.text(sail_end[0] + 0.02, sail_end[1] + 0.01, r"$\mathbf{a}_{\rm SRP}$", color=BLUE, ha="left")
+    ax.text(g_end[0] - 0.02, g_end[1] - 0.02, r"$\mathbf{a}_g$", color=RED, ha="right", va="top")
+    ax.text(c_end[0] - 0.02, c_end[1] + 0.03, r"$\mathbf{a}_{\rm orb}$", color=GREEN, ha="right")
 
-    phi = math.degrees(math.atan2(body[1] - star[1], body[0] - star[0]))
-    ax.add_patch(Arc(star, 0.50, 0.50, theta1=0, theta2=phi, color=BLACK, lw=0.8))
-    ax.text(star[0] + 0.31, star[1] + 0.08, r"$\phi$", ha="center")
-    ax.text(0.50, 0.55, r"$\rho$", color=GRAY, ha="center", va="top")
-    ax.text(star[0] - 0.06, star[1] - 0.11, "star", ha="center", va="top")
-    ax.text(center[0], center[1] + 0.09, "displaced\norbit centre", ha="center", va="bottom", color=GRAY)
-    ax.text(body[0] + 0.03, body[1] - 0.12, "collector", ha="left", va="top")
+    phi = math.degrees(math.atan2(body[1], body[0]))
+    ax.add_patch(Arc(star, 0.42, 0.42, theta1=0, theta2=phi, color=BLACK, lw=0.75))
+    ax.text(0.24, 0.06, r"$\phi$", ha="center", va="bottom")
+    alpha = math.degrees(math.atan2(srp_vec[1], srp_vec[0]))
+    ax.add_patch(Arc(body, 0.34, 0.34, theta1=0, theta2=alpha, color=BLUE, lw=0.75))
+    ax.text(body[0] + 0.18, body[1] + 0.08, r"$\alpha_{\rm eff}$", color=BLUE, ha="left")
 
-    ax.text(
-        -1.48,
-        1.14,
-        r"reduced branch balance:  $F_{\rm SRP}+F_g=F_c$",
-        ha="left",
-        va="center",
-        color=BLACK,
-    )
-    ax.text(-1.48, -0.31, "Meridional section; lengths are schematic.", color=GRAY, ha="left", va="bottom")
+    ax.text(0.55, center[1] - 0.04, r"$\rho$", color=GRAY, ha="center", va="top")
+    ax.text(-0.06, 0.31, r"$z$", color=GRAY, ha="right", va="center")
+    ax.text(star[0], star[1] - 0.10, "star", ha="center", va="top")
+    ax.text(center[0] + 0.04, center[1] + 0.07, "orbit\ncenter", ha="left", va="bottom", color=GRAY)
+    ax.text(body[0] + 0.04, body[1] - 0.06, "collector", ha="left", va="top")
+    ax.text(1.23, 0.12, r"$\mathbf{a}_{\rm SRP}+\mathbf{a}_g=\mathbf{a}_{\rm orb}$", ha="center", color=BLACK)
+    ax.text(0.02, 1.00, "reduced meridional balance", ha="left", va="center", color=BLACK)
     save(fig, CONCEPT / "force_balance")
 
 
@@ -288,71 +312,76 @@ def draw_ring(ax, y0: float, color: str, label: str, zorder: int) -> None:
     x = np.cos(t)
     y = 0.35 * np.sin(t) + y0
     back = np.sin(t) < 0
-    ax.plot(x[back], y[back], color=color, lw=1.0, ls=(0, (3, 2)), alpha=0.5, zorder=zorder)
-    ax.plot(x[~back], y[~back], color=color, lw=1.2, zorder=zorder + 1)
-    idx = np.linspace(0, len(t) - 1, 16, dtype=int)
-    ax.scatter(x[idx], y[idx], s=10, color=color, edgecolor="white", linewidth=0.35, zorder=zorder + 2)
+    ax.plot(x[back], y[back], color=color, lw=0.95, ls=(0, (3, 2)), alpha=0.45, zorder=zorder)
+    ax.plot(x[~back], y[~back], color=color, lw=1.35, zorder=zorder + 1)
+    idx = np.linspace(18, len(t) - 20, 9, dtype=int)
+    ax.scatter(x[idx], y[idx], s=9, color=color, edgecolor="white", linewidth=0.35, zorder=zorder + 2)
     ax.text(1.10, y0 + 0.02, label, color=color, ha="left", va="center")
 
 
 def generate_mdds_stratified() -> None:
-    fig, (ax, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.0), gridspec_kw={"width_ratios": [1.6, 0.9]})
+    fig, (ax, ax2) = plt.subplots(2, 1, figsize=(3.45, 4.15), gridspec_kw={"height_ratios": [1.35, 0.95], "hspace": 0.45})
     for axis in (ax, ax2):
         clean_axis(axis)
 
     ax.set_aspect("equal")
     ax.set_xlim(-1.25, 1.55)
     ax.set_ylim(-0.90, 0.92)
-    draw_ring(ax, 0.24, BLUE, r"$+\phi$ band", 3)
-    draw_ring(ax, 0.00, BLACK, "reference plane", 2)
-    draw_ring(ax, -0.24, BLUE, r"$-\phi$ band", 1)
+    ax.fill_between([-1.14, 1.14], -0.03, 0.03, color=LIGHTER, zorder=0)
+    draw_ring(ax, 0.24, BLUE, r"$+\phi$", 3)
+    draw_ring(ax, 0.00, BLACK, "0", 2)
+    draw_ring(ax, -0.24, BLUE, r"$-\phi$", 1)
     ax.add_patch(Circle((0, 0), 0.07, facecolor="#f2b05e", edgecolor=BLACK, lw=0.5, zorder=10))
-    ax.plot([-1.1, 1.1], [0, 0], color=LIGHT, lw=0.8, zorder=0)
+    ax.plot([-1.12, 1.12], [0, 0], color=LIGHT, lw=0.8, zorder=0)
     ax.annotate("", xy=(0.78, 0.24), xytext=(0.78, 0.0), arrowprops=dict(arrowstyle="<->", color=RED, lw=0.9))
-    ax.text(0.83, 0.12, r"$z=r\sin\phi$", color=RED, va="center")
-    ax.text(0, -0.78, "(a) layered displaced rings", ha="center", color=BLACK)
+    ax.text(0.83, 0.12, r"$z$", color=RED, va="center")
+    panel_label(ax, "(a)")
+    ax.text(-1.12, 0.78, "displaced ring stack", ha="left", va="top", color=BLACK)
 
-    ax2.set_xlim(-0.2, 1.1)
+    ax2.set_xlim(-0.05, 1.05)
     ax2.set_ylim(-0.55, 0.55)
-    for y, color, label in [(0.25, BLUE, r"$+\phi$"), (0, BLACK, "0"), (-0.25, BLUE, r"$-\phi$")]:
-        ax2.plot([0.15, 0.95], [y, y], color=color, lw=1.4)
-        ax2.text(1.0, y, label, color=color, va="center", ha="left")
-    ax2.annotate("", xy=(0.5, 0.25), xytext=(0.5, -0.25), arrowprops=dict(arrowstyle="<->", color=RED, lw=0.9))
-    ax2.text(0.55, 0, "normal\nseparation", color=RED, va="center")
-    ax2.text(0.5, -0.48, "(b) stratification replaces crossings", ha="center", color=BLACK)
+    for y, color, label in [(0.25, BLUE, r"$+\phi$"), (0, BLACK, "reference"), (-0.25, BLUE, r"$-\phi$")]:
+        ax2.plot([0.15, 0.86], [y, y], color=color, lw=1.45)
+        ax2.text(0.90, y, label, color=color, va="center", ha="left")
+    ax2.annotate("", xy=(0.46, 0.25), xytext=(0.46, -0.25), arrowprops=dict(arrowstyle="<->", color=RED, lw=0.9))
+    ax2.text(0.50, 0, r"$2z$", color=RED, va="center")
+    panel_label(ax2, "(b)")
+    ax2.text(0.15, -0.46, "normal section", ha="left", color=GRAY)
     save(fig, CONCEPT / "mdds_stratified_rings")
 
 
 def generate_support_curves() -> None:
-    phi = np.linspace(0.1, 5.0, 400)
-    ref = np.array([0.1, 0.5, 1.0])
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.0))
+    phi = np.linspace(0.05, 2.0, 400)
+    ref = np.array([0.1, 0.5, 1.0, 2.0])
+    fig, axes = plt.subplots(2, 1, figsize=(3.45, 4.65), gridspec_kw={"hspace": 0.43})
 
     axes[0].plot(phi, beta_min(phi), color=BLUE, lw=1.5)
     axes[0].scatter(ref, beta_min(ref), color=RED, s=18, zorder=3)
+    offsets = {0.1: (5, 7), 0.5: (5, 5), 1.0: (5, 5), 2.0: (-34, 5)}
     for p in ref:
-        axes[0].annotate(f"{p:g}$^\\circ$", (p, beta_min(p)), xytext=(5, 5), textcoords="offset points")
+        axes[0].annotate(f"{p:g}$^\\circ$", (p, beta_min(p)), xytext=offsets[float(p)], textcoords="offset points")
     axes[0].set_xlabel(r"latitude $\phi$ [deg]")
-    axes[0].set_ylabel(r"required lightness number $\beta_{\min}$")
-    axes[0].set_title("(a) support requirement", loc="left")
-    axes[0].set_xlim(0, 5)
-    axes[0].set_ylim(0, 0.235)
-    axes[0].grid(True)
-    axes[0].spines["top"].set_visible(False)
-    axes[0].spines["right"].set_visible(False)
+    axes[0].set_ylabel(r"$\beta_{\min}$")
+    axes[0].set_xlim(0, 2.05)
+    axes[0].set_ylim(0, 0.097)
+    style_plot_axis(axes[0])
+    panel_label(axes[0], "(a)")
+    axes[0].text(0.05, 0.90, r"$\beta_{\min}=\frac{3\sqrt{3}}{2}\sin\phi$", transform=axes[0].transAxes)
 
     axes[1].plot(phi, sigma_max(phi), color=GREEN, lw=1.5)
     axes[1].scatter(ref, sigma_max(ref), color=RED, s=18, zorder=3)
+    sigma_offsets = {0.1: (5, 6), 0.5: (5, 4), 1.0: (5, 4), 2.0: (-42, 6)}
     for p in ref:
-        axes[1].annotate(f"{sigma_max(p):.1f}", (p, sigma_max(p)), xytext=(5, 5), textcoords="offset points")
+        axes[1].annotate(f"{sigma_max(p):.1f}", (p, sigma_max(p)), xytext=sigma_offsets[float(p)], textcoords="offset points")
     axes[1].set_xlabel(r"latitude $\phi$ [deg]")
-    axes[1].set_ylabel(r"supportable areal density $\sigma_{\max}$ [g m$^{-2}$]")
-    axes[1].set_title("(b) mass-per-area ceiling", loc="left")
-    axes[1].set_xlim(0, 5)
-    axes[1].set_ylim(0, 380)
-    axes[1].grid(True)
-    axes[1].spines["top"].set_visible(False)
-    axes[1].spines["right"].set_visible(False)
+    axes[1].set_ylabel(r"$\sigma_{\max}$ [g m$^{-2}$]")
+    axes[1].set_xlim(0, 2.05)
+    axes[1].set_yscale("log")
+    axes[1].set_ylim(10, 800)
+    style_plot_axis(axes[1])
+    axes[1].grid(True, which="minor", axis="y", alpha=0.25)
+    panel_label(axes[1], "(b)")
+    axes[1].text(0.42, 0.90, r"$\sigma_{\max}=\sigma^*/\beta_{\min}$", transform=axes[1].transAxes)
 
     save(fig, RESULTS / "support_curves")
 
@@ -362,18 +391,27 @@ def generate_low_latitude_window() -> None:
     phis = np.array([THETA_EARTH_DEG, 0.1, 0.5, 1.0])
     values = sigma_max(phis)
 
-    fig, ax = plt.subplots(figsize=(5.7, 3.2))
+    fig, ax = plt.subplots(figsize=(3.45, 2.75))
     x = np.arange(len(labels))
     bars = ax.bar(x, values, color=[ORANGE, BLUE, BLUE_LIGHT, BLUE_LIGHT], edgecolor=BLACK, linewidth=0.6)
     ax.set_yscale("log")
-    ax.set_ylabel(r"$\sigma_{\max}$ [g m$^{-2}$]")
+    ax.set_ylabel(r"$\sigma_{\max}$ ceiling [g m$^{-2}$]")
     ax.set_xticks(x, labels)
-    ax.set_ylim(10, 2.5e4)
-    ax.grid(True, axis="y", which="both")
+    ax.set_ylim(10, 3.0e4)
+    ax.grid(True, axis="y", which="major")
+    ax.grid(True, axis="y", which="minor", alpha=0.22)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.axhline(160, color=GRAY, lw=0.9, ls=(0, (4, 2)))
-    ax.text(3.35, 160, "flown sailcraft scale\n(~160 g m$^{-2}$)", color=GRAY, ha="right", va="bottom")
+    ax.text(
+        3.36,
+        178,
+        "flight-sail scale\n$\\sim160$ g m$^{-2}$",
+        color=GRAY,
+        ha="right",
+        va="bottom",
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0),
+    )
     for rect, val in zip(bars, values):
         label = f"{val/1000:.2f} kg m$^{{-2}}$" if val >= 1000 else f"{val:.1f}"
         ax.text(rect.get_x() + rect.get_width() / 2, val * 1.12, label, ha="center", va="bottom", fontsize=7.2)
@@ -387,39 +425,36 @@ def generate_sync_radius() -> None:
     refs = np.array([0.1, 0.5, 1.0])
     ref_shift = (1.0 - sync_radius(refs)) * AU_KM / 1e6
 
-    fig, ax = plt.subplots(figsize=(5.9, 3.0))
+    fig, ax = plt.subplots(figsize=(3.45, 2.55))
     ax.plot(phi, shift, color=BLUE, lw=1.5)
     ax.scatter(refs, ref_shift, color=RED, s=20, zorder=3)
-    for p, s in zip(refs, ref_shift):
-        ax.annotate(f"{s:.2f}", (p, s), xytext=(5, 5), textcoords="offset points")
+    sync_offsets = [(5, 6), (5, 6), (-34, 6)]
+    for p, s, offset in zip(refs, ref_shift, sync_offsets):
+        ax.annotate(f"{s:.2f}", (p, s), xytext=offset, textcoords="offset points")
     ax.set_xlabel(r"latitude $\phi$ [deg]")
     ax.set_ylabel(r"inward radius shift [$10^6$ km]")
-    ax.set_xlim(0, 1.0)
-    ax.set_ylim(0, max(shift) * 1.12)
-    ax.grid(True)
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax2 = ax.twinx()
-    ax2.set_ylim(1.0, min(radius) - 0.001)
-    ax2.set_ylabel(r"$r_{\rm sync}$ [AU]")
-    ax2.spines["top"].set_visible(False)
+    ax.set_xlim(0, 1.03)
+    ax.set_ylim(0, max(shift) * 1.16)
+    style_plot_axis(ax)
+    ax.text(0.05, 0.88, r"$r_{\rm sync}/a_\oplus=(1-\sqrt{2}\tan\phi)^{1/3}$", transform=ax.transAxes)
     save(fig, RESULTS / "sync_radius")
 
 
 def generate_support_continuum() -> None:
-    fig, ax = plt.subplots(figsize=(6.4, 2.1))
+    fig, ax = plt.subplots(figsize=(3.45, 2.15))
     clean_axis(ax)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     y = 0.55
     ax.plot([0.08, 0.92], [y, y], color=BLACK, lw=1.0)
+    ax.plot([0.08, 0.34], [y, y], color=BLUE, lw=5.0, alpha=0.30, solid_capstyle="round")
+    ax.plot([0.34, 0.92], [y, y], color=GRAY, lw=1.0, ls=(0, (3, 2)))
     ax.scatter([0.08, 0.34, 0.92], [y, y, y], s=[28, 28, 28], color=[BLACK, BLUE, GRAY], zorder=3)
-    ax.plot([0.08, 0.34], [y, y], color=BLUE, lw=5.0, alpha=0.35, solid_capstyle="round")
-    ax.text(0.08, 0.72, "Keplerian\nswarm", ha="center", va="bottom")
-    ax.text(0.34, 0.72, "low-latitude\nMDDS screen", color=BLUE, ha="center", va="bottom")
-    ax.text(0.92, 0.72, "statite / bubble\naccess", color=GRAY, ha="center", va="bottom")
-    ax.text(0.50, 0.26, "exact high-latitude force-law connection deferred", color=RED, ha="center")
-    ax.annotate("", xy=(0.74, 0.42), xytext=(0.42, 0.42), arrowprops=dict(arrowstyle="->", color=RED, lw=0.9))
+    ax.text(0.08, 0.73, "Keplerian\nswarm", ha="center", va="bottom")
+    ax.text(0.34, 0.73, "low-latitude\nMDDS screen", color=BLUE, ha="center", va="bottom")
+    ax.text(0.92, 0.73, "statite /\nbubble limit", color=GRAY, ha="center", va="bottom")
+    ax.text(0.51, 0.34, "higher latitudes require full cone-angle law", color=GRAY, ha="center")
+    ax.annotate("increasing radiative support", xy=(0.76, 0.18), xytext=(0.24, 0.18), arrowprops=dict(arrowstyle="->", color=BLACK, lw=0.8), ha="center")
     save(fig, RESULTS / "support_continuum")
 
 

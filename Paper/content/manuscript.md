@@ -93,7 +93,7 @@ The first equation represents radial unloading of the effective gravitational de
 
 Read mechanically, these equations simply restate the familiar displaced-orbit balance. Read architecturally, however, they do something more useful: they separate the support burden into an orbital contribution and a radiative contribution. That separation is what allows the present paper to talk about mixed-support Dyson architectures as points within a continuum rather than as members of disconnected conceptual categories.
 
-![Local force balance for a displaced MDDS element in meridional section. In the co-rotating view, sail thrust, stellar gravity, and the orbital centrifugal term close as a three-vector balance; equivalently, in the inertial view, sail thrust plus gravity produce the centripetal demand toward the offset-disk center.](figures/concept/force_balance.pdf){#fig:force-balance}
+![Local meridional balance for a displaced MDDS element. Radiation-pressure acceleration and stellar gravity combine to produce the horizontal orbital acceleration toward the displaced orbit center; the plotted support pitch is the reduced cylindrical $\alpha_{\mathrm{eff}}$, not the full Sun-line cone angle.](figures/concept/force_balance.pdf){#fig:force-balance}
 
 Figure 3 is intended to visualize this displaced geometry at the architectural level, while the later quantitative figures capture the resulting low-latitude support curves and example design slices in compact form.
 
@@ -181,7 +181,7 @@ $$
 
 but that number lies well outside the low-latitude examples emphasized below and is not used as an endpoint claim. The point of retaining it is simply to show how far the representative MDDS slices are from the traditional full-radiative-support threshold.
 
-![Latitude support curves in the low-latitude regime. Left: $\beta_{\min}(\phi)$ showing the required lightness number. Right: $\sigma_{\max}(\phi)$ showing the maximum allowable system areal density. Reference values at $0.1^\circ$, $0.5^\circ$, and $1^\circ$ illustrate the rapid tightening of the feasibility window with increasing latitude.](figures/results/support_curves.pdf){#fig:support-curves}
+![Latitude support curves in the low-latitude regime. Left: $\beta_{\min}(\phi)$ showing the required lightness number. Right: $\sigma_{\max}(\phi)$ showing the maximum allowable system areal density on a logarithmic scale. Reference values at $0.1^\circ$, $0.5^\circ$, $1^\circ$, and the outer $2^\circ$ stress comparison illustrate the rapid tightening of the feasibility window with increasing latitude.](figures/results/support_curves.pdf){#fig:support-curves}
 
 ## The synchronization-constrained branch
 
