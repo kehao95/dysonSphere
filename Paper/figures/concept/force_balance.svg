@@ -1,117 +1,264 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" fill="none">
-  <defs>
-    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#ff7272"/>
-    </marker>
-    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#6ec6ff"/>
-    </marker>
-    <marker id="arrow-gold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#ffd36f"/>
-    </marker>
-    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#74d4c1"/>
-    </marker>
-  </defs>
-
-  <rect width="1120" height="620" fill="#08111f"/>
-
-  <text x="40" y="54" fill="#f3f6fb" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">HoverDisk Force Balance</text>
-  <text x="40" y="84" fill="#aebfd1" font-size="16" font-family="Arial, Helvetica, sans-serif">Sail thrust, gravity, and orbital centrifugal balance for an offset disk.</text>
-
-  <!-- Reference structure -->
-  <line x1="140.0" y1="120" x2="140.0" y2="500" stroke="#43607d" stroke-width="1.2" stroke-dasharray="6,5" opacity="0.45"/>
-  <text x="150.0" y="134" fill="#6e89a4" font-size="11" font-family="Arial, Helvetica, sans-serif" opacity="0.75">rotation axis</text>
-
-  <line x1="70" y1="400.0" x2="510" y2="400.0" stroke="#4fc3f7" stroke-width="1.0" stroke-dasharray="6,5" opacity="0.35"/>
-  <text x="516" y="404.0" fill="#4fc3f7" font-size="11" font-family="Arial, Helvetica, sans-serif" opacity="0.65">equatorial plane</text>
-
-  <line x1="85" y1="305.0" x2="505" y2="305.0" stroke="#74d4c1" stroke-width="1.0" stroke-dasharray="7,5" opacity="0.25"/>
-  <text x="510" y="309.0" fill="#74d4c1" font-size="11" font-family="Arial, Helvetica, sans-serif" opacity="0.7">offset disk plane</text>
-
-  <circle cx="140.0" cy="400.0" r="22" fill="#ffb65c"/>
-  <text x="140.0" y="442.0" fill="#ffd49a" font-size="13" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">star</text>
-
-  <circle cx="140.0" cy="305.0" r="5" fill="#74d4c1"/>
-  <text x="122.0" y="289.0" fill="#74d4c1" font-size="12" font-family="Arial, Helvetica, sans-serif">offset-disk center</text>
-
-  <line x1="140.0" y1="305.0" x2="430.0" y2="305.0" stroke="#5d748b" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.55"/>
-  <text x="285.0" y="295.0" fill="#90a7bd" font-size="12" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">orbital radius ρ</text>
-
-  <line x1="140.0" y1="400.0" x2="430.0" y2="305.0" stroke="#ffb74d" stroke-width="1.1" stroke-dasharray="5,4" opacity="0.45"/>
-
-  <path d="M 198.0 400.0 A 58 58 0 0 0 195.1 381.9" fill="none" stroke="#ffb74d" stroke-width="1.4" opacity="0.6"/>
-  <text x="182.0" y="382.0" fill="#ffb74d" font-size="14" font-family="Arial, Helvetica, sans-serif">φ</text>
-
-  <!-- Sunlight cue -->
-  <line x1="318.7" y1="354.6" x2="437.5" y2="315.6" stroke="#ffd54f" stroke-width="1.5" opacity="0.4"/>
-  <line x1="314.9" y1="349.2" x2="433.7" y2="310.3" stroke="#ffd54f" stroke-width="1.5" opacity="0.4"/>
-  <line x1="311.2" y1="343.9" x2="430.0" y2="305.0" stroke="#ffd54f" stroke-width="1.5" opacity="0.4"/>
-  <line x1="307.5" y1="338.6" x2="426.3" y2="299.7" stroke="#ffd54f" stroke-width="1.5" opacity="0.4"/>
-  <line x1="303.8" y1="333.3" x2="422.5" y2="294.4" stroke="#ffd54f" stroke-width="1.5" opacity="0.4"/>
-  <text x="295.0" y="269.0" fill="#ffd54f" font-size="12" font-family="Arial, Helvetica, sans-serif" opacity="0.8">sunlight</text>
-
-  <!-- HoverDisk element -->
-  <line x1="463.3" y1="352.5" x2="396.7" y2="257.5" stroke="#9bd3ff" stroke-width="7" stroke-linecap="round"/>
-  <line x1="463.3" y1="352.5" x2="396.7" y2="257.5" stroke="#e7f4ff" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
-  <circle cx="430.0" cy="305.0" r="4.2" fill="#ffffff"/>
-  <text x="454.0" y="365.0" fill="#cfe6fb" font-size="12" font-family="Arial, Helvetica, sans-serif">HoverDisk element</text>
-
-  <!-- Force vectors -->
-  <line x1="430.0" y1="305.0" x2="472.7" y2="275.1" stroke="#6ec6ff" stroke-width="2.4" marker-end="url(#arrow-blue)" opacity="1.0"/>
-  <text x="480.7" y="271.1" fill="#6ec6ff" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">sail</tspan></text>
-  <line x1="430.0" y1="305.0" x2="338.8" y2="334.9" stroke="#ff7272" stroke-width="2.4" marker-end="url(#arrow-red)" opacity="1.0"/>
-  <text x="304.8" y="350.9" fill="#ff7272" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">g</tspan></text>
-  <line x1="430.0" y1="305.0" x2="478.5" y2="305.0" stroke="#ffd36f" stroke-width="2.4" marker-end="url(#arrow-gold)" opacity="1.0"/>
-  <text x="486.5" y="323.0" fill="#ffd36f" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">cf</tspan></text>
-  <line x1="430.0" y1="305.0" x2="381.5" y2="305.0" stroke="#74d4c1" stroke-width="2.8" marker-end="url(#arrow-green)" opacity="1.0"/>
-  <text x="353.5" y="295.0" fill="#74d4c1" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">c</tspan></text>
-
-  <!-- Vector construction -->
-  <line x1="472.7" y1="275.1" x2="381.5" y2="305.0" stroke="#ff7272" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.5"/>
-  <line x1="338.8" y1="334.9" x2="381.5" y2="305.0" stroke="#6ec6ff" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.5"/>
-  <line x1="381.5" y1="305.0" x2="430.0" y2="305.0" stroke="#ffd36f" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.45"/>
-  <text x="398.0" y="229.0" fill="#90a7bd" font-size="11" font-family="Arial, Helvetica, sans-serif" opacity="0.8">F<tspan baseline-shift="sub" font-size="8">sail</tspan> + F<tspan baseline-shift="sub" font-size="8">g</tspan> = F<tspan baseline-shift="sub" font-size="8">c</tspan></text>
-  <text x="422.0" y="347.0" fill="#90a7bd" font-size="11" font-family="Arial, Helvetica, sans-serif" opacity="0.8">F<tspan baseline-shift="sub" font-size="8">sail</tspan> + F<tspan baseline-shift="sub" font-size="8">g</tspan> + F<tspan baseline-shift="sub" font-size="8">cf</tspan> = 0</text>
-
-  <!-- Explanation panel -->
-  <rect x="700" y="108" width="360" height="410" rx="16" fill="#0e1b2c" stroke="#223a53" stroke-width="1.5"/>
-
-  <text x="724" y="142" fill="#f0f5fb" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700">How to read the balance</text>
-
-  <circle cx="728" cy="176" r="4" fill="#6ec6ff"/>
-  <text x="744" y="181" fill="#6ec6ff" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">sail</tspan></text>
-  <text x="792" y="181" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">solar-sail thrust</text>
-
-  <circle cx="728" cy="206" r="4" fill="#ff7272"/>
-  <text x="744" y="211" fill="#ff7272" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">g</tspan></text>
-  <text x="776" y="211" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">gravity toward the star</text>
-
-  <circle cx="728" cy="236" r="4" fill="#ffd36f"/>
-  <text x="744" y="241" fill="#ffd36f" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">cf</tspan></text>
-  <text x="783" y="241" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">centrifugal term from</text>
-  <text x="783" y="259" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">orbital motion</text>
-
-  <circle cx="728" cy="266" r="4" fill="#74d4c1"/>
-  <text x="744" y="271" fill="#74d4c1" font-size="14" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">c</tspan></text>
-  <text x="774" y="271" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">equivalent inward</text>
-  <text x="774" y="289" fill="#c7d5e2" font-size="13" font-family="Arial, Helvetica, sans-serif">centripetal demand</text>
-
-  <line x1="722" y1="310" x2="1038" y2="310" stroke="#223a53" stroke-width="1"/>
-
-  <text x="724" y="340" fill="#f0f5fb" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">Co-rotating view</text>
-  <text x="730" y="372" fill="#dbe6f0" font-size="16" font-family="Arial, Helvetica, sans-serif">F<tspan baseline-shift="sub" font-size="11">sail</tspan> + F<tspan baseline-shift="sub" font-size="11">g</tspan> + F<tspan baseline-shift="sub" font-size="11">cf</tspan> = 0</text>
-  <text x="730" y="398" fill="#98adbf" font-size="13" font-family="Arial, Helvetica, sans-serif">The three applied terms close as a static vector polygon.</text>
-
-  <line x1="722" y1="418" x2="1038" y2="418" stroke="#223a53" stroke-width="1"/>
-
-  <text x="724" y="448" fill="#f0f5fb" font-size="16" font-family="Arial, Helvetica, sans-serif" font-weight="700">Equivalent inertial view</text>
-  <text x="730" y="480" fill="#dbe6f0" font-size="16" font-family="Arial, Helvetica, sans-serif">F<tspan baseline-shift="sub" font-size="11">sail</tspan> + F<tspan baseline-shift="sub" font-size="11">g</tspan> = F<tspan baseline-shift="sub" font-size="11">c</tspan></text>
-  <text x="730" y="506" fill="#98adbf" font-size="13" font-family="Arial, Helvetica, sans-serif">F<tspan baseline-shift="sub" font-size="10">c</tspan> points toward the offset-disk center and represents</text>
-  <text x="730" y="526" fill="#98adbf" font-size="13" font-family="Arial, Helvetica, sans-serif">the required inward acceleration, not a separate actuator.</text>
-  <text x="730" y="558" fill="#74d4c1" font-size="15" font-family="Arial, Helvetica, sans-serif" font-weight="600">F<tspan baseline-shift="sub" font-size="10">c</tspan> = m · ω² · ρ</text>
-  <text x="730" y="588" fill="#667a8e" font-size="11" font-family="Arial, Helvetica, sans-serif" font-style="italic">Dashed auxiliary lines show vector addition and closure.</text>
-
-  <text x="40" y="566" fill="#6e8398" font-size="12" font-family="Arial, Helvetica, sans-serif">Conceptual meridional section; not to scale.</text>
-  <text x="40" y="586" fill="#6e8398" font-size="12" font-family="Arial, Helvetica, sans-serif">Current figure intent: thrust + gravity + centrifugal closure, with the same sum read as centripetal demand toward the offset-disk center.</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="335.014737pt" height="170.64pt" viewBox="0 0 335.014737 170.64" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-04-27T14:33:10.519851</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 170.64
+L 335.014737 170.64
+L 335.014737 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 2.16 168.48
+L 332.854737 168.48
+L 332.854737 2.16
+L 2.16 2.16
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 45.928421 140.76
+C 47.863008 140.76 49.718619 139.991381 51.086579 138.623421
+C 52.454538 137.255462 53.223158 135.39985 53.223158 133.465263
+C 53.223158 131.530676 52.454538 129.675065 51.086579 128.307105
+C 49.718619 126.939146 47.863008 126.170526 45.928421 126.170526
+C 43.993834 126.170526 42.138223 126.939146 40.770263 128.307105
+C 39.402304 129.675065 38.633684 131.530676 38.633684 133.465263
+C 38.633684 135.39985 39.402304 137.255462 40.770263 138.623421
+C 42.138223 139.991381 43.993834 140.76 45.928421 140.76
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #f2b05e; stroke: #1a1a1a; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 162.644211 75.593684
+C 163.289073 75.593684 163.90761 75.337478 164.363596 74.881491
+C 164.819583 74.425505 165.075789 73.806968 165.075789 73.162105
+C 165.075789 72.517243 164.819583 71.898706 164.363596 71.442719
+C 163.90761 70.986733 163.289073 70.730526 162.644211 70.730526
+C 161.999348 70.730526 161.380811 70.986733 160.924825 71.442719
+C 160.468838 71.898706 160.212632 72.517243 160.212632 73.162105
+C 160.212632 73.806968 160.468838 74.425505 160.924825 74.881491
+C 161.380811 75.337478 161.999348 75.593684 162.644211 75.593684
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 264.770526 76.566316
+C 265.673334 76.566316 266.539286 76.207627 267.177667 75.569246
+C 267.816048 74.930865 268.174737 74.064912 268.174737 73.162105
+C 268.174737 72.259298 267.816048 71.393346 267.177667 70.754965
+C 266.539286 70.116584 265.673334 69.757895 264.770526 69.757895
+C 263.867719 69.757895 263.001767 70.116584 262.363386 70.754965
+C 261.725005 71.393346 261.366316 72.259298 261.366316 73.162105
+C 261.366316 74.064912 261.725005 74.930865 262.363386 75.569246
+C 263.001767 76.207627 263.867719 76.566316 264.770526 76.566316
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 264.770526 73.162105
+Q 232.889294 81.947156 202.301495 90.375794
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke: #b94a48; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 206.689077 91.241313
+L 202.301495 90.375794
+L 205.62646 87.38504
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #b94a48; stroke: #b94a48; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 264.770526 73.162105
+Q 287.141053 46.414737 308.650842 20.69651
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke: #2f6f9f; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 304.550468 22.481707
+L 308.650842 20.69651
+L 307.618775 25.047928
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #2f6f9f; stroke: #2f6f9f; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 264.770526 73.162105
+Q 234.618947 73.162105 205.809009 73.162105
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke: #2a8c6a; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 209.809009 75.162105
+L 205.809009 73.162105
+L 209.809009 71.162105
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #2a8c6a; stroke: #2a8c6a; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 264.770526 73.162105
+Q 287.141053 73.162105 308.393545 73.162105
+" clip-path="url(#p4be8ae57b7)" style="fill: none; opacity: 0.75; stroke: #6f6f6f; stroke-linecap: round"/>
+    <path d="M 304.793545 71.362105
+L 308.393545 73.162105
+L 304.793545 74.962105
+z
+" clip-path="url(#p4be8ae57b7)" style="fill: #6f6f6f; opacity: 0.75; stroke: #6f6f6f; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 70.244211 133.465263
+C 70.244211 132.375171 70.170906 131.286311 70.024794 130.206055
+C 69.878681 129.125799 69.660091 128.056591 69.370504 127.005667
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke: #1a1a1a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 2.16 133.465263
+L 332.854737 133.465263
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke-dasharray: 2.4,1.6; stroke-dashoffset: 0; stroke: #d9d9d9; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 2.16 73.162105
+L 332.854737 73.162105
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke-dasharray: 2.4,1.6; stroke-dashoffset: 0; stroke: #d9d9d9; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 162.644211 73.162105
+L 264.770526 73.162105
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke-dasharray: 1.6,1.6; stroke-dashoffset: 0; stroke: #6f6f6f; stroke-width: 0.8"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 45.928421 133.465263
+L 264.770526 73.162105
+" clip-path="url(#p4be8ae57b7)" style="fill: none; stroke: #d9d9d9; stroke-width: 0.9; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <!-- $F_g$ -->
+    <g style="fill: #b94a48" transform="translate(186.199904 98.513259)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #b94a48">F</tspan>
+      <tspan x="5.897705" y="0.964062" style="font-style: italic; font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #b94a48">g</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_2">
+    <!-- $F_{\rm SRP}$ -->
+    <g style="fill: #2f6f9f" transform="translate(311.456842 19.667368)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #2f6f9f">F</tspan>
+      <tspan x="5.897705" y="0.964062" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #2f6f9f">S</tspan>
+      <tspan x="9.973804" y="0.964062" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #2f6f9f">R</tspan>
+      <tspan x="14.453735" y="0.964062" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #2f6f9f">P</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_3">
+    <!-- $F_c$ -->
+    <g style="fill: #2a8c6a" transform="translate(193.002105 68.298947)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #2a8c6a">F</tspan>
+      <tspan x="5.897705" y="0.964062" style="font-style: italic; font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #2a8c6a">c</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- $F_{\rm cf}$ -->
+    <g style="fill: #6f6f6f" transform="translate(311.456842 79.970526)">
+     <text>
+      <tspan x="0" y="-0.4375" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #6f6f6f">F</tspan>
+      <tspan x="5.897705" y="0.964062" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #6f6f6f">c</tspan>
+      <tspan x="9.230054" y="0.964062" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #6f6f6f">f</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_5">
+    <!-- $\phi$ -->
+    <g transform="translate(73.1475 125.684211)">
+     <text>
+      <tspan x="0" y="-0.15625" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'">ϕ</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_6">
+    <!-- $\rho$ -->
+    <g style="fill: #6f6f6f" transform="translate(208.768289 86.411933)">
+     <text>
+      <tspan x="0" y="-0.203125" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #6f6f6f">ρ</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Serif'; text-anchor: middle" x="40.092632" y="150.622882" transform="rotate(-0 40.092632 150.622882)">star</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #6f6f6f" transform="translate(142.153234 53.122546)">displaced</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #6f6f6f" transform="translate(137.028 62.640687)">orbit centre</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Serif'; text-anchor: start" x="267.688421" y="91.292356" transform="rotate(-0 267.688421 91.292356)">collector</text>
+   </g>
+   <g id="text_10">
+    <!-- reduced branch balance:  $F_{\rm SRP}+F_g=F_c$ -->
+    <g style="fill: #1a1a1a" transform="translate(18.694737 24.455263)">
+     <text>
+      <tspan x="0" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">r</tspan>
+      <tspan x="4.063232" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">e</tspan>
+      <tspan x="9.093506" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">d</tspan>
+      <tspan x="14.534668" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">u</tspan>
+      <tspan x="20.009033" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">c</tspan>
+      <tspan x="24.769531" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">e</tspan>
+      <tspan x="29.799805" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">d</tspan>
+      <tspan x="35.240967" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a"> </tspan>
+      <tspan x="37.942871" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">b</tspan>
+      <tspan x="43.384033" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">r</tspan>
+      <tspan x="47.447266" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">a</tspan>
+      <tspan x="52.514893" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">n</tspan>
+      <tspan x="57.989258" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">c</tspan>
+      <tspan x="62.749756" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">h</tspan>
+      <tspan x="68.224121" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a"> </tspan>
+      <tspan x="70.926025" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">b</tspan>
+      <tspan x="76.367188" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">a</tspan>
+      <tspan x="81.434814" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">l</tspan>
+      <tspan x="84.15332" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">a</tspan>
+      <tspan x="89.220947" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">n</tspan>
+      <tspan x="94.695312" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">c</tspan>
+      <tspan x="99.455811" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">e</tspan>
+      <tspan x="104.486084" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">:</tspan>
+      <tspan x="107.349854" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a"> </tspan>
+      <tspan x="110.051758" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a"> </tspan>
+      <tspan x="133.05647" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">+</tspan>
+      <tspan x="153.342676" y="-0.15625" style="font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">=</tspan>
+      <tspan x="112.753662" y="-0.15625" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">F</tspan>
+      <tspan x="141.790552" y="-0.15625" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">F</tspan>
+      <tspan x="162.076758" y="-0.15625" style="font-style: italic; font-size: 8.5px; font-family: 'DejaVu Serif'; fill: #1a1a1a">F</tspan>
+      <tspan x="118.651367" y="1.245313" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #1a1a1a">S</tspan>
+      <tspan x="122.727466" y="1.245313" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #1a1a1a">R</tspan>
+      <tspan x="127.207397" y="1.245313" style="font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #1a1a1a">P</tspan>
+      <tspan x="147.688257" y="1.245313" style="font-style: italic; font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #1a1a1a">g</tspan>
+      <tspan x="167.974463" y="1.245313" style="font-style: italic; font-size: 5.95px; font-family: 'DejaVu Serif'; fill: #1a1a1a">c</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8.5px; font-family: 'DejaVu Serif'; text-anchor: start; fill: #6f6f6f" x="18.694737" y="161.728248" transform="rotate(-0 18.694737 161.728248)">Meridional section; lengths are schematic.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4be8ae57b7">
+   <rect x="2.16" y="2.16" width="330.694737" height="166.32"/>
+  </clipPath>
+ </defs>
 </svg>

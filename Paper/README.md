@@ -10,9 +10,13 @@
 
 ### Current Status
 
-**Stage**: Manuscript Drafting and Figure Production
+**Stage**: Manuscript Consolidation, Literature Review Refresh, and Build Verification
 
-**Latest shift**: after dedicated prior-art review, including McInnes 2026, the manuscript is now explicitly positioned as an analytic architecture/framework paper built on known DNKO theory and on a bridge that recent Dyson literature has already begun to state, rather than as a new solar-sail orbit-family paper.
+**Latest shift**: after force-model review, the manuscript no longer presents the current `\beta_{\min}` curve as a full high-latitude exact ideal-specular sail branch. It is now explicitly framed as a low-latitude ideal-specular support approximation / screening relation. The old `\nu=0`, `\phi_c`, and `\beta=1.5` endpoint interpretation has been removed from the canonical manuscript; local `r-\phi` dynamics are now described only as bounded response for the same reduced low-latitude model.
+
+**Build state**: the local MNRAS build currently succeeds for both PDF and HTML. The working tree is ahead of the latest public Zenodo snapshot (`v3`), so the next public release should be treated as a new post-`v3` draft rather than a rebuild of the archived version.
+
+**Literature-review state**: `dr` deep-research results have been absorbed into `docs/references/literature_review_refresh_20260427.md`. The usable result is a prior-art boundary map and citation-cluster guide; several stronger `dr` suggestions were explicitly rejected or deferred because they would overclaim the current manuscript.
 
 ### Public Draft Record (Zenodo)
 
@@ -26,23 +30,41 @@ Versioned public manuscript snapshots are now archived on Zenodo. Current latest
 
 | Section | Status | Notes |
 |---------|--------|-------|
-| Abstract | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
-| 1. Introduction | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
-| 2. Analytic Support Framework | 🟡 First draft written | 见 `drafts/manuscript_draft.md` 与 `drafts/high_level_derivation.md` |
-| 3. Architecture Reframing | 🟡 First draft written | main novelty 已前移到算例之前 |
-| 4. Low-Latitude Illustrative Analysis | 🟡 First draft written | 明确降级为 supporting slices |
-| 5. Boundaries and Next Steps | 🟡 First draft written | 主张边界与 deferred work 已单独成节 |
-| 6. Conclusion | 🟡 First draft written | 位于 `drafts/manuscript_draft.md` |
+| Abstract | 🟡 Draft in metadata | canonical abstract 位于 `template/metadata.yaml` |
+| Introduction | 🟡 Full first draft | canonical source 为 `content/manuscript.md` |
+| Theoretical Framework | 🟡 Full first draft | canonical source 为 `content/manuscript.md` |
+| Illustrative Low-Latitude Slices | 🟡 Full first draft | canonical source 为 `content/manuscript.md` |
+| Discussion | 🟡 Full first draft | canonical source 为 `content/manuscript.md` |
+| Conclusion | 🟡 Full first draft | canonical source 为 `content/manuscript.md` |
 
 ### Current Writing Surface
 
 - canonical build manuscript 现已上提到 `Paper/content/manuscript.md`
 - `Paper/drafts/manuscript_draft.md` 保留为较自由的 prose / note surface，而不是模板内正文源
+- abstract 与投稿元数据的 canonical source 为 `Paper/template/metadata.yaml`
 - 对外联系草稿现集中保存在 `Paper/drafts/`，包括 `mcinnes_cold_email.md`、`wright_cold_email.md`、`quarta_cold_email.md`、`heiligers_cold_email.md` 与 `friend_forward_packet.md`；各 cold-email draft 现记录公开邮箱、联系理由以及其与 manuscript 的关系
 - 核心参考文献 canonical source 为 `Paper/references/bibliography.bib`
+- 当前文献综述 refresh surface 为 `docs/references/literature_review_refresh_20260427.md`
 - 最小 `main.tex` 已补齐于 `Paper/main.tex`
 - 图像生成脚本已落地于 `Paper/figures/generate_figures.py`
 - 当前结构已显式分离为：`Paper/content/` 管正文，`Paper/template/` 管唯一保留的 MNRAS build/template 资产，`Paper/output/` 管构建产物
+
+### Canonical Manuscript Structure
+
+当前 canonical manuscript 的实际主结构是：
+
+1. `Introduction`
+2. `Theoretical Framework`
+3. `Illustrative Slices of the Low-Latitude Branch`
+4. `Discussion`
+5. `Conclusion`
+
+这意味着 control plane 不应再假设 “Architecture Reframing” 必须作为独立一级标题存在于 canonical manuscript 中。当前正文里，这部分内容主要被吸收到：
+
+- `Introduction` 中的 claim boundary / continuum framing
+- `Discussion` 中的 growth path、design language 与 modeling boundary
+
+若后续为投稿或审稿需要重新拆出独立一级节，可以再做结构性回退；在那之前，应以当前 canonical manuscript 的实际组织为准，避免 control-plane drift。
 
 ### Paper Positioning
 
@@ -77,32 +99,35 @@ Versioned public manuscript snapshots are now archived on Zenodo. Current latest
 
 - 低纬 `\theta_\oplus / 0.1^\circ / 0.5^\circ / 1^\circ` 例子保留，但只作为 supporting slices
 - 正文重心回到 `Dyson support continuum` 这一主张
-- 引言与讨论现已显式把 conventional Keplerian swarm 收束为 `topology-and-growth problem`，并把 `Walker-like / phase-separated` 方案定位为对交会时序的重新分配，而非对底层交叉图的几何消除
+- 引言与讨论现已把 dense same-shell Keplerian swarm 收束为 `topology-and-growth pressure`，并把 `Walker-like / phase-separated / radial nesting` 方案定位为可缓解或移出同壳情形、但不能消除 dense same-radius multi-plane subset 的底层节点交叉结构
 - `β`、`φ`、`ν`、`\sigma_{\max}(\phi)` 被反复用作 continuum 的参数化语言，而不只是局部算例变量
 - `low-latitude` 部分的职责被明确限制为：证明该 continuum 中的低-`\beta` 工作段非空，而不是承载全文的主 novelty
 
 当前 safest one-sentence claim 为：
 
-> **The main novelty of this work lies not in identifying the displaced-NKO bridge itself, which recent Dyson literature now explicitly notes, but in developing that bridge into a continuous Dyson support spectrum, an analytic architecture criterion, and a staged-growth language that shifts Dyson organization from nodal-intersection management to layered support geometry.**
+> **The novelty is not the displaced orbit family itself, but the use of the low-latitude displaced branch as a Dyson-swarm architecture screening relation linking latitude, lightness number, and system areal density.**
 
 ### Core Results For Main Text
 
-- 1 AU, $\phi = 1^\circ$ 的精确理想帆解要求 $\beta_{\min} \approx 0.0453$，而不是早期启发式里的 $\sim 0.017$。
+- 主支撑曲线现在明确为 reduced low-latitude screening relation：$\beta_{\min}(\phi)=\frac{3\sqrt3}{2}\sin\phi$，而不是 full high-latitude exact ideal-sail branch。
+- 1 AU, $\phi = 1^\circ$ 的低纬支撑近似给出 $\beta_{\min} \approx 0.0453$，比早期启发式 $\sim 0.017$ 更严格。
 - 对应总面密度上限约为 $33.8\ \text{g/m}^2$。
-- 入口级低纬示例现已明确加入：在 `0.1^\circ` 时，$\beta_{\min} \approx 0.00453$、$\sigma_{\max} \approx 337.4\ \text{g/m}^2$，这说明最靠近黄道面的微位移窗口在纯面密度意义上已经相当宽裕。
+- 入口级低纬示例现已明确加入：在 `0.1^\circ` 时，$\beta_{\min} \approx 0.00453$、$\sigma_{\max} \approx 337.4\ \text{g/m}^2$，这说明最靠近 reference orbital plane 的微位移窗口在纯面密度意义上已经相当宽裕。
 - 一个更直观的入口级特征角也已纳入正文：取从太阳看地球角半径 $\theta_\oplus \approx 0.00244^\circ$，则有 $\beta_{\min}(\theta_\oplus) \approx 1.11\times 10^{-4}$、$\sigma_{\max}(\theta_\oplus) \approx 13.83\ \text{kg/m}^2$。这说明在纯面密度意义上，MDDS 框架已经进入了一个明显落在人类现有轻量航天系统能力范围内的近入口区间。
 - 该点现在不再只是旁注，而是正式并入代表性例子：在 1 AU 上它对应约一个地球半径的法向分离，$z \approx 6{,}371\ \text{km}$；若施加 Earth-synchronous 约束，对应 inward shift 约 `3000 km`。
 - 低纬主结果现已收束为 `0.1^\circ`、`0.5^\circ`、`1^\circ` 三个正文代表点：用于展示从“极宽松入口”到“仍有意义但已明显收紧”的低纬窗口；`2^\circ` 保留为对照点，说明窗口会继续快速缩窄。
-- 正文现已补入 exact payload-optimized branch 的一阶局部 `r-\phi` 线性化：在定义 `q=r_0\delta\phi` 与 `y=r_0\cos\phi_0\,\psi` 后，可得到耦合扰动方程与特征二次式 `u^2+[1+\nu^2(1+2\sin^2\phi_0)]u+\nu^2\cos^2\phi_0=0`（其中 `u=\lambda^2/n^2`）。因此对整个 `0<\phi<\phi_c` 分支，`r-\phi` 子系统保持振荡有界，而 along-track phase mode 仍是中性模态。
-- 来自 McInnes 2026 的一个新启发是：虽然其稳定圆轨道上限 $\overline{\beta}_S(\overline{\xi})$ 是在相反的 `R \gg R_*` 扩展反射盘极限下推导的，不能直接当作 MDDS 的严格证明，但作为 heuristic screen 很利好。其全局最小值约为 `0.983`（在 `\bar{\xi} \approx 2.38`），因此当前 payload-optimized MDDS 分支在 `\phi \lesssim 22.2^\circ` 时都低于这条稳定性上限；正文中的 `0.1^\circ / 0.5^\circ / 1^\circ` 点都深处于 screened-stable 一侧。这一比较现已进入正文 Discussion，并把后续重点收束到 passive / closed-loop stability closure，而不再是“是否存在 exact branch 的线性化处理”这个更前一层的问题。
-- 同一篇 McInnes 2026 还把若干未完成工作显著前移了：在本文已加入 local `r-\phi` 线性化之后，下一步不再是“有没有 formal stability map”这个抽象问题，而是 passive / closed-loop stability、finite-extent force-law corrections、distributed loading / in-plane stress 的结构闭合，以及在 swarm densification 之后 mutual attenuation / self-shadowing / diffuse reradiation / secular optical drift 等 collective effects。正文 Discussion 现已把这些内容压缩为一个高层“unfinished agenda”段落。
-- 当前正文的主建模边界也已明确：主推导采用完美镜面太阳帆，并把 reflector 视为唯一显式承受并利用光压的支撑表面；payload（例如太阳能电池板）造成的额外光压、热再辐射与受力偏移未进入主方程，只在 $\sigma_{\text{sys}}$ 中作为质量预算处理。
+- 正文现已把标准 ideal-specular cone angle 定义与当前 reduced support pitch 区分开来：当前主文变量已改为 `\alpha_{\mathrm{eff}}`，表示低纬柱坐标支撑近似中的 effective support pitch，不再声称是完整 Sun-line cone-angle force law。
+- 新增 Appendix A，用标准 Sun-line cone-angle force law 检查主文低纬 screening curve；在 `0.1^\circ / 0.5^\circ / 1^\circ` 三个核心例子中，主文公式分别只保守高估 $\beta_{\min}$ 约 `0.25% / 1.24% / 2.48%`。
+- 正文现已补入 reduced low-latitude model 的一阶局部 `r-\phi` 线性化：在定义 `q=r_0\delta\phi` 与 `y=r_0\cos\phi_0\,\psi` 后，可得到耦合扰动方程与特征二次式 `u^2+[1+\nu^2(1+2\sin^2\phi_0)]u+\nu^2\cos^2\phi_0=0`（其中 `u=\lambda^2/n^2`）。该结果只说明 retained low-latitude domain 中 `r-\phi` 子系统振荡有界，而 along-track phase mode 仍是中性模态。
+- McInnes 2026 的 extended-reflector 稳定性结果现在只作为 neighboring idealized models 的 consistency check，不再写成 favorable screen 或稳定上限。
+- 当前正文的主建模边界也已明确：主推导采用低纬理想镜面支撑近似，并把 reflector 视为唯一显式承受并利用光压的支撑表面；payload（例如太阳能电池板）造成的额外光压、热再辐射与受力偏移未进入主方程，只在 $\sigma_{\text{sys}}$ 中作为总质量预算处理。正文现在进一步强调 support area 不等于 energy-collecting area，PV fill-factor 只是 mass-budget illustration，不是 closed optical-power architecture。
+- `54.8 g/m^2` ultralight PV benchmark 现在明确接到 Kim et al. (2021) device-level flexible InGaP/GaAs tandem-cell result：`27.4%` efficiency 与 `>5000 W/kg` specific power under AM1.5G；正文同时声明它不是 space-qualified module loading，未含 wiring / deployment / interconnect / thermal / radiation margin。
 - current prior-art map 已明确表明：Earth-synchronous / period-constrained branch 在现有 DNKO 文献中已有成熟先例，因此正文中只把它当作 framework 内的 illustrative operational variant，不再当作独立 novelty claim。
 - McInnes 2026 进一步表明：`Dyson-swarm collision relief -> displaced NKO parallel stacking` 这条主桥本身也已被显式说出，因此正文 novelty posture 现已进一步收紧为 `bridge development` 而不是 `bridge discovery`。
 - 高层理论主线现已单独记录：MDDS 可以被统一表述为“纬度支撑曲线 $\beta_{\min}(\phi)$ / $\sigma_{\max}(\phi)$ 与系统面密度 $\sigma_{\text{sys}}$ 的交点问题”，详见 `Paper/drafts/high_level_derivation.md`。
 - 更高层的概念定位也已收紧：MDDS 可被解释为连接“平面开普勒 swarm 极限”和“辐射支撑 statite / bubble 端点”的构型连续体，而本文当前严格分析的是其中低纬、低-$\beta$、可工程化的 displaced-orbit 分支。
-- 理论框架下的两类自然设计方向也已明确：一类是通过最小化 $\beta$ 来最大化质量裕度的 payload-friendly branch，另一类是通过施加外部周期条件来保持运行规则性的 synchronization-constrained branch。
-- 渐进部署思想也已纳入主叙事：MDDS 不只是一个最终构型，还可以被表述为一条从黄道附近开始、每一步都可运营、再逐步向高纬扩张的 Dyson-progressive growth path。
+- 理论框架下的两类自然设计方向也已明确：一类是通过最小化 $\beta$ 来最大化质量裕度的 low-latitude optimized branch，另一类是通过施加外部周期条件来保持运行规则性的 synchronization-constrained branch。
+- 渐进部署思想也已纳入主叙事：MDDS 不只是一个最终构型，还可以被表述为一条从 reference orbital plane 附近开始、每一步都可运营、再逐步向更高纬扩张的 Dyson-progressive growth path。
 
 ### Supporting Results (Appendix / Future Work)
 
@@ -157,24 +182,25 @@ Versioned public manuscript snapshots are now archived on Zenodo. Current latest
 2.1 Geometry, Kinematics, and Force Balance
 - 圆形位移轨道几何
 - 轨道支撑与辐射支撑的分解
+- 明确 current force model 是 low-latitude support approximation，而不是完整 high-latitude ideal-sail force law
 
 2.2 Payload-Optimized Branch
-- 精确理想帆最优角
+- 低纬支撑近似下的 optimized effective support pitch `\alpha_{\mathrm{eff,opt}}`
 - `\beta_{\min}(\phi)` 与 `\sigma_{\max}(\phi)`
 - 把轨道问题转写为 screening criterion
 
 2.3 Dyson Support Continuum
 - Keplerian swarm 极限
 - low-`\beta` MDDS 工作段
-- bubble / statite access threshold 与 branch endpoint 的区分
+- bubble / statite access threshold 与 low-latitude model validity boundary 的区分
 
 2.4 Synchronization-Constrained Branch
 - Earth-synchronous / period-constrained slice
 - 作为同一 framework 的 operational variant
 
 2.5 Local Radial-Latitude Dynamics
-- exact payload-optimized branch 的 `r / \phi` 线性化
-- bounded oscillatory `r-\phi` subspace vs neutral along-track mode
+- reduced low-latitude branch 的 `r / \phi` 线性化
+- bounded oscillatory `r-\phi` subspace vs neutral along-track mode within the approximation
 - `\delta\beta/\beta \sim \cot\phi\,\delta\phi` 与 `\delta\omega/\omega = -\tfrac32 \delta r/r`
 
 2.6 Scope of the Main-Text Model
@@ -269,12 +295,12 @@ Paper/
 | Figure | Description | Status |
 |--------|-------------|--------|
 | Fig 1 | Keplerian deadlock illustration | 🟢 Generated |
-| Fig 2 | HoverDisk local force-balance schematic | 🟢 Generated |
+| Fig 2 | MDDS local force-balance schematic | 🟢 Generated |
 | Fig 3 | Micro-displaced parallel rings concept | 🟢 Generated |
-| Fig 4 | Support continuum (`\beta_{\min}(\phi)` and `\nu(\phi)`) | 🟢 Generated |
-| Fig 5 | $\beta$-$\phi$ / $\sigma_{\max}(\phi)$ support curves | 🟢 Generated |
-| Fig 6 | Low-latitude illustrative window (`0.1°`, `0.5°`, `1°`) | 🟢 Generated |
-| Fig 7 | Earth-synchronous radius shift schematic | 🟢 Generated |
+| Fig 4 | $\beta$-$\phi$ / $\sigma_{\max}(\phi)$ low-latitude support curves | 🟢 Generated |
+| Fig 5 | Low-latitude illustrative window (`0.1°`, `0.5°`, `1°`) | 🟢 Generated |
+| Fig 6 | Earth-synchronous radius shift schematic | 🟢 Generated |
+| Deferred | Full support continuum with exact Sun-line cone-angle geometry | 🔴 Needs rederivation before use |
 
 ---
 

@@ -49,6 +49,13 @@
 
 ## Literature Review Notes
 
+### Current Literature Review Refresh
+
+- `literature_review_refresh_20260427.md` — curated absorption of the `dr`
+  deep-research runs for the MDDS manuscript. Use this as the current prior-art
+  boundary map and citation-cluster guide; treat the raw `dr` output as research
+  triage, not as citable authority.
+
 ### Displaced Orbits (McInnes)
 
 Key equations from McInnes (1999):
@@ -88,4 +95,5 @@ Examples:
 - [ ] McInnes (1999) full text — Chapter 3 especially
 - [ ] IKAROS mission technical reports
 - [ ] Recent solar sail material advances (2020+)
-- [ ] Thin-film PV space qualification data
+- [x] Device-level ultralight PV benchmark source for `54.8 g/m²` conversion: Kim et al. (2021), flexible InGaP/GaAs tandem cell, `27.4%` and `>5000 W/kg` under AM1.5G
+- [ ] Thin-film PV space qualification data and module-level packaging margins

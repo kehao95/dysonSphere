@@ -17,17 +17,21 @@
 
 ---
 
-## Phase 1: Mathematical Modeling (Current)
+## Phase 1: Mathematical Modeling (first slice completed; continuing as supporting work)
 
 **目标**: 建立完整的数学模型
 
 ### 1.1 轨道动力学 (Orbital Dynamics)
 
 - [x] Displaced orbit 基础方程推导
-- [x] $\beta$-$\phi$ 关系的精确表达式
+- [x] low-latitude $\beta$-$\phi$ screening relation
 - [x] 一阶扰动灵敏度切片（锥角误差 / $\beta$ 误差 / 小外压扰动）
 - [x] 最优锥角附近的解析局部响应
-- [ ] 轨道稳定性分析（线性化扰动）
+- [x] reduced low-latitude branch 的局部 `r-\phi` 线性化
+- [x] standard Sun-line cone-angle low-latitude error check（Appendix A）
+- [ ] full ideal-specular Sun-line cone-angle force-law rederivation
+- [ ] passive / closed-loop stability closure
+- [ ] 更一般的 stability map（超出 reduced low-latitude branch）
 - [ ] 多环系统的相互作用
 
 ### 1.2 质量预算 (Mass Budget)
@@ -66,40 +70,47 @@
 
 ---
 
-## Phase 3: Paper Writing
+## Phase 3: Paper Writing (Current Focus)
 
 **目标**: 产出学术论文
 
-### 论文结构（暂定）
+### 当前 canonical manuscript 结构
 
 1. **Introduction**
-   - Keplerian deadlock problem
-   - Limitations of existing solutions
-   - Our contribution
+   - topology-and-growth pressure in dense same-shell Keplerian builds
+   - prior-art bridge and claim boundary
+   - continuum / analytic-screening contribution
 
 2. **Theoretical Framework**
-   - Displaced orbit theory (McInnes)
-   - Lightness number and critical density
+   - force balance and support variables
+   - low-latitude optimized branch
+   - support continuum
+   - synchronization-constrained branch
+   - local radial-latitude dynamics
 
-3. **Micro-Displacement Strategy**
-   - Why moderate but sub-unity $\beta$ is sufficient
-   - Decoupled architecture design
+3. **Illustrative Slices of the Low-Latitude Branch**
+   - representative latitudes
+   - entry-level interpretation
+   - screening-level engineering bookkeeping
+   - synchronization slice
 
-4. **Mathematical Model**
-   - Orbital dynamics equations
-   - Stability analysis
+4. **Discussion**
+   - growth path and deployment logic
+   - modeling boundaries
+   - next-step realism layers
 
-5. **Engineering Feasibility**
-   - Mass budget with real materials
-   - Thermal analysis
-   - Comparison with alternatives
+5. **Conclusion**
 
-6. **Discussion**
-   - Scalability
-   - Technology readiness
-   - Future work
+### 当前写作进度
 
-7. **Conclusion**
+- [x] canonical manuscript content surface 建立到 `Paper/content/manuscript.md`
+- [x] MNRAS template/build wrapper 可生成 PDF
+- [x] abstract、正文主干与结论 first draft 已成型
+- [x] 关键 figures 已生成并接入 build
+- [x] literature review refresh
+- [ ] citation tightening
+- [ ] arXiv release package / Zenodo 新快照
+- [ ] external pre-read / venue decision
 
 **产出**: 可投稿的学术论文
 
@@ -131,3 +142,4 @@
 2. **工程可信度**: 参数基于真实材料数据，非理想化假设
 3. **创新性**: 明确区分于 Dyson Bubble 和传统 Swarm 的贡献
 4. **可复现性**: 所有计算代码和数据可追溯
+5. **主张边界清晰**: continuum / architecture contribution 与 prior art、supporting evidence、future work 明确分层

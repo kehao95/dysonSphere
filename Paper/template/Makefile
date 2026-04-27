@@ -84,7 +84,7 @@ pdf: check $(LATEX_FILE)
 tex: check $(LATEX_FILE)
 
 html: check $(FULL_MD)
-	pandoc $(FULL_MD) -o $(HTML) --standalone --resource-path=$(RESOURCE_PATH) --citeproc --bibliography=$(BIB)
+	pandoc $(FULL_MD) -o $(HTML) --standalone --resource-path=$(RESOURCE_PATH) --citeproc --bibliography=$(BIB) --mathjax
 	@echo "HTML generated at $(HTML)"
 
 docx: check $(FULL_MD)

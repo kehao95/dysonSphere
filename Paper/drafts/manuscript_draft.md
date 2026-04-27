@@ -1,5 +1,7 @@
 # Manuscript Draft
 
+> **Legacy note (2026-04-27):** canonical manuscript text now lives in `Paper/content/manuscript.md`. This draft is retained as a prose scratch surface and predates the force-model correction that downgraded the current support curve to a low-latitude screening approximation. Any references below to a full high-latitude exact branch, `\phi_c`, `\nu=0`, or `\beta=1.5` endpoints are obsolete unless rederived with the standard Sun-line cone-angle force law.
+
 ## Title
 
 **From Keplerian Swarms to Radiatively Supported Bubbles: A Continuum Framework for Dyson Architectures**
@@ -13,12 +15,11 @@ This converts the architecture question into a simple screening criterion: a sys
 ## Figure Roadmap
 
 - **Figure 1.** Keplerian deadlock and nodal-intersection geometry for conventional swarm configurations.
-- **Figure 2.** Local force balance for a displaced HoverDisk element: sail thrust, stellar gravity, and the orbital centrifugal term, with the equivalent centripetal demand toward the offset-disk center.
-- **Figure 3.** MDDS concept: low-latitude stratified rings above and below the ecliptic.
-- **Figure 4.** Support continuum: the full $\beta_{\min}(\phi)$ and $\nu(\phi)$ spectrum from Keplerian limit to branch terminus, marking the $\beta=1$ architecture threshold and the $\nu=0$ branch endpoint.
-- **Figure 5.** Latitude support curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$ in the low-latitude regime.
-- **Figure 6.** Low-latitude illustrative window at $0.1^\circ$, $0.5^\circ$, and $1^\circ$.
-- **Figure 7.** Earth-synchronous radius correction along the payload-optimized branch.
+- **Figure 2.** Local force balance for a displaced MDDS element: sail thrust, stellar gravity, and the orbital centrifugal term, with the equivalent centripetal demand toward the offset-disk center.
+- **Figure 3.** MDDS concept: low-latitude stratified rings above and below a reference orbital plane.
+- **Figure 4.** Latitude support curves $\beta_{\min}(\phi)$ and $\sigma_{\max}(\phi)$ in the low-latitude regime.
+- **Figure 5.** Low-latitude illustrative window at $0.1^\circ$, $0.5^\circ$, and $1^\circ$.
+- **Figure 6.** Earth-synchronous radius correction along the low-latitude optimized branch.
 
 ## 1. Introduction
 
@@ -64,7 +65,7 @@ This converts the architecture question into a compact screening problem: whethe
 
 ### 1.4 Claim boundary and roadmap
 
-For clarity, the present paper does not claim a fundamentally new orbit family, first discovery of the displaced-NKO bridge to swarm stratification, full-lifecycle station-keeping or swarm-wide control closure, economic optimality, or a complete non-ideal optical model. The main support curve is derived under the ideal-specular approximation and should be read as a reference limit rather than a final engineering closure.
+For clarity, the present paper does not claim a fundamentally new orbit family, first discovery of the displaced-NKO bridge to swarm stratification, a first general stability analysis of displaced non-Keplerian orbits, full-lifecycle station-keeping or swarm-wide control closure, economic optimality, or a complete non-ideal optical model. The main support curve should be read as a low-latitude ideal-specular screening approximation rather than a full high-latitude exact sail solution or final engineering closure.
 
 Our scope is intentionally limited. We do not attempt a full structural, thermal, control, or economic closure for a complete Dyson-scale system, nor do we attempt a formal megaconstellation-reconfiguration analysis. Instead, we use a small set of low-latitude representative cases to show that the framework is not empty, that it already admits an entry-level regime in the idealized Sun-Earth model, and that the working window narrows rapidly with latitude. The paper should therefore be read as a theory-grounded architectural framework with illustrative low-latitude slices, not as a claim that large-scale Dyson engineering, open-ended deployment economics, or the underlying displaced-orbit dynamics themselves have been solved anew here.
 

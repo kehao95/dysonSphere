@@ -1,25 +1,25 @@
 # Micro-Displaced Dyson Swarm (MDDS)
 
-**Orbital Dynamics and Engineering Feasibility of Micro-Displaced Dyson Swarm Nodes using Decoupled Solar Sail Architectures**
+**Low-Latitude Architecture Screening for Micro-Displaced Dyson Swarm Nodes using Solar-Sail Support**
 
-基于解耦太阳帆架构的微位移戴森群节点轨道动力学与工程可行性研究
+基于太阳帆支撑的微位移戴森群低纬架构筛选研究
 
 ---
 
 ## Abstract
 
-Traditional Dyson Swarm concepts are constrained by Keplerian orbital mechanics: all orbital planes must pass through the stellar center of mass (great circle trajectories). This creates unavoidable nodal intersections at the equatorial plane when deploying numerous nodes at similar orbital radii. The result is not only a collision problem, but a topology-and-growth problem: every added same-radius plane also enlarges the persistent intersection network that the swarm must manage.
+Dense same-shell Keplerian Dyson Swarm concepts inherit a geometric constraint: each orbital plane passes through the stellar center of mass. When many same-radius planes are used, pairwise nodal intersections create a persistent crossing network that must be phased, screened, and managed. The result is not a solved collision-rate model, but a topology-and-growth pressure for dense same-shell architectures.
 
 We propose a **Micro-Displaced Dyson Swarm (MDDS)** architecture that leverages solar radiation pressure (SRP) to maintain small out-of-plane displacements. More broadly, we treat Dyson architectures as a **support continuum** rather than a set of disconnected shell / swarm / bubble categories. In that framing, MDDS occupies a low-$\beta$ mixed-support regime between the planar Keplerian limit and the fully radiatively supported bubble/statite endpoint.
 
-The key innovation is a **Decoupled Architecture**: separating the reflective thrust module (large-area thin film mirror) from the absorptive payload module (high-efficiency solar cells). This resolves the fundamental "reflect vs. absorb" thermal paradox while enabling practical mass budgets.
+The key architectural idea is a **Decoupled Architecture**: separating the reflective support surface from absorptive payload or power hardware. In the current manuscript this is treated only as mass-budget bookkeeping; a closed optical-power architecture still requires explicit modeling of absorption, reflection, reradiation, shadowing, torque, and thermal control.
 
 ---
 
-## The Problem: Keplerian Deadlock
+## The Problem: Same-Shell Keplerian Pressure
 
 ```
-        Traditional Keplerian Swarm
+        Dense Same-Shell Keplerian Swarm
         
               ╱ orbit A
          ☀ ──╳── orbit B    ← Nodal intersection!
@@ -27,17 +27,17 @@ The key innovation is a **Decoupled Architecture**: separating the reflective th
               
      All orbits must pass through stellar center
      → Unavoidable crossing points
-     → Collision risk / Kessler cascade
+     → Crossing corridors that require traffic management
 ```
 
-This is not just a local conjunction issue. In a dense same-radius swarm, it becomes a topology-and-growth problem: expanding capacity means expanding the nodal graph itself, so the architecture inherits more crossing structure as it scales.
+This is not just a local conjunction issue. In a dense same-radius swarm, it becomes a topology-and-growth pressure: expanding capacity means expanding the nodal graph itself, so the architecture inherits more crossing structure as it scales.
 
-### Why Existing Solutions Fail
+### Why Existing Endpoints Are Unsatisfying
 
 | Approach | Limitation |
 |----------|------------|
-| Co-orbital phase separation | Redistributes encounter timing but does not remove geometric intersections |
-| Nested rings (different radii) | Severe shadowing & thermal crosstalk |
+| Co-orbital phase separation | Redistributes encounter timing but does not remove same-radius multi-plane nodal geometry |
+| Nested rings (different radii) | May reduce crossings, but introduces radial packing, shadowing, and thermal-crosstalk tradeoffs |
 | Full levitation (Dyson Bubble) | Requires $\sigma < 1.53$ g/m² — no useful payload |
 
 ---
@@ -55,28 +55,28 @@ This is not just a local conjunction issue. In a dense same-radius swarm, it bec
         
      Small angular displacement φ ~ 1°
      → Physical separation d ~ millions of km
-     → ZERO orbital intersections
+     → No same-shell nodal crossings in the idealized stratified geometry
 ```
 
 The larger reframing is that Dyson structures need not be discussed as fully separate end states. Instead, they can be organized along a support continuum: purely orbital Keplerian swarms at one end, fully radiatively supported bubble/statite concepts at the other, and low-$\beta$ mixed-support MDDS layers in between.
 
 ### Core Insight
 
-We do not need full levitation. For the exact minimum-beta branch of an ideal displaced circular orbit,
+We do not need full levitation to enter a displaced-support regime. For the reduced low-latitude screening branch used in the current manuscript,
 
-$$\beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi \qquad (\phi \lesssim 35.26^\circ)$$
+$$\beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi$$
 
 At 1 AU and $\phi = 1^\circ$, this gives:
 
 $$\beta_{\min} \approx 0.0453,\qquad \sigma_{\max} \approx 33.8\ \text{g/m}^2,\qquad d \approx 2.61 \times 10^6\ \text{km}$$
 
-This is still far easier than full levitation ($\beta \ge 1$), but materially stricter than the naive $\beta \approx \sin\phi$ heuristic.
+This is still far easier than full levitation ($\beta \ge 1$), but materially stricter than the naive $\beta \approx \sin\phi$ heuristic. The current paper treats this as a low-latitude architecture-screening relation, not as a full high-latitude ideal-sail branch.
 
 ### Progressive Deployment Path
 
 MDDS is appealing not only as a final configuration, but also as a **growth path**:
 
-1. Start near the ecliptic, where the required $\beta$ is minimal and the mass budget is most forgiving.
+1. Start near the chosen reference plane, where the required $\beta$ is minimal and the mass budget is most forgiving.
 2. Deploy nodes that are already useful individually, rather than waiting for a full shell-equivalent buildout.
 3. Expand gradually toward higher latitudes as materials, structures, control, and in-space manufacturing improve.
 
@@ -89,7 +89,7 @@ This makes MDDS more than a static Dyson concept. It becomes a **Dyson-progressi
 | **Drag Sail** (large area) | Reflect photons → axial thrust | 1 μm Kapton/Al film | Tilted to orbital plane |
 | **Payload Core** (small area) | Absorb → power generation | Flex thin-film PV | Face Sun directly |
 
-**Key advantage**: The reflector doesn't absorb; the absorber doesn't need to reflect. This breaks the thermal deadlock.
+**Key advantage**: The reflector and absorber can be modeled as distinct functional surfaces. The present paper uses that distinction only for first-pass mass bookkeeping; optical closure and thermal-power architecture remain future work.
 
 ---
 
@@ -131,8 +131,8 @@ dysonSphere/
 | Symbol | Name | Value | Notes |
 |--------|------|-------|-------|
 | $\sigma^*$ | Critical areal density | 1.53 g/m² | For Sun; $\beta = 1$ threshold |
-| $\beta$ | Lightness number | 0.04–0.25 | Practical MDDS range for ~1°–5° rings |
-| $\phi$ | Displacement angle | 1°–5° | Latitude of displaced ring |
+| $\beta$ | Lightness number | $\lesssim 0.05$ | Representative low-latitude range through 1° |
+| $\phi$ | Displacement angle | $\leq 1^\circ$ main slice | Latitude of displaced ring; 2° retained only as stress comparison |
 | $r$ | Orbital radius | 1 AU | Reference distance |
 
 ---
@@ -145,15 +145,17 @@ The lightness number $\beta$ relates radiation pressure to gravitational force:
 
 $$\beta = \frac{F_{\text{rad}}}{F_{\text{grav}}} = \frac{\sigma^*}{\sigma}$$
 
-For a displaced circular orbit at angle $\phi$ from the equatorial plane, with sail cone angle $\alpha$ and orbital-rate ratio $\nu = \omega/\sqrt{\mu/r^3}$:
+For the reduced low-latitude displaced circular-orbit screen, with effective cylindrical support pitch $\alpha_{\mathrm{eff}}$ and orbital-rate ratio $\nu = \omega/\sqrt{\mu/r^3}$:
 
-$$\beta \cos^3\alpha = \cos\phi(1-\nu^2)$$
-$$\beta \cos^2\alpha \sin\alpha = \sin\phi$$
+$$\beta \cos^3\alpha_{\mathrm{eff}} = \cos\phi(1-\nu^2)$$
+$$\beta \cos^2\alpha_{\mathrm{eff}} \sin\alpha_{\mathrm{eff}} = \sin\phi$$
 
-Minimizing over sail attitude gives the low-$\beta$ branch used in this project:
+Minimizing over this reduced support pitch gives the low-$\beta$ screening branch used in this project:
 
-$$\alpha_{\text{opt}} = \arctan\left(\frac{1}{\sqrt{2}}\right) \approx 35.26^\circ,\qquad
+$$\alpha_{\mathrm{eff,opt}} = \arctan\left(\frac{1}{\sqrt{2}}\right) \approx 35.26^\circ,\qquad
 \beta_{\min} = \frac{3\sqrt{3}}{2}\sin\phi$$
+
+This is not a full high-latitude Sun-line cone-angle force law; Appendix A of the manuscript compares it with the standard ideal-specular cone-angle treatment and shows that the low-latitude examples are conservative by only a few per cent.
 
 ---
 

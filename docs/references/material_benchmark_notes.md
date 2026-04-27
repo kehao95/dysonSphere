@@ -34,11 +34,13 @@ Useful NASA references:
   for ideal 1 AU comparison purposes.
 
 Public abstract / summary page:
-- IBM Research publication page: https://research.ibm.com/publications/ultralight-high-efficiency-flexible-ingapingaas-tandem-solar-cells-on-plastic
+- Kim et al. (2021), ACS Applied Materials & Interfaces: https://doi.org/10.1021/acsami.1c00006
+- IBM Research page for an earlier related flexible tandem result: https://research.ibm.com/publications/ultralight-high-efficiency-flexible-ingapingaas-tandem-solar-cells-on-plastic
 
 Important caveat:
 - This is closer to a device-level / cell-level frontier result than to a fully
-  integrated, flight-qualified space power subsystem.
+  integrated, flight-qualified space power subsystem. It does not include wiring,
+  deployment, interconnect, thermal, or radiation-margin loading.
 
 ### Flexible CIGS space projection
 
