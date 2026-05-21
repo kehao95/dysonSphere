@@ -10,11 +10,11 @@
 
 ### Current Status
 
-**Stage**: Manuscript Consolidation, Literature Review Refresh, and Build Verification
+**Stage**: Acta-first parallel manuscript preparation
 
-**Latest shift**: after force-model review, the manuscript no longer presents the current `\beta_{\min}` curve as a full high-latitude exact ideal-specular sail branch. It is now explicitly framed as a low-latitude ideal-specular support approximation / screening relation. The old `\nu=0`, `\phi_c`, and `\beta=1.5` endpoint interpretation has been removed from the canonical manuscript; local `r-\phi` dynamics are now described only as bounded response for the same reduced low-latitude model.
+**Latest shift**: publication-venue research has been absorbed into `docs/references/publication_venue_strategy_acta_20260427.md`. The working submission plan is now Acta Astronautica first, Advances in Space Research second, and Celestial Mechanics and Dynamical Astronomy third only after a theory-tightened rewrite. A parallel Acta package now lives in `Paper/acta/`, leaving the existing canonical manuscript untouched.
 
-**Build state**: the local MNRAS build currently succeeds for both PDF and HTML. The working tree is ahead of the latest public Zenodo snapshot (`v3`), so the next public release should be treated as a new post-`v3` draft rather than a rebuild of the archived version.
+**Build state**: the local MNRAS build surface remains available for the existing canonical manuscript. The Acta branch is currently a parallel Markdown submission package and has not yet been converted to an `elsarticle` build.
 
 **Literature-review state**: `dr` deep-research results have been absorbed into `docs/references/literature_review_refresh_20260427.md`. The usable result is a prior-art boundary map and citation-cluster guide; several stronger `dr` suggestions were explicitly rejected or deferred because they would overclaim the current manuscript.
 
@@ -42,9 +42,11 @@ Versioned public manuscript snapshots are now archived on Zenodo. Current latest
 - canonical build manuscript 现已上提到 `Paper/content/manuscript.md`
 - `Paper/drafts/manuscript_draft.md` 保留为较自由的 prose / note surface，而不是模板内正文源
 - abstract 与投稿元数据的 canonical source 为 `Paper/template/metadata.yaml`
+- Acta-first 平行稿件位于 `Paper/acta/`，包括 `manuscript.md`、`metadata.yaml`、`highlights.md` 与 `cover_letter.md`
 - 对外联系草稿现集中保存在 `Paper/drafts/`，包括 `mcinnes_cold_email.md`、`wright_cold_email.md`、`quarta_cold_email.md`、`heiligers_cold_email.md` 与 `friend_forward_packet.md`；各 cold-email draft 现记录公开邮箱、联系理由以及其与 manuscript 的关系
 - 核心参考文献 canonical source 为 `Paper/references/bibliography.bib`
 - 当前文献综述 refresh surface 为 `docs/references/literature_review_refresh_20260427.md`
+- 当前投稿策略 surface 为 `docs/references/publication_venue_strategy_acta_20260427.md`
 - 最小 `main.tex` 已补齐于 `Paper/main.tex`
 - 图像生成脚本已落地于 `Paper/figures/generate_figures.py`
 - 当前结构已显式分离为：`Paper/content/` 管正文，`Paper/template/` 管唯一保留的 MNRAS build/template 资产，`Paper/output/` 管构建产物
@@ -306,9 +308,10 @@ Paper/
 
 ## Target Venues
 
-- **Current release target**: *arXiv* (`astro-ph.EP` or `astro-ph.IM`) for the present framework-first version
-- **Best-fit journal direction after another strengthening pass**: *JBIS* (*Journal of the British Interplanetary Society*), especially if the paper continues to position itself as an advanced concepts / architecture paper
-- **Longer-shot / more conventional alternatives**: *Acta Astronautica*, *Journal of Spacecraft and Rockets*, *Advances in Space Research*
+- **Primary journal plan**: *Acta Astronautica* for the Acta-oriented parallel manuscript in `Paper/acta/`
+- **Nearest backup**: *Advances in Space Research*, preserving the broad space-research framing while reducing speculative Dyson language if needed
+- **Theory-heavy backup**: *Celestial Mechanics and Dynamical Astronomy*, only after a rewrite that foregrounds force-balance structure and downplays architecture rhetoric
+- **Distinct-paper alternatives**: *Journal of Guidance, Control, and Dynamics* for a stronger GN&C rewrite; *MNRAS* only for an astronomy / technosignature refocus
 
 ---
 

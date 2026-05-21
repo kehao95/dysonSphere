@@ -1,0 +1,21 @@
+---
+title: "Low-latitude displaced non-Keplerian support for stratified Dyson swarm architectures"
+shorttitle: "Low-latitude displaced support for Dyson swarms"
+author:
+  - "Hao Ke"
+shortauthor: "Hao Ke"
+affiliation: "Independent researcher"
+date: "27 April 2026"
+pubyear: "2026"
+target-journal: "Acta Astronautica"
+keywords:
+  - "Solar sailing"
+  - "Displaced non-Keplerian orbits"
+  - "Radiation pressure"
+  - "Dyson swarm"
+  - "Space system architecture"
+  - "Astrodynamics"
+abstract: |
+  Dense same-shell Keplerian collector swarms can develop a growing nodal-crossing management burden when many inclined orbital planes are used. This paper develops a low-latitude displaced non-Keplerian support branch as an architecture-level screening model for stratified Dyson swarm configurations. In a reduced ideal-specular cylindrical support model, the minimum lightness number required to sustain a displacement latitude $\phi$ is $\beta_{\min}=(3\sqrt{3}/2)\sin\phi$, corresponding to an allowable system areal density $\sigma_{\max}=2\sigma^*/(3\sqrt{3}\sin\phi)$. Representative 1 AU cases show that $0.1^\circ$, $0.5^\circ$, and $1.0^\circ$ offsets require $\beta_{\min}\approx0.00453$, $0.0227$, and $0.0453$, respectively, while producing large normal separations. A synchronization-constrained branch is also derived, showing that common-period operation primarily shifts the orbital radius without changing the support-density curve in the reduced model. A local radial-latitude linearization indicates bounded oscillatory response for retained low-latitude operating points, with a neutral along-track phase mode. The result is not a new displaced-orbit family or a complete engineering closure, but a compact screening relation connecting latitude, lightness number, and system areal density for radiation-pressure-assisted swarm stratification.
+---
+
